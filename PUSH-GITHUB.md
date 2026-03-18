@@ -10,15 +10,17 @@
 4. **README, .gitignore, license mat add karo** (empty repo)
 5. **Create repository**
 
-## 2. Apna naam / email (optional)
+## 2. Git identity (already set for this repo)
 
-Commit author abhi `PPSI Site` / `you@example.com` hai. Badalna ho to:
+- **Email:** `healthdeskit@gmail.com`
+- **Name:** `HealthDesk IT`
+
+Naye commits bhi isi identity se banenge. Badalna ho to:
 
 ```bash
 cd "c:\My Web Sites\PPSI WEB\Converted"
 git config user.name "Aapka Naam"
 git config user.email "aapka@email.com"
-git commit --amend --reset-author --no-edit
 ```
 
 ## 3. Remote add + push
