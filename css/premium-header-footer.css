@@ -1,0 +1,156 @@
+/* Premium modern header & footer styles */
+
+/* ========== HEADER ========== */
+header.fixed {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0 !important;
+}
+
+header .xl\:max-w-\[2200px\] {
+  border-radius: 0;
+}
+
+header a img {
+  max-height: 52px !important;
+  transition: opacity 0.2s ease;
+}
+
+header a:hover img {
+  opacity: 0.9;
+}
+
+/* Header icon buttons - premium pill style */
+header .flex.items-center.justify-center.w-10.h-10.rounded-full {
+  background: rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.25s ease;
+}
+
+header .flex.items-center.justify-center.w-10.h-10.rounded-full:hover {
+  background: rgba(37, 99, 235, 0.08) !important;
+  color: #2563eb;
+}
+
+/* CTA buttons in header */
+header button.bg-black {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+}
+
+header button.bg-black:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+header button.bg-blue-600 {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.35);
+}
+
+header button.bg-blue-600:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: linear-gradient(165deg, #0f172a 0%, #020617 50%, #000000 100%) !important;
+  border-top: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 32px 32px 0 0;
+  margin-top: 4rem !important;
+  padding-top: 4rem !important;
+  padding-bottom: 2rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+              radial-gradient(ellipse 60% 40% at 100% 100%, rgba(99, 102, 241, 0.08), transparent);
+  pointer-events: none;
+}
+
+footer > .container {
+  position: relative;
+  z-index: 1;
+}
+
+footer h3 {
+  color: #ffffff !important;
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.25rem !important;
+}
+
+footer .w-8.h-\[2px\].bg-blue-600 {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa) !important;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+footer ul li a {
+  color: #cbd5e1 !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+footer ul li a:hover {
+  color: #60a5fa !important;
+  padding-left: 4px;
+}
+
+/* Footer social icons - premium glow */
+footer a.bg-blue-600.p-4.rounded-full {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+footer a.bg-blue-600.p-4.rounded-full:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45);
+}
+
+/* Insurance section - refined card */
+footer .bg-opacity-80.bg-white\/5 {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Footer bottom bar */
+footer .mt-2.pt-8 {
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  padding-top: 2rem !important;
+}
+
+footer .premium-credit,
+footer p:has(.premium-healthdesk) {
+  color: #94a3b8 !important;
+  font-size: 0.9rem;
+}
+
+footer .premium-healthdesk {
+  color: #93c5fd !important;
+  font-weight: 600;
+}
+
+/* Hide duplicate Next.js FAQ section (accordion with empty content) */
+main section:has([data-radix-collection-item]) {
+  display: none !important;
+}

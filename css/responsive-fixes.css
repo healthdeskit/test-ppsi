@@ -1,0 +1,99 @@
+/* Cross-device stability and responsive layout fixes */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.container,
+[class*="container"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+header.fixed {
+  min-height: 74px;
+}
+
+header a img {
+  max-height: 56px !important;
+}
+
+@media (max-width: 1024px) {
+  header a img {
+    max-height: 50px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  header.fixed {
+    min-height: 66px;
+  }
+
+  header a img {
+    max-height: 44px !important;
+  }
+
+  main,
+  section,
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  footer .container > div[class*="grid"] {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+}
+
+.ppsi-mobile-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 66px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+  z-index: 80;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.ppsi-mobile-menu.open {
+  max-height: 70vh;
+}
+
+.ppsi-mobile-menu-inner {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.85rem 0.9rem 1rem;
+}
+
+.ppsi-mobile-menu-inner a {
+  display: block;
+  padding: 0.72rem 0.8rem;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.ppsi-mobile-menu-inner a:hover {
+  background: #eef2ff;
+}
+
+.ppsi-mobile-menu-inner a.is-cta {
+  background: #1d4ed8;
+  color: #ffffff;
+}
+

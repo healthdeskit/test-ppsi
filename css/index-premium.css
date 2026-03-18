@@ -1,0 +1,70 @@
+/* Index-only premium visual layer */
+html,
+body,
+body.__className_f367f3,
+body.__className_f367f3 * {
+  font-family: "Plus Jakarta Sans", "Inter", "Segoe UI", Arial, sans-serif !important;
+}
+
+.min-h-screen.flex.flex-col {
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 55%, #eef4ff 100%) !important;
+}
+
+header.fixed {
+  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.08);
+}
+
+#nj-body-services-section,
+#nj-faq-seo-section {
+  max-width: 1280px;
+  margin: 1.25rem auto;
+  padding: 0 1rem;
+}
+
+#nj-faq-seo-section .premium-faq-wrap {
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  padding: 1.5rem;
+  box-shadow: 0 14px 35px rgba(30, 64, 175, 0.09);
+}
+
+#nj-faq-seo-section h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  color: #0f172a;
+}
+
+#nj-faq-seo-section p {
+  color: #334155;
+}
+
+#nj-faq-seo-section .faq-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+#nj-faq-seo-section .faq-item {
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  padding: 0.95rem;
+  background: #f8fbff;
+}
+
+#nj-faq-seo-section .faq-item h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+}
+
+#nj-faq-seo-section .faq-item p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  #nj-faq-seo-section .faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+

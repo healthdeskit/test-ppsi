@@ -1,0 +1,123 @@
+/* Premium Services Section - Clean Grid */
+.services-premium-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.services-premium-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services-premium-container h2 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+
+.services-premium-subtitle {
+  color: #475569;
+  font-size: 1.05rem;
+  margin: 0 0 2.5rem;
+}
+
+.services-premium-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .services-premium-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-premium-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  text-decoration: none;
+  color: #0f172a;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.12);
+  border-color: #93c5fd;
+}
+
+.service-icon {
+  color: #1d4ed8;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.services-premium-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cta-primary-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #fff;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-primary-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
+}
+
+.cta-secondary-link {
+  display: inline-block;
+  border: 2px solid #1d4ed8;
+  color: #1d4ed8;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cta-secondary-link:hover {
+  background: #1d4ed8;
+  color: #fff;
+}

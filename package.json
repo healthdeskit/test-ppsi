@@ -1,0 +1,14 @@
+{
+  "name": "ppsi-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PPSI website – run server for full site, forms, and admin",
+  "scripts": {
+    "install:server": "cd server && npm install",
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

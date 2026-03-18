@@ -1,0 +1,19 @@
+# Render Blueprint – PPSI auto deploy from GitHub
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: ppsi-web
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
+    # Free tier: spin down after 15 min inactivity; cold start on next request
+    plan: free

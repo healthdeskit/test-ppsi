@@ -1,0 +1,31 @@
+# Git
+.git
+.gitignore
+
+# Dependencies (we npm install in container)
+node_modules
+server/node_modules
+
+# Data (runtime; use volume or platform disk)
+data/*.json
+data/uploads/*
+!data/.gitkeep
+
+# Docs / dev (optional)
+*.md
+!DEPLOY-FREE.md
+_templates
+scripts
+
+# IDE / OS
+.idea
+.vscode
+*.log
+.DS_Store
+Thumbs.db
+
+# PHP (not used in Node Docker image)
+php
+admin/*.php
+docker
+docker-compose*.yml

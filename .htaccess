@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# Existing files and directories pass through
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Admin
+RewriteRule ^admin/login$ admin/login.php [L]
+RewriteRule ^admin/logout$ admin/logout.php [L]
+RewriteRule ^admin$ admin/index.php [L]
+
+# Everything else -> router (clean URLs)
+RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]

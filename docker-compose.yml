@@ -1,0 +1,29 @@
+# PPSI – full site + PHP support
+# Main site (Node): http://localhost:3000  (clean URLs, API, admin)
+# PHP pages:         http://localhost:8080 (any .php file)
+
+services:
+  web:
+    build: .
+    image: ppsi-web
+    container_name: ppsi-web
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  php:
+    image: php:8.2-apache
+    container_name: ppsi-php
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    restart: unless-stopped
+    command: >
+      bash -c "a2enmod rewrite && apache2-foreground"

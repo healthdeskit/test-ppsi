@@ -1,0 +1,19 @@
+# Form & upload data (sensitive; create on server)
+data/submissions.json
+data/medical_record_requests.json
+data/job_applications.json
+data/uploads/
+
+# Keep data dir in git (optional: remove these if you want to track empty dirs)
+!data/.gitkeep
+
+# Node (if using local server)
+node_modules/
+server/node_modules/
+.env
+.env.local
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
