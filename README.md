@@ -13,7 +13,8 @@ Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, SQLit
 | `_next/` | Optimized images |
 | `Location-photos/` | Location gallery assets |
 | `server/` | Express app (`server.js`, routes, SQLite) |
-| `data/` | Runtime DB + uploads (volume in Docker) |
+| `data/` | Runtime JSON + uploads (volume in Docker) |
+| `data/seed/` | **Demo data** copied into `data/*.json` only when those files are missing (fresh server / empty disk) |
 | `admin/` | Legacy PHP admin (optional; primary admin is Node `/admin`) |
 | `docker/` | Apache config (PHP profile only) |
 

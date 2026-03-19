@@ -1,7 +1,26 @@
 const express = require('express');
-const { getDb } = require('../db');
+const { getDb, listActiveJobListingsPublic } = require('../db');
 
 const router = express.Router();
+
+/** Public: active open positions for /careers (no auth) */
+router.get('/careers/open-positions', (req, res) => {
+  try {
+    const rows = listActiveJobListingsPublic().map((r) => ({
+      id: r.id,
+      slug: r.slug,
+      title: r.title,
+      meta: r.meta,
+      description: r.description,
+      requirements: r.requirements,
+      sort_order: r.sort_order,
+    }));
+    res.json(rows);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Failed to load open positions' });
+  }
+});
 
 router.post('/contact', (req, res) => {
   try {

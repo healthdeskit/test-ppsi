@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "job_id": "medical-assistant",
+    "job_title": "Medical Assistant",
+    "name": "Riley Chen",
+    "email": "riley.chen.sample@example.com",
+    "phone": "(732) 555-0301",
+    "message": "CMA with 4 years in ortho/pain clinic. Fluent in English and Mandarin. Looking for full-time near Edison.",
+    "resume_file": "",
+    "created_at": "2026-03-11 15:20:00",
+    "status": "under_review",
+    "admin_notes": "Sample application — no resume attached."
+  },
+  {
+    "id": 2,
+    "job_id": "front-desk",
+    "job_title": "Front Desk / Patient Services",
+    "name": "Taylor Brooks",
+    "email": "taylor.brooks.sample@example.com",
+    "phone": "(732) 555-0302",
+    "message": "2 years medical front desk, eClinicalWorks experience. Available weekdays.",
+    "resume_file": "",
+    "created_at": "2026-03-13 09:50:00",
+    "status": "new",
+    "admin_notes": ""
+  }
+]

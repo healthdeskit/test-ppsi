@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "slug": "medical-assistant",
+    "title": "Medical Assistant",
+    "meta": "Full-time · Multiple locations (Edison, North Brunswick, Clifton, Elizabeth, Jersey City, Hamilton)",
+    "description": "Support our physicians and clinical team with rooming patients, vitals, history intake, and preparation for procedures. You will work directly with pain management and spine specialists in a fast-paced, patient-centered environment. Ideal for certified or certified-eligible medical assistants who want to grow in a multispecialty practice.",
+    "requirements": "MA certification (or eligible), strong communication skills, EHR experience preferred. BLS a plus.",
+    "sort_order": 10,
+    "active": true,
+    "created_at": "2026-01-01 12:00:00",
+    "updated_at": "2026-03-14 10:00:00"
+  },
+  {
+    "id": 2,
+    "slug": "front-desk",
+    "title": "Front Desk / Patient Services",
+    "meta": "Full-time · Edison, North Brunswick, and other NJ locations",
+    "description": "Be the first point of contact for our patients. You will handle scheduling, check-in, insurance verification, and patient inquiries while ensuring a welcoming and efficient experience. We need someone organized, friendly, and comfortable with front-desk software and phone systems.",
+    "requirements": "High school diploma or equivalent; 1+ year front desk or medical office experience preferred; strong customer service and computer skills.",
+    "sort_order": 20,
+    "active": true,
+    "created_at": "2026-01-01 12:00:00",
+    "updated_at": "2026-03-14 10:00:00"
+  },
+  {
+    "id": 3,
+    "slug": "physical-therapy-aide",
+    "title": "Physical Therapy Aide",
+    "meta": "Full-time / Part-time · Edison, North Brunswick",
+    "description": "Assist licensed therapists with patient flow, equipment setup, modality prep, and maintaining a clean, safe gym environment. Great entry point for candidates interested in rehabilitation and sports medicine.",
+    "requirements": "High school diploma; prior healthcare or customer service experience preferred; ability to lift and move equipment safely.",
+    "sort_order": 30,
+    "active": true,
+    "created_at": "2026-03-14 10:00:00",
+    "updated_at": "2026-03-14 10:00:00"
+  },
+  {
+    "id": 4,
+    "slug": "billing-specialist",
+    "title": "Medical Billing Specialist",
+    "meta": "Full-time · Hybrid (Edison HQ + remote after training)",
+    "description": "Submit clean claims, work denials and appeals, post payments, and support prior authorizations in coordination with our clinical sites. Strong attention to detail and payer rules is essential.",
+    "requirements": "2+ years medical billing experience; knowledge of CPT/ICD-10; experience with major EMRs; HIPAA awareness.",
+    "sort_order": 40,
+    "active": true,
+    "created_at": "2026-03-14 10:00:00",
+    "updated_at": "2026-03-14 10:00:00"
+  }
+]

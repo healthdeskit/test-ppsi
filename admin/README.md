@@ -16,6 +16,7 @@ The repo may include **demo rows** in `data/submissions.json`, `data/job_applica
 | **Contact messages** | `data/submissions.json` (`type: contact`) | Separate list; **Open** = drawer with clear sections |
 | **Appointment requests** | same (`type: appointment`) | Not mixed with contact or insurance |
 | **Insurance verification** | same (`type: insurance`) | Subscriber + plan + location in drawer |
+| **Job postings** | `data/job_listings.json` | **Create / edit / delete** open roles for `/careers`; toggle live/hidden; sort order |
 | **Job applications** | `data/job_applications.json` | Full application in drawer + **Download resume** when `resume_file` exists |
 | **Medical records** | `data/medical_record_requests.json` | Patient / delivery / request sections; status + notes |
 

@@ -9,6 +9,10 @@ const {
   patchMedical,
   patchJob,
   getJobById,
+  listJobListingsSorted,
+  createJobListing,
+  updateJobListing,
+  deleteJobListing,
 } = require('../db');
 
 const router = express.Router();
@@ -148,6 +152,52 @@ router.get('/api/jobs', requireAuth, (req, res) => {
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: 'Failed to load job applications' });
+  }
+});
+
+/** Open positions posted on /careers — full CRUD */
+router.get('/api/job-listings', requireAuth, (req, res) => {
+  try {
+    res.json(listJobListingsSorted());
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Failed to load job listings' });
+  }
+});
+
+router.post('/api/job-listings', requireAuth, (req, res) => {
+  try {
+    const result = createJobListing(req.body || {});
+    if (result.error) {
+      return res.status(400).json({ error: result.message || result.error });
+    }
+    res.status(201).json(result.row);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Create failed' });
+  }
+});
+
+router.patch('/api/job-listings/:id', requireAuth, (req, res) => {
+  try {
+    const result = updateJobListing(req.params.id, req.body || {});
+    if (result === null) return res.status(404).json({ error: 'Not found' });
+    if (result.error) return res.status(400).json({ error: result.message || result.error });
+    res.json(result.row);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Update failed' });
+  }
+});
+
+router.delete('/api/job-listings/:id', requireAuth, (req, res) => {
+  try {
+    const ok = deleteJobListing(req.params.id);
+    if (!ok) return res.status(404).json({ error: 'Not found' });
+    res.json({ ok: true });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'Delete failed' });
   }
 });
 

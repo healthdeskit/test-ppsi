@@ -144,6 +144,7 @@
     .stat-card--appt::before { background: linear-gradient(90deg, #10b981, #34d399); }
     .stat-card--ins::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
     .stat-card--jobs::before { background: linear-gradient(90deg, var(--accent), #ea580c); }
+    .stat-card--postings::before { background: linear-gradient(90deg, #0d9488, #2dd4bf); }
     .stat-card--med::before { background: linear-gradient(90deg, #6366f1, #818cf8); }
     .stat-card h3 { margin: 0; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
     .stat-card .num {
@@ -405,6 +406,26 @@
       cursor: not-allowed;
       pointer-events: none;
     }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
+    .btn-sm {
+      padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: 700;
+      border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-family: inherit;
+    }
+    .btn-sm:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-primary-sm { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .btn-primary-sm:hover { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+    .btn-danger-sm { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+    .btn-danger-sm:hover { background: #fee2e2; }
+    .jp-form label { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 6px; }
+    .jp-form input[type="text"], .jp-form input[type="number"], .jp-form textarea {
+      width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); font-size: 13px; font-family: inherit; box-sizing: border-box;
+    }
+    .jp-form textarea { min-height: 100px; resize: vertical; }
+    .jp-form .jp-field { margin-bottom: 14px; }
+    .jp-form .jp-inline { display: flex; align-items: center; gap: 10px; }
+    .jp-form .jp-inline input { width: auto; }
+    .badge-on { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; background: #dcfce7; color: #166534; }
+    .badge-off { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; background: #f1f5f9; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -432,6 +453,10 @@
         Insurance verification
       </button>
       <div class="nav-section">HR &amp; records</div>
+      <button type="button" class="nav-btn" data-panel="job-postings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+        Job postings
+      </button>
       <button type="button" class="nav-btn" data-panel="jobs">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
         Job applications
@@ -465,7 +490,8 @@
             <div class="card-hd"><h2>How this hub is organized</h2></div>
             <div class="guide-card" style="padding:22px 24px;">
               <p><strong>Contact / Appointments / Insurance</strong> are <strong>separate lists</strong> — each comes from the website but is kept in its own queue. Open any row to see the <strong>full submission</strong> with clear sections.</p>
-              <p><strong>Job applications</strong> include cover message, role, and a <strong>resume download</strong> when a file was uploaded.</p>
+              <p><strong>Job postings</strong> control which roles appear on the public <strong>/careers</strong> page. Add, edit, activate/deactivate, or remove listings here.</p>
+              <p><strong>Job applications</strong> are candidate submissions — cover message, role, and <strong>resume download</strong> when uploaded.</p>
               <p><strong>Medical records</strong> are HIPAA requests only — structured patient and delivery fields.</p>
             </div>
           </div>
@@ -518,6 +544,23 @@
             <div id="insEmpty" class="empty" style="display:none;"><strong>No insurance requests</strong>From /insurance.</div>
             <div class="table-wrap" id="insTableWrap" style="display:none;">
               <table><thead><tr><th>Received</th><th>Subscriber</th><th>Pipeline</th><th>Notes</th><th>Full record</th></tr></thead><tbody id="insTbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-job-postings" class="panel">
+          <div class="card">
+            <div class="card-hd">
+              <h2>Open positions — careers page</h2>
+              <div class="filters">
+                <button type="button" class="refresh-btn" id="btnNewJobPosting" style="margin:0;">+ New posting</button>
+              </div>
+            </div>
+            <p style="margin:0 24px 16px;font-size:13px;color:var(--muted);line-height:1.55;">These roles are loaded on <strong>/careers</strong>. “Job ID” is stored with each application (<code>job_id</code>) — change it only if you understand existing applications may still reference the old id.</p>
+            <div id="jobPostingsLoading" class="loading">Loading…</div>
+            <div id="jobPostingsEmpty" class="empty" style="display:none;padding:0 24px 24px;"><strong>No postings yet.</strong> Click “New posting” to add a role.</div>
+            <div class="table-wrap" id="jobPostingsTableWrap" style="display:none;">
+              <table><thead><tr><th>Order</th><th>Status</th><th>Title</th><th>Job ID</th><th>Updated</th><th>Actions</th></tr></thead><tbody id="jobPostingsTbody"></tbody></table>
             </div>
           </div>
         </div>
@@ -632,7 +675,8 @@
     return ((p[0][0] || '') + ((p[1] && p[1][0]) || '')).toUpperCase();
   }
 
-  let cache = { submissions: [], jobs: [], medical: [] };
+  let cache = { submissions: [], jobs: [], medical: [], jobListings: [] };
+  let editingJobListingId = null;
 
   async function api(path, opt) {
     const r = await fetch(base + path, Object.assign({ credentials: 'same-origin', headers: { Accept: 'application/json' } }, opt || {}));
@@ -641,14 +685,16 @@
   }
 
   async function loadAll() {
-    const [a, b, c] = await Promise.all([
+    const [a, b, c, d] = await Promise.all([
       api('/api/submissions'),
       api('/api/jobs'),
       api('/api/medical-requests'),
+      api('/api/job-listings'),
     ]);
     cache.submissions = await a.json();
     cache.jobs = await b.json();
     cache.medical = await c.json();
+    cache.jobListings = await d.json();
   }
 
   function countSubs(t) {
@@ -666,11 +712,14 @@
     const m = cache.medical.length;
     const jn = cache.jobs.filter(function (x) { return (x.status || 'new') === 'new'; }).length;
     const mn = cache.medical.filter(function (x) { return (x.status || 'new') === 'new'; }).length;
+    const listings = cache.jobListings || [];
+    const la = listings.filter(function (x) { return x.active; }).length;
     document.getElementById('statGrid').innerHTML =
       '<div class="stat-card stat-card--contact"><h3>Contact</h3><div class="num">' + c + '</div><div class="sub">' + countNewSubs('contact') + ' new</div></div>' +
       '<div class="stat-card stat-card--appt"><h3>Appointments</h3><div class="num">' + a + '</div><div class="sub">' + countNewSubs('appointment') + ' new</div></div>' +
       '<div class="stat-card stat-card--ins"><h3>Insurance</h3><div class="num">' + i + '</div><div class="sub">' + countNewSubs('insurance') + ' new</div></div>' +
-      '<div class="stat-card stat-card--jobs"><h3>Jobs</h3><div class="num">' + j + '</div><div class="sub">' + jn + ' new</div></div>' +
+      '<div class="stat-card stat-card--postings"><h3>Careers posts</h3><div class="num">' + la + '</div><div class="sub">' + listings.length + ' total listings</div></div>' +
+      '<div class="stat-card stat-card--jobs"><h3>Applications</h3><div class="num">' + j + '</div><div class="sub">' + jn + ' new</div></div>' +
       '<div class="stat-card stat-card--med"><h3>Medical</h3><div class="num">' + m + '</div><div class="sub">' + mn + ' new</div></div>';
   }
 
@@ -1109,12 +1158,122 @@
     });
   }
 
+  function openJobPostingDrawer(row) {
+    editingJobListingId = row ? row.id : null;
+    const isNew = !row;
+    drawerTitle.textContent = isNew ? 'New job posting' : 'Edit job posting';
+    drawerMeta.textContent = isNew
+      ? 'Saves to careers page (/careers). Use a short Job ID (slug) for URLs and applications.'
+      : ('Record #' + row.id + ' · last updated ' + (row.updated_at || '—'));
+    const r = row || {};
+    drawerBody.innerHTML =
+      '<div class="jp-form">' +
+      '<div class="jp-field"><label for="jp-slug">Job ID (slug) *</label>' +
+      '<input type="text" id="jp-slug" maxlength="80" placeholder="e.g. medical-assistant" value="' + esc(r.slug || '') + '"' + (isNew ? '' : ' readonly style="background:#f1f5f9;color:#64748b;" title="Job ID cannot be changed after create"') + ' />' +
+      '<div style="font-size:11px;color:var(--muted);margin-top:4px;">Lowercase letters, numbers, hyphens. Used as <code>job_id</code> on applications.</div></div>' +
+      '<div class="jp-field"><label for="jp-title">Title *</label><input type="text" id="jp-title" maxlength="200" value="' + esc(r.title || '') + '" /></div>' +
+      '<div class="jp-field"><label for="jp-meta">Meta line</label><input type="text" id="jp-meta" maxlength="500" placeholder="Full-time · Locations…" value="' + esc(r.meta || '') + '" /></div>' +
+      '<div class="jp-field"><label for="jp-description">Description</label><textarea id="jp-description">' + esc(r.description || '') + '</textarea></div>' +
+      '<div class="jp-field"><label for="jp-requirements">Requirements</label><textarea id="jp-requirements">' + esc(r.requirements || '') + '</textarea></div>' +
+      '<div class="jp-field jp-inline"><label for="jp-sort" style="margin:0;">Sort order</label><input type="number" id="jp-sort" style="width:100px;" value="' + esc(String(r.sort_order != null ? r.sort_order : 100)) + '" /></div>' +
+      '<div class="jp-field jp-inline"><input type="checkbox" id="jp-active" ' + (isNew || r.active !== false ? 'checked' : '') + ' /><label for="jp-active" style="margin:0;text-transform:none;font-weight:600;">Visible on careers page</label></div>' +
+      '<div class="btn-row">' +
+      '<button type="button" class="btn-sm btn-primary-sm" id="jp-save">' + (isNew ? 'Create posting' : 'Save changes') + '</button>' +
+      '<button type="button" class="btn-sm" id="jp-cancel">Cancel</button>' +
+      (isNew ? '' : '<button type="button" class="btn-sm btn-danger-sm" id="jp-delete">Delete posting</button>') +
+      '</div></div>';
+    openDrawer();
+    document.getElementById('jp-cancel').onclick = closeDrawer;
+    document.getElementById('jp-save').onclick = function () {
+      const slugEl = document.getElementById('jp-slug');
+      const body = {
+        slug: slugEl ? slugEl.value : '',
+        title: document.getElementById('jp-title').value,
+        meta: document.getElementById('jp-meta').value,
+        description: document.getElementById('jp-description').value,
+        requirements: document.getElementById('jp-requirements').value,
+        sort_order: Number(document.getElementById('jp-sort').value) || 0,
+        active: document.getElementById('jp-active').checked,
+      };
+      const btn = document.getElementById('jp-save');
+      btn.disabled = true;
+      const p = isNew
+        ? api('/api/job-listings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        : api('/api/job-listings/' + editingJobListingId, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      p.then(function (res) {
+        if (!res.ok) return res.json().then(function (j) { throw new Error(j.error || 'Save failed'); });
+        return res.json();
+      }).then(function (saved) {
+        if (isNew) cache.jobListings.push(saved);
+        else {
+          const ix = cache.jobListings.findIndex(function (x) { return String(x.id) === String(saved.id); });
+          if (ix !== -1) cache.jobListings[ix] = saved;
+        }
+        cache.jobListings.sort(function (a, b) { return (a.sort_order - b.sort_order) || (String(a.id).localeCompare(String(b.id), undefined, { numeric: true })); });
+        toast('Posting saved');
+        closeDrawer();
+        renderJobPostings();
+        renderDashboard();
+      }).catch(function (e) { toast(e.message || 'Save failed', true); }).finally(function () { btn.disabled = false; });
+    };
+    const del = document.getElementById('jp-delete');
+    if (del) {
+      del.onclick = function () {
+        if (!confirm('Delete this posting? It will no longer appear on /careers. Existing applications keep their saved job id.')) return;
+        del.disabled = true;
+        api('/api/job-listings/' + editingJobListingId, { method: 'DELETE' })
+          .then(function (res) {
+            if (!res.ok) throw new Error();
+            cache.jobListings = cache.jobListings.filter(function (x) { return String(x.id) !== String(editingJobListingId); });
+            toast('Posting deleted');
+            closeDrawer();
+            renderJobPostings();
+            renderDashboard();
+          })
+          .catch(function () { toast('Delete failed', true); })
+          .finally(function () { del.disabled = false; });
+      };
+    }
+  }
+
+  function renderJobPostings() {
+    const rows = cache.jobListings || [];
+    document.getElementById('jobPostingsLoading').style.display = 'none';
+    if (!rows.length) {
+      document.getElementById('jobPostingsEmpty').style.display = 'block';
+      document.getElementById('jobPostingsTableWrap').style.display = 'none';
+      return;
+    }
+    document.getElementById('jobPostingsEmpty').style.display = 'none';
+    document.getElementById('jobPostingsTableWrap').style.display = 'block';
+    document.getElementById('jobPostingsTbody').innerHTML = rows.map(function (r) {
+      const st = r.active !== false ? '<span class="badge-on">Live</span>' : '<span class="badge-off">Hidden</span>';
+      return '<tr class="row-main">' +
+        '<td class="meta">' + esc(r.sort_order) + '</td>' +
+        '<td>' + st + '</td>' +
+        '<td><strong>' + esc(r.title) + '</strong></td>' +
+        '<td><code style="font-size:12px;">' + esc(r.slug) + '</code></td>' +
+        '<td class="meta">' + esc(r.updated_at || '—') + '</td>' +
+        '<td><button type="button" class="btn-sm btn-primary-sm" data-edit-posting="' + esc(r.id) + '">Edit</button></td></tr>';
+    }).join('');
+    document.getElementById('jobPostingsTbody').querySelectorAll('[data-edit-posting]').forEach(function (btn) {
+      btn.onclick = function () {
+        const id = btn.getAttribute('data-edit-posting');
+        const row = cache.jobListings.find(function (x) { return String(x.id) === String(id); });
+        if (row) openJobPostingDrawer(row);
+      };
+    });
+  }
+
+  document.getElementById('btnNewJobPosting').onclick = function () { openJobPostingDrawer(null); };
+
   const titles = {
     dashboard: ['Dashboard', 'Counts by category — open a section from the left'],
     contact: ['Contact messages', 'General inquiries from the contact form'],
     appointments: ['Appointment requests', 'Online booking requests from patients'],
     insurance: ['Insurance verification', 'Benefit / coverage questions from the website'],
-    jobs: ['Job applications', 'Careers — open a row for full application + resume'],
+    'job-postings': ['Job postings', 'Roles on /careers — create, edit, delete, show or hide'],
+    jobs: ['Job applications', 'Candidate submissions — open a row for full application + resume'],
     medical: ['Medical record requests', 'HIPAA record release queue'],
   };
 
@@ -1136,6 +1295,7 @@
       if (p === 'contact') renderContact();
       if (p === 'appointments') renderAppt();
       if (p === 'insurance') renderInsurance();
+      if (p === 'job-postings') renderJobPostings();
       if (p === 'jobs') renderJobs();
       if (p === 'medical') renderMedical();
     });
@@ -1164,8 +1324,9 @@
   };
 
   document.getElementById('btnRefresh').onclick = function () {
-    ['contactLoading', 'apptLoading', 'insLoading', 'jobsLoading', 'medLoading'].forEach(function (id) {
-      document.getElementById(id).style.display = 'block';
+    ['contactLoading', 'apptLoading', 'insLoading', 'jobPostingsLoading', 'jobsLoading', 'medLoading'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'block';
     });
     loadAll().then(function () {
       renderDashboard();
@@ -1174,6 +1335,7 @@
       if (id === 'contact') renderContact();
       if (id === 'appointments') renderAppt();
       if (id === 'insurance') renderInsurance();
+      if (id === 'job-postings') renderJobPostings();
       if (id === 'jobs') renderJobs();
       if (id === 'medical') renderMedical();
       toast('Data refreshed');
@@ -1182,12 +1344,14 @@
 
   loadAll().then(function () {
     renderDashboard();
-    ['contactLoading', 'apptLoading', 'insLoading', 'jobsLoading', 'medLoading'].forEach(function (id) {
-      document.getElementById(id).style.display = 'none';
+    ['contactLoading', 'apptLoading', 'insLoading', 'jobPostingsLoading', 'jobsLoading', 'medLoading'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'none';
     });
     renderContact();
     renderAppt();
     renderInsurance();
+    renderJobPostings();
     renderJobs();
     renderMedical();
   }).catch(function () {

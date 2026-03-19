@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="/" />
   <title>Careers | PPSI</title>
   <meta name="description" content="Careers at Precision Pain &amp; Spine Institute. Join our team of pain and spine specialists across New Jersey." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -603,22 +604,11 @@
         <h2 class="svc-section-title">Open Positions</h2>
         <p class="svc-section-desc">Current openings for team members who value quality care, reliability, and a patient-first service mindset. Apply online and our recruiting team will follow up.</p>
       </div>
-      <div class="careers-jobs-grid">
-        <article class="careers-job-card">
-          <h3>Medical Assistant</h3>
-          <p class="careers-job-meta">Full-time · Multiple locations (Edison, North Brunswick, Clifton, Elizabeth, Jersey City, Hamilton)</p>
-          <p class="careers-job-desc">Support our physicians and clinical team with rooming patients, vitals, history intake, and preparation for procedures. You will work directly with pain management and spine specialists in a fast-paced, patient-centered environment. Ideal for certified or certified-eligible medical assistants who want to grow in a multispecialty practice.</p>
-          <p class="careers-job-reqs"><strong>Requirements:</strong> MA certification (or eligible), strong communication skills, EHR experience preferred. BLS a plus.</p>
-          <a href="#job-apply-form" class="btn btn-primary" data-job-id="medical-assistant" data-job-title="Medical Assistant">Apply for this position</a>
-        </article>
-        <article class="careers-job-card">
-          <h3>Front Desk / Patient Services</h3>
-          <p class="careers-job-meta">Full-time · Edison, North Brunswick, and other NJ locations</p>
-          <p class="careers-job-desc">Be the first point of contact for our patients. You will handle scheduling, check-in, insurance verification, and patient inquiries while ensuring a welcoming and efficient experience. We need someone organized, friendly, and comfortable with front-desk software and phone systems.</p>
-          <p class="careers-job-reqs"><strong>Requirements:</strong> High school diploma or equivalent; 1+ year front desk or medical office experience preferred; strong customer service and computer skills.</p>
-          <a href="#job-apply-form" class="btn btn-primary" data-job-id="front-desk" data-job-title="Front Desk / Patient Services">Apply for this position</a>
-        </article>
+      <div id="careers-jobs-loading" class="loading" style="text-align:center;padding:24px;color:var(--text-soft);">Loading open positions…</div>
+      <div id="careers-jobs-empty" class="empty" style="display:none;text-align:center;padding:32px;color:var(--text-soft);max-width:520px;margin:0 auto;">
+        <strong>No open positions right now.</strong> Check back soon or submit a general application below.
       </div>
+      <div class="careers-jobs-grid" id="careers-jobs-grid"></div>
     </div>
   </section>
 
@@ -835,6 +825,22 @@
   <script src="js/ppsi-shared.js"></script>
   <script>
     (function() {
+      function esc(s) {
+        return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      }
+      function bindApplyLinks() {
+        document.querySelectorAll('a[data-job-id][data-job-title]').forEach(function(a) {
+          a.addEventListener('click', function() {
+            var id = this.getAttribute('data-job-id');
+            var title = this.getAttribute('data-job-title');
+            var idIn = document.getElementById('job-id-input');
+            var titleIn = document.getElementById('job-title-input');
+            if (idIn) idIn.value = id || '';
+            if (titleIn) titleIn.value = title || '';
+          });
+        });
+      }
+
       var q = window.location.search || '';
       var success = document.getElementById('job-form-success');
       var err = document.getElementById('job-form-error');
@@ -842,16 +848,44 @@
       if (q.indexOf('sent=1') !== -1 && success && form) { success.style.display = 'block'; form.style.display = 'none'; }
       if (q.indexOf('error=1') !== -1 && err) err.style.display = 'block';
 
-      document.querySelectorAll('a[data-job-id][data-job-title]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-          var id = this.getAttribute('data-job-id');
-          var title = this.getAttribute('data-job-title');
-          var idIn = document.getElementById('job-id-input');
-          var titleIn = document.getElementById('job-title-input');
-          if (idIn) idIn.value = id || '';
-          if (titleIn) titleIn.value = title || '';
+      var grid = document.getElementById('careers-jobs-grid');
+      var loading = document.getElementById('careers-jobs-loading');
+      var empty = document.getElementById('careers-jobs-empty');
+      fetch('/api/careers/open-positions', { headers: { Accept: 'application/json' } })
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function(jobs) {
+          if (loading) loading.style.display = 'none';
+          if (!Array.isArray(jobs) || !jobs.length) {
+            if (empty) empty.style.display = 'block';
+            return;
+          }
+          if (empty) empty.style.display = 'none';
+          if (!grid) return;
+          grid.innerHTML = jobs.map(function(j) {
+            var reqs = j.requirements ? '<p class="careers-job-reqs"><strong>Requirements:</strong> ' + esc(j.requirements) + '</p>' : '';
+            return '<article class="careers-job-card">' +
+              '<h3>' + esc(j.title) + '</h3>' +
+              (j.meta ? '<p class="careers-job-meta">' + esc(j.meta) + '</p>' : '') +
+              (j.description ? '<p class="careers-job-desc">' + esc(j.description) + '</p>' : '') + reqs +
+              '<a href="#job-apply-form" class="btn btn-primary" data-job-id="' + esc(j.slug) + '" data-job-title="' + esc(j.title) + '">Apply for this position</a>' +
+              '</article>';
+          }).join('');
+          bindApplyLinks();
+          var first = jobs[0];
+          if (first && form && !q.match(/sent=1/)) {
+            var idIn = document.getElementById('job-id-input');
+            var titleIn = document.getElementById('job-title-input');
+            if (idIn && !idIn.value) idIn.value = first.slug || '';
+            if (titleIn && !titleIn.value) titleIn.value = first.title || '';
+          }
+        })
+        .catch(function() {
+          if (loading) loading.style.display = 'none';
+          if (empty) {
+            empty.style.display = 'block';
+            empty.innerHTML = '<strong>Could not load positions.</strong> If you opened this file directly, run the site from the server (e.g. localhost:3000).';
+          }
         });
-      });
     })();
   </script>
 </body>
