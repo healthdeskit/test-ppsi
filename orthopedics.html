@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -64,7 +64,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -112,7 +112,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -125,11 +125,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -142,24 +156,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -205,7 +219,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -243,7 +257,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -251,32 +265,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -361,7 +378,7 @@
   <section class="svc-content">
     <div class="container">
       <div class="svc-media-block">
-        <img src="_next/group-of-doctors.jpg" alt="PPSI orthopedic and care team" loading="lazy" />
+        <img src="_next/group-of-doctors.webp" alt="PPSI orthopedic and care team" loading="lazy" />
         <p class="svc-media-caption">Joint and musculoskeletal care within our full pain and spine team.</p>
       </div>
       <div class="svc-prose">
@@ -456,7 +473,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

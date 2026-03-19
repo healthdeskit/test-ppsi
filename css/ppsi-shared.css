@@ -83,7 +83,7 @@
 
     .section-patient-experience {
       position: relative;
-      background-image: url("_next/IMG_8661_0cb9ae5d4aa7bc.jpg");
+      background-image: url("../_next/IMG_8661_0cb9ae5d4aa7bc.webp");
       background-size: 165%;
       background-position: 22% center;
       background-repeat: no-repeat;
@@ -391,6 +391,167 @@
       background: var(--primary-soft);
       border-color: rgba(15, 76, 129, 0.2);
       color: var(--primary);
+    }
+
+    /* Conditions treated — editorial, clinical directory style */
+    .provider-conditions-block.provider-conditions-showcase {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .conditions-showcase-layout {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    .conditions-showcase-intro {
+      padding: 0 0 0 1.25rem;
+      border-left: 3px solid #0f4c81;
+      margin: 0;
+    }
+
+    .conditions-showcase-eyebrow {
+      margin: 0 0 0.5rem;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .conditions-showcase-title {
+      margin: 0 0 0.875rem;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.65rem, 2.8vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: #0f172a;
+    }
+
+    .conditions-showcase-lead {
+      margin: 0;
+      max-width: 36rem;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    .conditions-showcase-panel {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 24px 48px -28px rgba(15, 76, 129, 0.14);
+      overflow: hidden;
+    }
+
+    .conditions-showcase-block {
+      margin: 0;
+      padding: clamp(1.35rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.75rem);
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.25s ease;
+    }
+
+    .conditions-showcase-block:last-child {
+      border-bottom: none;
+    }
+
+    @media (hover: hover) {
+      .conditions-showcase-block:hover {
+        background: #fafbfc;
+      }
+    }
+
+    .conditions-showcase-block--spine {
+      border-left: 3px solid #0f4c81;
+      padding-left: calc(clamp(1.25rem, 3vw, 1.75rem) - 3px);
+    }
+
+    .conditions-showcase-block--injury {
+      border-left: 3px solid #1e5a8a;
+      padding-left: calc(clamp(1.25rem, 3vw, 1.75rem) - 3px);
+    }
+
+    .conditions-showcase-block--chronic {
+      border-left: 3px solid #3d6b8c;
+      padding-left: calc(clamp(1.25rem, 3vw, 1.75rem) - 3px);
+    }
+
+    .conditions-showcase-block-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .conditions-showcase-index {
+      font-family: "Sora", system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.12em;
+      color: #cbd5e1;
+      min-width: 1.5rem;
+    }
+
+    .conditions-showcase-heading {
+      margin: 0;
+      font-family: "Sora", system-ui, sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      color: #0f172a;
+    }
+
+    .conditions-showcase-items {
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: clamp(1.25rem, 4vw, 2.25rem);
+      row-gap: 0.5rem;
+    }
+
+    .conditions-showcase-items li {
+      position: relative;
+      padding: 0.35rem 0 0.35rem 1rem;
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 400;
+      color: #52606d;
+      border-left: 1px solid #e2e8f0;
+      margin: 0;
+    }
+
+    .conditions-showcase-block--spine .conditions-showcase-items li {
+      border-left-color: rgba(15, 76, 129, 0.12);
+    }
+
+    .conditions-showcase-block--injury .conditions-showcase-items li {
+      border-left-color: rgba(30, 90, 138, 0.12);
+    }
+
+    .conditions-showcase-block--chronic .conditions-showcase-items li {
+      border-left-color: rgba(61, 107, 140, 0.12);
+    }
+
+    @media (max-width: 520px) {
+      .conditions-showcase-items {
+        grid-template-columns: 1fr;
+      }
+
+      .conditions-showcase-intro {
+        padding-left: 1rem;
+      }
     }
 
     .provider-credentials-list {
@@ -1082,7 +1243,7 @@
     }
 
     .hero--team-bg {
-      background-image: url("_next/ppsi-dr-team.jpg");
+      background-image: url("../_next/ppsi-dr-team.webp");
       background-size: cover;
       background-position: center 35%;
       background-repeat: no-repeat;
@@ -1999,7 +2160,7 @@
     /* Insurance â€” 3-column layout */
     .insurance-strip {
       position: relative;
-      background-image: url("_next/myra-and-doc-consult.jpg");
+      background-image: url("../_next/myra-and-doc-consult.webp");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -2644,6 +2805,11 @@
       padding: 56px 0 72px;
     }
 
+    /* Reduce large empty top gap on doctor profile pages */
+    .section.section-provider-hero-start {
+      padding-top: 28px;
+    }
+
     .provider-hero-image-wrap {
       border-radius: 20px;
       overflow: hidden;
@@ -2710,6 +2876,100 @@
       flex-wrap: wrap;
     }
 
+    /* Dr. Elkholy (and similar): stats inside hero text column */
+    .provider-hero-content--unified {
+      background: linear-gradient(165deg, #f4f9fd 0%, #ffffff 55%);
+      border: 1px solid rgba(15, 76, 129, 0.1);
+      border-radius: 20px;
+      padding: 28px 32px 32px;
+      box-shadow: 0 12px 40px rgba(15, 76, 129, 0.08);
+    }
+
+    .provider-hero-content--unified .section-title {
+      margin-bottom: 0;
+      white-space: nowrap;
+      font-size: clamp(13px, 1.15vw + 0.72rem, 32px);
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    @media (max-width: 360px) {
+      .provider-hero-content--unified .section-title {
+        font-size: 12.5px;
+        letter-spacing: -0.045em;
+      }
+    }
+
+    .provider-hero-content--unified .provider-hero-bio {
+      margin-top: 22px;
+      max-width: none;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .provider-hero-content--unified .provider-hero-bio--secondary {
+      margin-top: 12px;
+      font-size: 15px;
+      color: var(--text-soft);
+    }
+
+    .provider-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(15, 76, 129, 0.12);
+    }
+
+    .provider-hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 14px;
+      border: 1px solid rgba(15, 76, 129, 0.08);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .provider-hero-stat:hover {
+      border-color: rgba(15, 76, 129, 0.16);
+      box-shadow: 0 6px 20px rgba(15, 76, 129, 0.07);
+    }
+
+    .provider-hero-stat-num {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .provider-hero-stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-soft);
+      line-height: 1.4;
+    }
+
+    .provider-hero-content--unified .provider-hero-contact {
+      margin-top: 22px;
+      padding-top: 0;
+    }
+
+    @media (max-width: 639px) {
+      .provider-hero-content--unified {
+        padding: 22px 20px 26px;
+      }
+
+      .provider-hero-stat {
+        padding: 14px 14px;
+      }
+    }
+
     .provider-section {
       margin-top: 48px;
     }
@@ -2753,6 +3013,222 @@
 
     .provider-section li:last-child {
       margin-bottom: 0;
+    }
+
+    /* Premium provider pages — typography + gallery (Dr. Elkholy + all doctor profiles) */
+    .page-provider-premium .provider-hero-image-wrap {
+      box-shadow:
+        0 4px 6px -1px rgba(15, 76, 129, 0.07),
+        0 22px 48px -18px rgba(15, 76, 129, 0.2);
+      border: 1px solid rgba(15, 76, 129, 0.09);
+    }
+
+    .page-provider-premium .provider-hero-content--unified .section-title {
+      white-space: normal;
+    }
+
+    .page-provider-premium .provider-section {
+      max-width: 46rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 2.75rem;
+      margin-top: 2.75rem;
+      border-top: 1px solid #e8ecf1;
+    }
+
+    .page-provider-premium .provider-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .page-provider-premium .provider-section h2 {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 1.15rem;
+      line-height: 1.25;
+    }
+
+    .page-provider-premium .provider-section p,
+    .page-provider-premium .provider-section li {
+      font-size: 16px;
+      line-height: 1.78;
+      color: #52606d;
+    }
+
+    .provider-hero-stat-num.is-label-stat {
+      font-size: 0.8125rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .provider-gallery-premium {
+      margin: clamp(2.25rem, 4vw, 3.5rem) auto 0;
+      max-width: 72rem;
+      padding-top: clamp(2rem, 4vw, 2.75rem);
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .provider-gallery-premium-head {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .provider-gallery-premium-head .eyebrow {
+      margin-bottom: 0.5rem;
+    }
+
+    .provider-gallery-premium-head h2 {
+      margin: 0;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.5rem, 2.5vw, 1.95rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    .provider-gallery-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      min-height: 340px;
+    }
+
+    .provider-gallery-cell {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #f1f5f9;
+      border: 1px solid rgba(15, 76, 129, 0.06);
+    }
+
+    .provider-gallery-cell--feature {
+      grid-row: 1 / -1;
+      min-height: 100%;
+    }
+
+    .provider-gallery-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @media (hover: hover) {
+      .provider-gallery-cell:hover img {
+        transform: scale(1.04);
+      }
+    }
+
+    .provider-gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2.5rem 1.25rem 1rem;
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.82) 0%, transparent 100%);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 900px) {
+      .provider-gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        min-height: 0;
+      }
+
+      .provider-gallery-cell--feature {
+        grid-row: auto;
+        min-height: 260px;
+        aspect-ratio: 4 / 3;
+      }
+
+      .provider-gallery-cell:not(.provider-gallery-cell--feature) {
+        min-height: 200px;
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    /* Single wide “in practice” band (e.g. Dr. Apazidis) */
+    .page-provider-premium .provider-practice-wide {
+      margin: clamp(2.25rem, 4vw, 3.5rem) auto 0;
+      max-width: 72rem;
+      padding-top: clamp(2rem, 4vw, 2.75rem);
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .page-provider-premium .provider-practice-wide__intro {
+      text-align: center;
+      max-width: 42rem;
+      margin: 0 auto clamp(1.35rem, 2.8vw, 1.85rem);
+    }
+
+    .page-provider-premium .provider-practice-wide__intro .eyebrow {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .page-provider-premium .provider-practice-wide__intro h2 {
+      margin: 0 0 0.85rem;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.45rem, 2.35vw, 1.85rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.22;
+      color: #0f172a;
+    }
+
+    .page-provider-premium .provider-practice-wide__lead {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.78;
+      color: #52606d;
+    }
+
+    .page-provider-premium .provider-practice-wide__media {
+      margin: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 76, 129, 0.09);
+      background: #f1f5f9;
+      box-shadow:
+        0 4px 6px -1px rgba(15, 76, 129, 0.07),
+        0 22px 48px -18px rgba(15, 76, 129, 0.18);
+    }
+
+    .page-provider-premium .provider-practice-wide__media img {
+      width: 100%;
+      display: block;
+      min-height: 280px;
+      max-height: min(52vh, 520px);
+      object-fit: cover;
+      object-position: center 28%;
+    }
+
+    @media (max-width: 640px) {
+      .page-provider-premium .provider-practice-wide__media img {
+        max-height: none;
+        min-height: 240px;
+        aspect-ratio: 16 / 10;
+      }
     }
 
     .provider-credential-badges {
@@ -2882,7 +3358,200 @@
       letter-spacing: 0.01em;
     }
 
+    /* Premium expertise showcase (Dr. Elkholy & similar) */
+    .expertise-showcase {
+      margin-top: 64px;
+      padding-top: 56px;
+      border-top: 1px solid rgba(15, 76, 129, 0.1);
+    }
+
+    .expertise-showcase-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 48px;
+    }
+
+    .expertise-showcase-head .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .expertise-showcase-title {
+      font-family: "DM Serif Display", serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+
+    .expertise-showcase-lead {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+
+    .expertise-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 28px;
+      align-items: stretch;
+    }
+
+    .expertise-showcase-card {
+      position: relative;
+      background: linear-gradient(145deg, #ffffff 0%, #f6faff 48%, #ffffff 100%);
+      border: 1px solid rgba(15, 76, 129, 0.1);
+      border-radius: 20px;
+      padding: 28px 28px 30px;
+      box-shadow:
+        0 4px 6px rgba(15, 76, 129, 0.04),
+        0 20px 48px rgba(15, 76, 129, 0.08);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
+      overflow: hidden;
+    }
+
+    .expertise-showcase-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, #2a7ab8 50%, rgba(15, 76, 129, 0.35) 100%);
+      border-radius: 20px 0 0 20px;
+      opacity: 0.95;
+    }
+
+    .expertise-showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 8px 16px rgba(15, 76, 129, 0.06),
+        0 28px 56px rgba(15, 76, 129, 0.12);
+      border-color: rgba(15, 76, 129, 0.18);
+    }
+
+    .expertise-showcase-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-left: 4px;
+    }
+
+    .expertise-showcase-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(15, 76, 129, 0.25);
+    }
+
+    .expertise-showcase-icon .icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .expertise-showcase-icon--pain {
+      background: linear-gradient(135deg, #0f4c81 0%, #1a6ba8 100%);
+    }
+
+    .expertise-showcase-icon--spine {
+      background: linear-gradient(135deg, #155a8f 0%, #2d8bc9 100%);
+    }
+
+    .expertise-showcase-icon--proc {
+      background: linear-gradient(135deg, #0a355a 0%, #0f4c81 100%);
+    }
+
+    .expertise-showcase-icon--rehab {
+      background: linear-gradient(135deg, #d96a3a 0%, #e88a5c 100%);
+    }
+
+    .expertise-showcase-card-title {
+      font-family: "Sora", sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.35;
+      color: var(--primary);
+      margin: 4px 0 0;
+      text-align: left;
+    }
+
+    .expertise-showcase-card-intro {
+      margin: 0 0 18px;
+      padding-left: 4px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+      font-weight: 500;
+      max-width: 42ch;
+    }
+
+    .expertise-showcase-list {
+      margin: 0;
+      padding: 0 0 0 4px;
+      list-style: none;
+    }
+
+    .expertise-showcase-list li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-soft);
+      border-top: 1px solid rgba(15, 76, 129, 0.07);
+    }
+
+    .expertise-showcase-list li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .expertise-showcase-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #3d8cc4);
+      box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.12);
+    }
+
+    .expertise-showcase-list li:first-child::before {
+      top: 6px;
+    }
+
+    .expertise-showcase-list li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
     @media (max-width: 900px) {
+      .expertise-showcase {
+        margin-top: 48px;
+        padding-top: 40px;
+      }
+
+      .expertise-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .expertise-showcase-card-intro {
+        max-width: none;
+      }
+
       .expertise-cards {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -2892,6 +3561,15 @@
       .expertise-cards {
         grid-template-columns: 1fr;
         margin-top: 40px;
+      }
+
+      .expertise-showcase-card {
+        padding: 22px 20px 26px;
+      }
+
+      .expertise-showcase-card-top {
+        flex-direction: column;
+        gap: 12px;
       }
     }
 
@@ -3389,6 +4067,32 @@
     .page-hero-actions .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.3);
       border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Page hero with full-width photo (e.g. Locations) */
+    .page-hero.page-hero--photo {
+      background: #0a355a;
+    }
+
+    .page-hero.page-hero--photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url("../_next/edison-office.webp");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .page-hero.page-hero--photo .page-hero-overlay {
+      background: linear-gradient(120deg, rgba(10, 40, 70, 0.88) 0%, rgba(10, 53, 90, 0.9) 45%, rgba(15, 76, 129, 0.82) 100%);
+    }
+
+    /* Doctors page hero photo */
+    .page-hero.page-hero--photo.page-hero--doctors::before {
+      background-image: url("../_next/ppsi-team-hero-2.webp");
+      background-position: center top;
     }
 
     /* Service cards (practice areas grid) */
@@ -4105,3 +4809,268 @@
     .form-status { margin-top: 12px; padding: 12px 14px; border-radius: var(--radius-xs); font-size: 14px; }
     .form-status--success { background: var(--primary-soft); color: var(--primary); }
     .form-status--error { background: #fef2f2; color: #b91c1c; }
+
+    /* Chiropractor profile lite (Sofo, Nierva) — matches Karam band + single image row */
+    .chiro-doc-name {
+      font-size: clamp(2.5rem, 4.2vw, 3.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    @media (max-width: 640px) {
+      .chiro-doc-name {
+        font-size: clamp(2.1rem, 9vw, 2.8rem);
+        letter-spacing: -0.03em;
+      }
+    }
+
+    .section.chiro-profile-band {
+      padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+      padding-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+    }
+
+    .chiro-profile-band {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      min-height: min(42vh, 400px);
+      display: flex;
+      align-items: center;
+      background: #0f172a;
+    }
+
+    .chiro-profile-band__bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0f172a;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .chiro-profile-band__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.78) 42%, rgba(15, 23, 42, 0.5) 72%, rgba(15, 76, 129, 0.2) 100%);
+      pointer-events: none;
+    }
+
+    .chiro-profile-band .container {
+      position: relative;
+      z-index: 2;
+      width: min(var(--container, 1200px), calc(100% - 32px));
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    .chiro-profile-band__row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: clamp(1.25rem, 3vw, 2rem);
+      flex-wrap: wrap;
+    }
+
+    .chiro-profile-band__main {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: min(34rem, 100%);
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    .chiro-profile-band__eyebrow {
+      display: inline;
+      font-family: "Sora", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      margin: 0;
+    }
+
+    .chiro-profile-band__head-one-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 0.75rem;
+      margin: 0 0 1.1rem;
+      line-height: 1.2;
+    }
+
+    .chiro-profile-band__title {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #fff;
+      margin: 0;
+    }
+
+    .chiro-profile-band__head-sep {
+      width: 1px;
+      height: 1.1em;
+      background: rgba(255, 255, 255, 0.35);
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .chiro-profile-band__lead {
+      margin: 0;
+      max-width: 100%;
+      font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      overflow-wrap: break-word;
+    }
+
+    .chiro-profile-band__note {
+      margin: 1.25rem 0 0;
+      max-width: 100%;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65);
+      overflow-wrap: break-word;
+    }
+
+    .chiro-profile-band__cta {
+      flex: 0 0 auto;
+      align-self: flex-start;
+      max-width: 100%;
+    }
+
+    .chiro-profile-band__call-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 200px;
+      padding: 18px 26px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #0f172a;
+      background: linear-gradient(165deg, #ffffff 0%, #f0f7fc 100%);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(15, 76, 129, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .chiro-profile-band__call-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(15, 76, 129, 0.12);
+    }
+
+    .chiro-profile-band__call-label {
+      font-family: "Sora", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .chiro-profile-band__call-num {
+      font-family: "Sora", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f4c81;
+    }
+
+    .chiro-profile-band__call-btn .icon {
+      width: 22px;
+      height: 22px;
+      color: #0f4c81;
+      margin-bottom: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .chiro-profile-band__row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .chiro-profile-band__main {
+        max-width: 100%;
+      }
+
+      .chiro-profile-band__cta {
+        align-self: stretch;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .chiro-profile-band__head-sep {
+        display: none;
+      }
+
+      .chiro-profile-band__cta {
+        align-self: stretch;
+      }
+
+      .chiro-profile-band__call-btn {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 16px;
+        min-width: 0;
+      }
+
+      .chiro-profile-band__call-btn .icon {
+        margin-bottom: 0;
+      }
+    }
+
+    .chiro-lite-hands-on-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.25rem);
+      align-items: center;
+    }
+
+    .chiro-lite-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #e8eef4;
+      border: 1px solid rgba(15, 76, 129, 0.1);
+      box-shadow: 0 4px 6px -1px rgba(15, 76, 129, 0.08), 0 18px 40px -16px rgba(15, 76, 129, 0.14);
+      min-height: 280px;
+      max-height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+
+    .chiro-lite-frame img {
+      width: 100%;
+      height: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .chiro-lite-hands-on-row {
+        grid-template-columns: 1fr;
+      }
+
+      .chiro-lite-frame {
+        order: 2;
+        max-height: 360px;
+      }
+
+      .chiro-lite-hands-on-row .consult-content {
+        order: 1;
+      }
+    }

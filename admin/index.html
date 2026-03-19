@@ -3,134 +3,1197 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin | PPSI</title>
+  <title>Control center | PPSI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #e8eef5;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --primary: #0f4c81;
+      --primary-dark: #0a355a;
+      --accent: #d96a3a;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(15, 76, 129, 0.07);
+      --shadow-lg: 0 20px 50px rgba(10, 53, 90, 0.12);
+    }
     * { box-sizing: border-box; }
-    body { font-family: system-ui, sans-serif; margin: 0; background: #f0f6fb; color: #1a1a1a; }
-    .header { background: #0f4c81; color: #fff; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .header h1 { margin: 0; font-size: 20px; }
-    .header a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 14px; }
-    .header a:hover { color: #fff; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-    section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(15,76,129,0.08); }
-    h2 { margin: 0 0 16px; font-size: 18px; color: #0f4c81; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th, td { text-align: left; padding: 12px; border-bottom: 1px solid #eee; }
-    th { background: #f8fbfd; color: #0f4c81; font-weight: 600; }
-    .payload { font-family: monospace; font-size: 12px; max-width: 400px; overflow: auto; white-space: pre-wrap; word-break: break-all; }
-    .meta { color: #666; font-size: 12px; }
-    .empty { color: #999; padding: 24px; text-align: center; }
-    .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; }
-    .badge-contact { background: #e3f2fd; color: #0f4c81; }
-    .badge-appointment { background: #e8f5e9; color: #2e7d32; }
+    body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    body.drawer-open { overflow: hidden; }
+    .layout { display: grid; grid-template-columns: 278px 1fr; min-height: 100vh; }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { flex-direction: row; flex-wrap: wrap; }
+      .sidebar-foot { width: 100%; }
+    }
+
+    .sidebar {
+      background: linear-gradient(165deg, #082a47 0%, var(--primary-dark) 45%, #0c4a72 100%);
+      color: #fff;
+      padding: 24px 16px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 4px 0 32px rgba(8, 32, 56, 0.15);
+    }
+    .sidebar-logo-wrap {
+      padding: 14px 16px 18px;
+      margin-bottom: 6px;
+      background: rgba(255,255,255,0.97);
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    .sidebar-logo-wrap img { max-width: 100%; height: auto; max-height: 52px; object-fit: contain; }
+    .sidebar-tagline {
+      font-family: "Sora", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      padding: 0 12px 12px;
+    }
+    .nav-section {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      padding: 16px 14px 8px;
+      margin-top: 4px;
+    }
+    .nav-section:first-of-type { padding-top: 4px; margin-top: 0; }
+
+    .nav-btn {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; text-align: left;
+      padding: 12px 14px; border: none; border-radius: 11px;
+      background: transparent; color: rgba(255,255,255,0.9);
+      font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .nav-btn.active {
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+    .nav-btn svg { width: 19px; height: 19px; opacity: 0.92; flex-shrink: 0; }
+    .sidebar-foot { margin-top: auto; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .sidebar-foot a {
+      display: block; padding: 10px 14px; color: rgba(255,255,255,0.78); text-decoration: none; font-size: 13px; border-radius: 10px;
+    }
+    .sidebar-foot a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+    .main { display: flex; flex-direction: column; min-width: 0; background: linear-gradient(180deg, #f1f5f9 0%, var(--bg) 120px); }
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .topbar-logo { width: 44px; height: 44px; border-radius: 12px; background: #fff; border: 1px solid var(--line); padding: 6px; flex-shrink: 0; box-shadow: var(--shadow); }
+    .topbar-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .topbar h1 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--primary-dark);
+    }
+    .topbar p { margin: 4px 0 0; font-size: 13px; color: var(--muted); max-width: 560px; }
+    .refresh-btn {
+      padding: 11px 20px; border-radius: 11px; border: 1px solid var(--line);
+      background: var(--surface); font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit;
+      box-shadow: var(--shadow);
+    }
+    .refresh-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+    .content { padding: 26px 28px 56px; flex: 1; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border-radius: 14px;
+      padding: 18px 16px 16px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: 14px 14px 0 0;
+    }
+    .stat-card--contact::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    .stat-card--appt::before { background: linear-gradient(90deg, #10b981, #34d399); }
+    .stat-card--ins::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+    .stat-card--jobs::before { background: linear-gradient(90deg, var(--accent), #ea580c); }
+    .stat-card--med::before { background: linear-gradient(90deg, #6366f1, #818cf8); }
+    .stat-card h3 { margin: 0; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat-card .num {
+      font-family: "Sora", sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-top: 6px;
+      color: var(--primary-dark);
+    }
+    .stat-card .sub { font-size: 11px; color: var(--muted); margin-top: 6px; font-weight: 600; }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .card-hd {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between;
+      background: linear-gradient(180deg, #fafbfc 0%, #fff 100%);
+    }
+    .card-hd h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+    }
+    .filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .filters label { font-size: 12px; font-weight: 700; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+    .filters select, .filters input {
+      padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); font-size: 13px; font-family: inherit; min-width: 150px;
+    }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th {
+      text-align: left; padding: 14px 18px; background: #f1f5f9; color: var(--muted);
+      font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--line);
+    }
+    td { padding: 14px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tr.row-main:hover td { background: #f8fafc; }
+
+    .person { display: flex; gap: 12px; align-items: flex-start; max-width: 320px; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 11px;
+      background: linear-gradient(135deg, var(--primary) 0%, #1e6ba8 100%);
+      color: #fff;
+      font-family: "Sora", sans-serif;
+      font-size: 12px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .person-name { font-weight: 700; font-size: 14px; color: var(--text); }
+    .person-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .person-preview { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .status-select {
+      padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line); font-size: 12px; font-family: inherit; font-weight: 700;
+      max-width: 165px; cursor: pointer; background: #fff;
+    }
+    .status-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.12); }
+
+    .notes-wrap { min-width: 160px; max-width: 220px; }
+    .notes-wrap textarea {
+      width: 100%; min-height: 52px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line);
+      font-size: 12px; font-family: inherit; resize: vertical;
+    }
+    .notes-wrap .save-note {
+      margin-top: 6px; padding: 6px 12px; font-size: 11px; font-weight: 800; border-radius: 8px;
+      border: none; background: var(--primary); color: #fff; cursor: pointer; font-family: inherit;
+    }
+    .save-note:hover { background: var(--primary-dark); }
+    .save-note:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--primary);
+      background: #fff;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-view:hover { background: rgba(15, 76, 129, 0.06); }
+
+    .meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+    .empty { text-align: center; padding: 48px 24px; color: var(--muted); font-size: 14px; }
+    .empty strong { display: block; color: var(--text); margin-bottom: 8px; font-family: "Sora", sans-serif; }
+    .toast {
+      position: fixed; bottom: 28px; right: 28px; padding: 16px 22px; border-radius: 14px;
+      background: var(--primary-dark); color: #fff; font-size: 14px; font-weight: 700; box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+      z-index: 1000; opacity: 0; transform: translateY(14px); transition: opacity 0.22s, transform 0.22s; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.err { background: #991b1b; }
+
+    .loading { padding: 48px; text-align: center; color: var(--muted); font-weight: 600; }
+    .guide-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.75; color: var(--muted); }
+    .guide-card p:last-child { margin-bottom: 0; }
+    .guide-card strong { color: var(--text); }
+
+    /* Detail drawer */
+    .detail-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s, visibility 0.25s;
+    }
+    .detail-backdrop.visible { opacity: 1; visibility: visible; }
+    .detail-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(520px, 100vw);
+      height: 100%;
+      background: var(--surface);
+      z-index: 2001;
+      box-shadow: -12px 0 48px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .detail-drawer.visible { transform: translateX(0); }
+    .detail-drawer-head {
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+      flex-shrink: 0;
+    }
+    .detail-drawer-head h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+    .detail-drawer-meta { font-size: 12px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+    .detail-close {
+      width: 40px; height: 40px;
+      border: none;
+      border-radius: 10px;
+      background: #f1f5f9;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .detail-close:hover { background: #e2e8f0; }
+    .detail-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px 22px 32px;
+    }
+    .detail-section {
+      margin-bottom: 24px;
+    }
+    .detail-section:last-child { margin-bottom: 0; }
+    .detail-section-title {
+      font-family: "Sora", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(15, 76, 129, 0.12);
+    }
+    .detail-dl { margin: 0; }
+    .detail-dl > div {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 8px 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+      align-items: start;
+    }
+    .detail-dl > div:last-child { border-bottom: none; }
+    .detail-dl dt { margin: 0; font-weight: 600; color: var(--muted); font-size: 12px; }
+    .detail-dl dd { margin: 0; color: var(--text); line-height: 1.5; word-break: break-word; }
+    .detail-block-text {
+      margin: 0;
+      padding: 14px 16px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      color: var(--text);
+    }
+    .detail-footer {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .detail-footer-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .resume-card {
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      border: 1px solid rgba(15, 76, 129, 0.15);
+      margin-bottom: 20px;
+    }
+    .resume-card h4 { margin: 0 0 6px; font-family: "Sora", sans-serif; font-size: 15px; color: var(--primary-dark); }
+    .resume-card p { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 11px;
+      background: var(--primary);
+      color: #fff !important;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-download:hover { background: var(--primary-dark); }
+    .btn-download[disabled], .resume-missing {
+      background: #e2e8f0;
+      color: var(--muted) !important;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>PPSI Admin</h1>
-    <a href="/admin/logout">Log out</a>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo-wrap">
+        <img src="/assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" width="200" height="60" />
+      </div>
+      <div class="sidebar-tagline">Operations hub</div>
+      <button type="button" class="nav-btn active" data-panel="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        Dashboard
+      </button>
+      <div class="nav-section">Website forms</div>
+      <button type="button" class="nav-btn" data-panel="contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Contact messages
+      </button>
+      <button type="button" class="nav-btn" data-panel="appointments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Appointment requests
+      </button>
+      <button type="button" class="nav-btn" data-panel="insurance">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg>
+        Insurance verification
+      </button>
+      <div class="nav-section">HR &amp; records</div>
+      <button type="button" class="nav-btn" data-panel="jobs">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        Job applications
+      </button>
+      <button type="button" class="nav-btn" data-panel="medical">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Medical records
+      </button>
+      <div class="sidebar-foot">
+        <a href="/admin/logout">Log out</a>
+        <a href="/" target="_blank" rel="noopener">View public website</a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="topbar-logo"><img src="/assets/ppsi-logo.webp" alt="" width="40" height="40" /></div>
+          <div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <p id="pageSub">Inbound forms, hiring, and HIPAA requests — separated by category</p>
+          </div>
+        </div>
+        <button type="button" class="refresh-btn" id="btnRefresh">Refresh data</button>
+      </header>
+
+      <div class="content">
+        <div id="panel-dashboard" class="panel active">
+          <div class="stat-grid" id="statGrid"><div class="stat-card"><h3>Loading…</h3></div></div>
+          <div class="card">
+            <div class="card-hd"><h2>How this hub is organized</h2></div>
+            <div class="guide-card" style="padding:22px 24px;">
+              <p><strong>Contact / Appointments / Insurance</strong> are <strong>separate lists</strong> — each comes from the website but is kept in its own queue. Open any row to see the <strong>full submission</strong> with clear sections.</p>
+              <p><strong>Job applications</strong> include cover message, role, and a <strong>resume download</strong> when a file was uploaded.</p>
+              <p><strong>Medical records</strong> are HIPAA requests only — structured patient and delivery fields.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-contact" class="panel">
+          <div class="card">
+            <div class="card-hd">
+              <h2>Contact form — website messages</h2>
+              <div class="filters">
+                <label>Status<select id="filterContactStatus"><option value="">All</option></select></label>
+                <label>Search<input type="search" id="filterContactSearch" placeholder="Name, email…" /></label>
+              </div>
+            </div>
+            <div id="contactLoading" class="loading">Loading…</div>
+            <div id="contactEmpty" class="empty" style="display:none;"><strong>No contact messages</strong>Submissions from /contact-us will appear here.</div>
+            <div class="table-wrap" id="contactTableWrap" style="display:none;">
+              <table><thead><tr><th>Received</th><th>From</th><th>Pipeline</th><th>Notes</th><th>Full record</th></tr></thead><tbody id="contactTbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-appointments" class="panel">
+          <div class="card">
+            <div class="card-hd">
+              <h2>Appointment requests</h2>
+              <div class="filters">
+                <label>Status<select id="filterApptStatus"><option value="">All</option></select></label>
+                <label>Search<input type="search" id="filterApptSearch" placeholder="Name, location…" /></label>
+              </div>
+            </div>
+            <div id="apptLoading" class="loading">Loading…</div>
+            <div id="apptEmpty" class="empty" style="display:none;"><strong>No appointment requests</strong>From /medical-appointment.</div>
+            <div class="table-wrap" id="apptTableWrap" style="display:none;">
+              <table><thead><tr><th>Received</th><th>Patient</th><th>Pipeline</th><th>Notes</th><th>Full record</th></tr></thead><tbody id="apptTbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-insurance" class="panel">
+          <div class="card">
+            <div class="card-hd">
+              <h2>Insurance verification</h2>
+              <div class="filters">
+                <label>Status<select id="filterInsStatus"><option value="">All</option></select></label>
+                <label>Search<input type="search" id="filterInsSearch" placeholder="Name, carrier…" /></label>
+              </div>
+            </div>
+            <div id="insLoading" class="loading">Loading…</div>
+            <div id="insEmpty" class="empty" style="display:none;"><strong>No insurance requests</strong>From /insurance.</div>
+            <div class="table-wrap" id="insTableWrap" style="display:none;">
+              <table><thead><tr><th>Received</th><th>Subscriber</th><th>Pipeline</th><th>Notes</th><th>Full record</th></tr></thead><tbody id="insTbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-jobs" class="panel">
+          <div class="card">
+            <div class="card-hd">
+              <h2>Job applications</h2>
+              <div class="filters">
+                <label>Status<select id="filterJobStatus"><option value="">All</option></select></label>
+              </div>
+            </div>
+            <div id="jobsLoading" class="loading">Loading…</div>
+            <div id="jobsEmpty" class="empty" style="display:none;"><strong>No applications</strong>From /careers.</div>
+            <div class="table-wrap" id="jobsTableWrap" style="display:none;">
+              <table><thead><tr><th>Applied</th><th>Candidate</th><th>Role</th><th>Pipeline</th><th>Notes</th><th>Application</th></tr></thead><tbody id="jobsTbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-medical" class="panel">
+          <div class="card">
+            <div class="card-hd">
+              <h2>Medical record requests</h2>
+              <div class="filters">
+                <label>Status<select id="filterMedStatus"><option value="">All</option></select></label>
+                <label>Search<input type="search" id="filterMedSearch" placeholder="Patient name…" /></label>
+              </div>
+            </div>
+            <div id="medLoading" class="loading">Loading…</div>
+            <div id="medEmpty" class="empty" style="display:none;"><strong>No requests</strong>From /medical-record-request.</div>
+            <div class="table-wrap" id="medTableWrap" style="display:none;">
+              <table><thead><tr><th>Received</th><th>Patient</th><th>Status</th><th>Notes</th><th>Full record</th></tr></thead><tbody id="medTbody"></tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container">
-    <section>
-      <h2>Form submissions (Contact &amp; Appointment)</h2>
-      <div id="submissions-loading">Loading…</div>
-      <div id="submissions-empty" class="empty" style="display:none;">No submissions yet.</div>
-      <table id="submissions-table" style="display:none;">
-        <thead>
-          <tr><th>Date</th><th>Type</th><th>Details</th></tr>
-        </thead>
-        <tbody id="submissions-tbody"></tbody>
-      </table>
-    </section>
-    <section>
-      <h2>Medical record requests</h2>
-      <div id="medical-loading">Loading…</div>
-      <div id="medical-empty" class="empty" style="display:none;">No medical record requests yet.</div>
-      <table id="medical-table" style="display:none;">
-        <thead>
-          <tr><th>Date</th><th>Details</th></tr>
-        </thead>
-        <tbody id="medical-tbody"></tbody>
-      </table>
-    </section>
-    <section>
-      <h2>Job applications</h2>
-      <div id="jobs-loading">Loading…</div>
-      <div id="jobs-empty" class="empty" style="display:none;">No job applications yet.</div>
-      <table id="jobs-table" style="display:none;">
-        <thead>
-          <tr><th>Date</th><th>Position</th><th>Applicant</th><th>Details</th></tr>
-        </thead>
-        <tbody id="jobs-tbody"></tbody>
-      </table>
-    </section>
+
+  <div class="detail-backdrop" id="detailBackdrop" aria-hidden="true"></div>
+  <div class="detail-drawer" id="detailDrawer" role="dialog" aria-labelledby="detailDrawerTitle" aria-modal="true">
+    <div class="detail-drawer-head">
+      <div>
+        <h2 id="detailDrawerTitle">Details</h2>
+        <div class="detail-drawer-meta" id="detailDrawerMeta"></div>
+      </div>
+      <button type="button" class="detail-close" id="detailClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="detail-drawer-body" id="detailDrawerBody"></div>
   </div>
+
+  <div class="toast" id="toast"></div>
+
   <script>
-    const base = window.location.pathname.replace(/\/admin\/?$/, '') + '/admin';
-    function getSubmissions() {
-      fetch(base + '/api/submissions', { credentials: 'same-origin' })
-        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-        .then(rows => {
-          document.getElementById('submissions-loading').style.display = 'none';
-          if (!rows.length) {
-            document.getElementById('submissions-empty').style.display = 'block';
-            return;
-          }
-          document.getElementById('submissions-table').style.display = 'table';
-          const tbody = document.getElementById('submissions-tbody');
-          tbody.innerHTML = rows.map(r => {
-            let payload = {};
-            try { payload = JSON.parse(r.payload); } catch (_) {}
-            const details = Object.entries(payload).map(([k,v]) => k + ': ' + (v || '—')).join('\n');
-            const typeClass = r.type === 'contact' ? 'badge-contact' : 'badge-appointment';
-            return '<tr><td class="meta">' + r.created_at + '</td><td><span class="badge ' + typeClass + '">' + r.type + '</span></td><td><div class="payload">' + (details || '—') + '</div></td></tr>';
-          }).join('');
-        })
-        .catch(() => { document.getElementById('submissions-loading').textContent = 'Failed to load.'; });
+(function () {
+  const base = window.location.pathname.replace(/\/admin\/?$/, '') + '/admin';
+
+  const LEAD_STATUS_OPTS = [
+    { v: 'new', l: 'New' }, { v: 'contacted', l: 'Contacted' }, { v: 'qualified', l: 'Qualified' },
+    { v: 'not_qualified', l: 'Not qualified' }, { v: 'scheduled', l: 'Scheduled' }, { v: 'closed', l: 'Closed' }, { v: 'spam', l: 'Spam' },
+  ];
+  const JOB_STATUS_OPTS = [
+    { v: 'new', l: 'New' }, { v: 'under_review', l: 'Under review' }, { v: 'interview', l: 'Interview' }, { v: 'offer', l: 'Offer' },
+    { v: 'hired', l: 'Hired' }, { v: 'rejected', l: 'Rejected' }, { v: 'withdrawn', l: 'Withdrawn' }, { v: 'on_hold', l: 'On hold' },
+  ];
+  const MED_STATUS_OPTS = [
+    { v: 'new', l: 'New' }, { v: 'processing', l: 'Processing' }, { v: 'completed', l: 'Completed' }, { v: 'closed', l: 'Closed' },
+  ];
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  }
+
+  function toast(msg, err) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = 'toast show' + (err ? ' err' : '');
+    clearTimeout(el._t);
+    el._t = setTimeout(function () { el.classList.remove('show'); }, 2800);
+  }
+
+  function fillStatusFilter(selectEl, opts) {
+    const cur = selectEl.value;
+    selectEl.innerHTML = '<option value="">All</option>' + opts.map(function (o) {
+      return '<option value="' + esc(o.v) + '">' + esc(o.l) + '</option>';
+    }).join('');
+    selectEl.value = cur;
+  }
+
+  ['filterContactStatus', 'filterApptStatus', 'filterInsStatus'].forEach(function (id) {
+    fillStatusFilter(document.getElementById(id), LEAD_STATUS_OPTS);
+  });
+  fillStatusFilter(document.getElementById('filterJobStatus'), JOB_STATUS_OPTS);
+  fillStatusFilter(document.getElementById('filterMedStatus'), MED_STATUS_OPTS);
+
+  function statusSelectHtml(kind, id, current) {
+    const opts = kind === 'lead' ? LEAD_STATUS_OPTS : kind === 'job' ? JOB_STATUS_OPTS : MED_STATUS_OPTS;
+    return '<select class="status-select" data-kind="' + esc(kind) + '" data-id="' + esc(id) + '" aria-label="Status">' +
+      opts.map(function (o) {
+        return '<option value="' + esc(o.v) + '"' + (o.v === current ? ' selected' : '') + '>' + esc(o.l) + '</option>';
+      }).join('') + '</select>';
+  }
+
+  function parsePayload(raw) {
+    try { return JSON.parse(raw); } catch (_) { return {}; }
+  }
+
+  function initials(name) {
+    const p = String(name || '').trim().split(/\s+/).filter(Boolean);
+    if (!p.length) return '?';
+    return ((p[0][0] || '') + ((p[1] && p[1][0]) || '')).toUpperCase();
+  }
+
+  let cache = { submissions: [], jobs: [], medical: [] };
+
+  async function api(path, opt) {
+    const r = await fetch(base + path, Object.assign({ credentials: 'same-origin', headers: { Accept: 'application/json' } }, opt || {}));
+    if (r.status === 401) { window.location.href = base + '/login'; throw new Error('auth'); }
+    return r;
+  }
+
+  async function loadAll() {
+    const [a, b, c] = await Promise.all([
+      api('/api/submissions'),
+      api('/api/jobs'),
+      api('/api/medical-requests'),
+    ]);
+    cache.submissions = await a.json();
+    cache.jobs = await b.json();
+    cache.medical = await c.json();
+  }
+
+  function countSubs(t) {
+    return cache.submissions.filter(function (r) { return r.type === t; }).length;
+  }
+  function countNewSubs(t) {
+    return cache.submissions.filter(function (r) { return r.type === t && (r.status || 'new') === 'new'; }).length;
+  }
+
+  function renderDashboard() {
+    const c = countSubs('contact');
+    const a = countSubs('appointment');
+    const i = countSubs('insurance');
+    const j = cache.jobs.length;
+    const m = cache.medical.length;
+    const jn = cache.jobs.filter(function (x) { return (x.status || 'new') === 'new'; }).length;
+    const mn = cache.medical.filter(function (x) { return (x.status || 'new') === 'new'; }).length;
+    document.getElementById('statGrid').innerHTML =
+      '<div class="stat-card stat-card--contact"><h3>Contact</h3><div class="num">' + c + '</div><div class="sub">' + countNewSubs('contact') + ' new</div></div>' +
+      '<div class="stat-card stat-card--appt"><h3>Appointments</h3><div class="num">' + a + '</div><div class="sub">' + countNewSubs('appointment') + ' new</div></div>' +
+      '<div class="stat-card stat-card--ins"><h3>Insurance</h3><div class="num">' + i + '</div><div class="sub">' + countNewSubs('insurance') + ' new</div></div>' +
+      '<div class="stat-card stat-card--jobs"><h3>Jobs</h3><div class="num">' + j + '</div><div class="sub">' + jn + ' new</div></div>' +
+      '<div class="stat-card stat-card--med"><h3>Medical</h3><div class="num">' + m + '</div><div class="sub">' + mn + ' new</div></div>';
+  }
+
+  function rowField(label, value) {
+    if (value == null || String(value).trim() === '') return '';
+    return '<div><dt>' + esc(label) + '</dt><dd>' + esc(value) + '</dd></div>';
+  }
+
+  const backdrop = document.getElementById('detailBackdrop');
+  const drawer = document.getElementById('detailDrawer');
+  const drawerBody = document.getElementById('detailDrawerBody');
+  const drawerTitle = document.getElementById('detailDrawerTitle');
+  const drawerMeta = document.getElementById('detailDrawerMeta');
+
+  function openDrawer() {
+    document.body.classList.add('drawer-open');
+    backdrop.classList.add('visible');
+    drawer.classList.add('visible');
+    backdrop.setAttribute('aria-hidden', 'false');
+  }
+  function closeDrawer() {
+    document.body.classList.remove('drawer-open');
+    backdrop.classList.remove('visible');
+    drawer.classList.remove('visible');
+    backdrop.setAttribute('aria-hidden', 'true');
+  }
+  document.getElementById('detailClose').onclick = closeDrawer;
+  backdrop.onclick = closeDrawer;
+
+  function drawerFooterSubmission(id, status, notes) {
+    return '<div class="detail-footer">' +
+      '<div class="detail-footer-title">Pipeline &amp; internal notes</div>' +
+      '<div style="margin-bottom:12px;">' + statusSelectHtml('lead', id, status || 'new') + '</div>' +
+      '<textarea class="note-ta drawer-note" data-kind="lead" data-id="' + esc(id) + '" style="width:100%;min-height:72px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font-size:13px;font-family:inherit;">' + esc(notes || '') + '</textarea>' +
+      '<button type="button" class="save-note drawer-save-sub" data-id="' + esc(id) + '" style="margin-top:10px;">Save notes</button></div>';
+  }
+  function drawerFooterJob(id, status, notes) {
+    return '<div class="detail-footer">' +
+      '<div class="detail-footer-title">Hiring pipeline</div>' +
+      '<div style="margin-bottom:12px;">' + statusSelectHtml('job', id, status || 'new') + '</div>' +
+      '<textarea class="note-ta drawer-note" data-kind="job" data-id="' + esc(id) + '" style="width:100%;min-height:72px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font-size:13px;font-family:inherit;">' + esc(notes || '') + '</textarea>' +
+      '<button type="button" class="save-note drawer-save-job" data-id="' + esc(id) + '" style="margin-top:10px;">Save notes</button></div>';
+  }
+  function drawerFooterMed(id, status, notes) {
+    return '<div class="detail-footer">' +
+      '<div class="detail-footer-title">Fulfillment</div>' +
+      '<div style="margin-bottom:12px;">' + statusSelectHtml('med', id, status || 'new') + '</div>' +
+      '<textarea class="note-ta drawer-note" data-kind="med" data-id="' + esc(id) + '" style="width:100%;min-height:72px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);font-size:13px;font-family:inherit;">' + esc(notes || '') + '</textarea>' +
+      '<button type="button" class="save-note drawer-save-med" data-id="' + esc(id) + '" style="margin-top:10px;">Save notes</button></div>';
+  }
+
+  function showContactDrawer(r) {
+    const p = parsePayload(r.payload);
+    drawerTitle.textContent = 'Contact message';
+    drawerMeta.textContent = 'Submitted ' + r.created_at + ' · Record #' + r.id;
+    let body = '<section class="detail-section"><h3 class="detail-section-title">Sender</h3><dl class="detail-dl">' +
+      rowField('Full name', p.name) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Message</h3><p class="detail-block-text">' + esc(p.message || '—') + '</p></section>';
+    body += drawerFooterSubmission(r.id, r.status, r.admin_notes);
+    drawerBody.innerHTML = body;
+    bindDrawerSubmissionHandlers(r.id);
+    openDrawer();
+  }
+  function showApptDrawer(r) {
+    const p = parsePayload(r.payload);
+    drawerTitle.textContent = 'Appointment request';
+    drawerMeta.textContent = 'Submitted ' + r.created_at + ' · Record #' + r.id;
+    let body = '<section class="detail-section"><h3 class="detail-section-title">Patient contact</h3><dl class="detail-dl">' +
+      rowField('Full name', p.name) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Scheduling preferences</h3><dl class="detail-dl">' +
+      rowField('Preferred location', p.preferred_location) + rowField('Date / time preference', p.date_preference) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Additional notes</h3><p class="detail-block-text">' + esc(p.message || '—') + '</p></section>';
+    body += drawerFooterSubmission(r.id, r.status, r.admin_notes);
+    drawerBody.innerHTML = body;
+    bindDrawerSubmissionHandlers(r.id);
+    openDrawer();
+  }
+  function showInsDrawer(r) {
+    const p = parsePayload(r.payload);
+    drawerTitle.textContent = 'Insurance verification';
+    drawerMeta.textContent = 'Submitted ' + r.created_at + ' · Record #' + r.id;
+    let body = '<section class="detail-section"><h3 class="detail-section-title">Subscriber</h3><dl class="detail-dl">' +
+      rowField('Full name', p.name) + rowField('Date of birth', p.date_of_birth) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Insurance plan</h3><dl class="detail-dl">' +
+      rowField('Carrier', p.insurance_carrier) + rowField('Member / subscriber ID', p.member_id) + rowField('Group number', p.group_number) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Location &amp; notes</h3><dl class="detail-dl">' +
+      rowField('Preferred location', p.preferred_location) + '</dl><p class="detail-block-text" style="margin-top:12px;">' + esc(p.message || '—') + '</p></section>';
+    body += drawerFooterSubmission(r.id, r.status, r.admin_notes);
+    drawerBody.innerHTML = body;
+    bindDrawerSubmissionHandlers(r.id);
+    openDrawer();
+  }
+  function showJobDrawer(r) {
+    const fullMsg = String(r.message || '');
+    drawerTitle.textContent = 'Job application';
+    drawerMeta.textContent = 'Applied ' + r.created_at + ' · Application #' + r.id;
+    let resumeBlock;
+    if (r.resume_file) {
+      resumeBlock = '<div class="resume-card"><h4>Resume file</h4><p>Download the file submitted with this application.</p>' +
+        '<a class="btn-download" href="' + esc(base + '/api/jobs/' + r.id + '/resume') + '" download>Download resume</a></div>';
+    } else {
+      resumeBlock = '<div class="resume-card"><h4>Resume file</h4><p>No file was attached to this application.</p><span class="btn-download resume-missing">No resume on file</span></div>';
     }
-    function getMedical() {
-      fetch(base + '/api/medical-requests', { credentials: 'same-origin' })
-        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-        .then(rows => {
-          document.getElementById('medical-loading').style.display = 'none';
-          if (!rows.length) {
-            document.getElementById('medical-empty').style.display = 'block';
-            return;
-          }
-          document.getElementById('medical-table').style.display = 'table';
-          const tbody = document.getElementById('medical-tbody');
-          tbody.innerHTML = rows.map(r => {
-            let payload = {};
-            try { payload = JSON.parse(r.payload); } catch (_) {}
-            const details = Object.entries(payload).map(([k,v]) => k + ': ' + (v || '—')).join('\n');
-            return '<tr><td class="meta">' + r.created_at + '</td><td><div class="payload">' + (details || '—') + '</div></td></tr>';
-          }).join('');
-        })
-        .catch(() => { document.getElementById('medical-loading').textContent = 'Failed to load.'; });
+    let body = '<section class="detail-section"><h3 class="detail-section-title">Position</h3><dl class="detail-dl">' +
+      rowField('Job title', r.job_title) + rowField('Job ID', r.job_id) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Candidate</h3><dl class="detail-dl">' +
+      rowField('Full name', r.name) + rowField('Email', r.email) + rowField('Phone', r.phone) + '</dl></section>';
+    body += resumeBlock;
+    body += '<section class="detail-section"><h3 class="detail-section-title">Cover message</h3><p class="detail-block-text">' + esc(fullMsg || '—') + '</p></section>';
+    body += drawerFooterJob(r.id, r.status, r.admin_notes);
+    drawerBody.innerHTML = body;
+    bindDrawerJobHandlers(r.id);
+    openDrawer();
+  }
+  function showMedDrawer(r) {
+    const p = parsePayload(r.payload);
+    drawerTitle.textContent = 'Medical record request';
+    drawerMeta.textContent = 'Received ' + r.created_at + ' · Request #' + r.id;
+    let body = '<section class="detail-section"><h3 class="detail-section-title">Patient identity</h3><dl class="detail-dl">' +
+      rowField('Full legal name', p.name) + rowField('Date of birth', p.date_of_birth) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Delivery &amp; location</h3><dl class="detail-dl">' +
+      rowField('Preferred delivery', p.delivery_method) + rowField('Location usually seen', p.location_visited) + rowField('Mailing address', p.mailing_address) + '</dl></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Records requested</h3><p class="detail-block-text">' + esc(p.details || '—') + '</p></section>';
+    body += drawerFooterMed(r.id, r.status, r.admin_notes);
+    drawerBody.innerHTML = body;
+    bindDrawerMedHandlers(r.id);
+    openDrawer();
+  }
+
+  async function patchLead(id, body) {
+    const r = await api('/api/submissions/' + id, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) { const e = await r.json().catch(function () { return {}; }); throw new Error(e.error || 'Failed'); }
+    return r.json();
+  }
+  async function patchJob(id, body) {
+    const r = await api('/api/jobs/' + id, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error('Failed');
+    return r.json();
+  }
+  async function patchMed(id, body) {
+    const r = await api('/api/medical-requests/' + id, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error('Failed');
+    return r.json();
+  }
+
+  function bindDrawerSubmissionHandlers(id) {
+    const sel = drawerBody.querySelector('.status-select[data-id="' + id + '"]');
+    if (sel) {
+      sel.onchange = function () {
+        patchLead(id, { status: sel.value }).then(function (row) {
+          const ix = cache.submissions.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.submissions[ix] = row;
+          toast('Status updated');
+          renderDashboard();
+          renderContact(); renderAppt(); renderInsurance();
+        }).catch(function () { toast('Update failed', true); });
+      };
     }
-    function getJobs() {
-      fetch(base + '/api/jobs', { credentials: 'same-origin' })
-        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-        .then(rows => {
-          document.getElementById('jobs-loading').style.display = 'none';
-          if (!rows.length) {
-            document.getElementById('jobs-empty').style.display = 'block';
-            return;
-          }
-          document.getElementById('jobs-table').style.display = 'table';
-          const tbody = document.getElementById('jobs-tbody');
-          tbody.innerHTML = rows.map(r => {
-            const pos = (r.job_title || r.job_id || '—');
-            const applicant = (r.name || '') + ' · ' + (r.email || '');
-            const details = (r.phone || '') + (r.resume_file ? ' · Resume: ' + r.resume_file : '');
-            return '<tr><td class="meta">' + (r.created_at || '') + '</td><td><strong>' + pos + '</strong></td><td>' + applicant + '</td><td><div class="payload">' + details + '</div></td></tr>';
-          }).join('');
-        })
-        .catch(() => { document.getElementById('jobs-loading').textContent = 'Failed to load.'; });
+    const btn = drawerBody.querySelector('.drawer-save-sub');
+    if (btn) {
+      btn.onclick = function () {
+        const ta = drawerBody.querySelector('.drawer-note[data-id="' + id + '"]');
+        btn.disabled = true;
+        patchLead(id, { admin_notes: ta.value }).then(function (row) {
+          const ix = cache.submissions.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.submissions[ix] = row;
+          toast('Notes saved');
+          renderContact(); renderAppt(); renderInsurance();
+        }).catch(function () { toast('Save failed', true); }).finally(function () { btn.disabled = false; });
+      };
     }
-    getSubmissions();
-    getMedical();
-    getJobs();
+  }
+  function bindDrawerJobHandlers(id) {
+    const sel = drawerBody.querySelector('.status-select[data-id="' + id + '"]');
+    if (sel) {
+      sel.onchange = function () {
+        patchJob(id, { status: sel.value }).then(function (row) {
+          const ix = cache.jobs.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.jobs[ix] = row;
+          toast('Status updated');
+          renderDashboard();
+          renderJobs();
+        }).catch(function () { toast('Update failed', true); });
+      };
+    }
+    const btn = drawerBody.querySelector('.drawer-save-job');
+    if (btn) {
+      btn.onclick = function () {
+        const ta = drawerBody.querySelector('.drawer-note[data-id="' + id + '"]');
+        btn.disabled = true;
+        patchJob(id, { admin_notes: ta.value }).then(function (row) {
+          const ix = cache.jobs.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.jobs[ix] = row;
+          toast('Notes saved');
+          renderJobs();
+        }).catch(function () { toast('Save failed', true); }).finally(function () { btn.disabled = false; });
+      };
+    }
+  }
+  function bindDrawerMedHandlers(id) {
+    const sel = drawerBody.querySelector('.status-select[data-id="' + id + '"]');
+    if (sel) {
+      sel.onchange = function () {
+        patchMed(id, { status: sel.value }).then(function (row) {
+          const ix = cache.medical.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.medical[ix] = row;
+          toast('Status updated');
+          renderDashboard();
+          renderMedical();
+        }).catch(function () { toast('Update failed', true); });
+      };
+    }
+    const btn = drawerBody.querySelector('.drawer-save-med');
+    if (btn) {
+      btn.onclick = function () {
+        const ta = drawerBody.querySelector('.drawer-note[data-id="' + id + '"]');
+        btn.disabled = true;
+        patchMed(id, { admin_notes: ta.value }).then(function (row) {
+          const ix = cache.medical.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.medical[ix] = row;
+          toast('Notes saved');
+          renderMedical();
+        }).catch(function () { toast('Save failed', true); }).finally(function () { btn.disabled = false; });
+      };
+    }
+  }
+
+  function filterSearchRow(p, q) {
+    if (!q) return true;
+    return JSON.stringify(p).toLowerCase().indexOf(q.toLowerCase()) !== -1;
+  }
+
+  function renderSubmissionTable(type, config) {
+    const fStatus = document.getElementById(config.filterStatus).value;
+    const q = document.getElementById(config.filterSearch).value.trim();
+    const rows = cache.submissions.filter(function (r) {
+      if (r.type !== type) return false;
+      if (fStatus && r.status !== fStatus) return false;
+      return filterSearchRow(parsePayload(r.payload), q);
+    });
+
+    document.getElementById(config.loading).style.display = 'none';
+    if (!rows.length) {
+      document.getElementById(config.empty).style.display = 'block';
+      document.getElementById(config.wrap).style.display = 'none';
+      return;
+    }
+    document.getElementById(config.empty).style.display = 'none';
+    document.getElementById(config.wrap).style.display = 'block';
+
+    document.getElementById(config.tbody).innerHTML = rows.map(function (r) {
+      const p = parsePayload(r.payload);
+      const name = p.name || 'Unknown';
+      const sub = [p.email, p.phone].filter(Boolean).join(' · ');
+      let preview = (p.message || p.insurance_carrier || p.preferred_location || '—').slice(0, 100);
+      return '<tr class="row-main">' +
+        '<td class="meta">' + esc(r.created_at) + '</td>' +
+        '<td><div class="person"><div class="avatar">' + esc(initials(name)) + '</div><div><div class="person-name">' + esc(name) + '</div>' +
+        (sub ? '<div class="person-meta">' + esc(sub) + '</div>' : '') +
+        '<div class="person-preview">' + esc(preview) + '</div></div></div></td>' +
+        '<td>' + statusSelectHtml('lead', r.id, r.status || 'new') + '</td>' +
+        '<td class="notes-wrap"><textarea class="note-ta" data-kind="lead" data-id="' + esc(r.id) + '" placeholder="Internal…">' + esc(r.admin_notes || '') + '</textarea>' +
+        '<button type="button" class="save-note" data-kind="lead" data-id="' + esc(r.id) + '">Save</button></td>' +
+        '<td><button type="button" class="btn-view" data-open-sub="' + esc(r.id) + '" data-sub-type="' + esc(type) + '">Open</button></td></tr>';
+    }).join('');
+
+    document.getElementById(config.tbody).querySelectorAll('[data-open-sub]').forEach(function (btn) {
+      btn.onclick = function () {
+        const sid = btn.getAttribute('data-open-sub');
+        const st = btn.getAttribute('data-sub-type');
+        const row = cache.submissions.find(function (x) { return String(x.id) === String(sid); });
+        if (!row) return;
+        if (st === 'contact') showContactDrawer(row);
+        else if (st === 'appointment') showApptDrawer(row);
+        else showInsDrawer(row);
+      };
+    });
+
+    document.getElementById(config.tbody).querySelectorAll('.status-select').forEach(function (sel) {
+      sel.onchange = function () {
+        const sid = sel.getAttribute('data-id');
+        patchLead(sid, { status: sel.value }).then(function (row) {
+          const ix = cache.submissions.findIndex(function (x) { return String(x.id) === String(sid); });
+          if (ix !== -1) cache.submissions[ix] = row;
+          toast('Status updated');
+          renderDashboard();
+        }).catch(function () { toast('Could not update', true); });
+      };
+    });
+    document.getElementById(config.tbody).querySelectorAll('.save-note').forEach(function (btn) {
+      btn.onclick = function () {
+        const sid = btn.getAttribute('data-id');
+        const ta = document.getElementById(config.tbody).querySelector('.note-ta[data-id="' + sid + '"]');
+        btn.disabled = true;
+        patchLead(sid, { admin_notes: ta.value }).then(function (row) {
+          const ix = cache.submissions.findIndex(function (x) { return String(x.id) === String(sid); });
+          if (ix !== -1) cache.submissions[ix] = row;
+          toast('Notes saved');
+        }).catch(function () { toast('Save failed', true); }).finally(function () { btn.disabled = false; });
+      };
+    });
+  }
+
+  function renderContact() {
+    renderSubmissionTable('contact', {
+      filterStatus: 'filterContactStatus', filterSearch: 'filterContactSearch',
+      loading: 'contactLoading', empty: 'contactEmpty', wrap: 'contactTableWrap', tbody: 'contactTbody',
+    });
+  }
+  function renderAppt() {
+    renderSubmissionTable('appointment', {
+      filterStatus: 'filterApptStatus', filterSearch: 'filterApptSearch',
+      loading: 'apptLoading', empty: 'apptEmpty', wrap: 'apptTableWrap', tbody: 'apptTbody',
+    });
+  }
+  function renderInsurance() {
+    renderSubmissionTable('insurance', {
+      filterStatus: 'filterInsStatus', filterSearch: 'filterInsSearch',
+      loading: 'insLoading', empty: 'insEmpty', wrap: 'insTableWrap', tbody: 'insTbody',
+    });
+  }
+
+  function renderJobs() {
+    const fStatus = document.getElementById('filterJobStatus').value;
+    const rows = cache.jobs.filter(function (r) { return !fStatus || r.status === fStatus; });
+    document.getElementById('jobsLoading').style.display = 'none';
+    if (!rows.length) {
+      document.getElementById('jobsEmpty').style.display = 'block';
+      document.getElementById('jobsTableWrap').style.display = 'none';
+      return;
+    }
+    document.getElementById('jobsEmpty').style.display = 'none';
+    document.getElementById('jobsTableWrap').style.display = 'block';
+    document.getElementById('jobsTbody').innerHTML = rows.map(function (r) {
+      const fullMsg = String(r.message || '');
+      const msg = fullMsg.slice(0, 80);
+      return '<tr class="row-main">' +
+        '<td class="meta">' + esc(r.created_at) + '</td>' +
+        '<td><div class="person"><div class="avatar">' + esc(initials(r.name)) + '</div><div><div class="person-name">' + esc(r.name) + '</div>' +
+        '<div class="person-meta">' + esc(r.email) + '</div></div></div></td>' +
+        '<td><strong>' + esc(r.job_title || r.job_id) + '</strong><div class="person-preview">' + esc(msg) + (fullMsg.length > 80 ? '…' : '') + '</div></td>' +
+        '<td>' + statusSelectHtml('job', r.id, r.status || 'new') + '</td>' +
+        '<td class="notes-wrap"><textarea class="note-ta" data-kind="job" data-id="' + esc(r.id) + '">' + esc(r.admin_notes || '') + '</textarea>' +
+        '<button type="button" class="save-note" data-kind="job" data-id="' + esc(r.id) + '">Save</button></td>' +
+        '<td><button type="button" class="btn-view" data-open-job="' + esc(r.id) + '">Open</button></td></tr>';
+    }).join('');
+    document.getElementById('jobsTbody').querySelectorAll('[data-open-job]').forEach(function (btn) {
+      btn.onclick = function () {
+        const jid = btn.getAttribute('data-open-job');
+        const row = cache.jobs.find(function (x) { return String(x.id) === String(jid); });
+        if (row) showJobDrawer(row);
+      };
+    });
+    document.getElementById('jobsTbody').querySelectorAll('.status-select').forEach(function (sel) {
+      sel.onchange = function () {
+        const id = sel.getAttribute('data-id');
+        patchJob(id, { status: sel.value }).then(function (row) {
+          const ix = cache.jobs.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.jobs[ix] = row;
+          toast('Status updated');
+          renderDashboard();
+        }).catch(function () { toast('Could not update', true); });
+      };
+    });
+    document.getElementById('jobsTbody').querySelectorAll('.save-note').forEach(function (btn) {
+      btn.onclick = function () {
+        const id = btn.getAttribute('data-id');
+        const ta = document.getElementById('jobsTbody').querySelector('.note-ta[data-id="' + id + '"]');
+        btn.disabled = true;
+        patchJob(id, { admin_notes: ta.value }).then(function (row) {
+          const ix = cache.jobs.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.jobs[ix] = row;
+          toast('Notes saved');
+        }).catch(function () { toast('Save failed', true); }).finally(function () { btn.disabled = false; });
+      };
+    });
+  }
+
+  function renderMedical() {
+    const fStatus = document.getElementById('filterMedStatus').value;
+    const q = document.getElementById('filterMedSearch').value.trim();
+    const rows = cache.medical.filter(function (r) {
+      if (fStatus && r.status !== fStatus) return false;
+      if (!q) return true;
+      return filterSearchRow(parsePayload(r.payload), q);
+    });
+    document.getElementById('medLoading').style.display = 'none';
+    if (!rows.length) {
+      document.getElementById('medEmpty').style.display = 'block';
+      document.getElementById('medTableWrap').style.display = 'none';
+      return;
+    }
+    document.getElementById('medEmpty').style.display = 'none';
+    document.getElementById('medTableWrap').style.display = 'block';
+    document.getElementById('medTbody').innerHTML = rows.map(function (r) {
+      const p = parsePayload(r.payload);
+      const name = p.name || 'Unknown';
+      return '<tr class="row-main">' +
+        '<td class="meta">' + esc(r.created_at) + '</td>' +
+        '<td><div class="person"><div class="avatar">' + esc(initials(name)) + '</div><div><div class="person-name">' + esc(name) + '</div>' +
+        '<div class="person-meta">' + esc(p.delivery_method || '') + '</div></div></div></td>' +
+        '<td>' + statusSelectHtml('med', r.id, r.status || 'new') + '</td>' +
+        '<td class="notes-wrap"><textarea class="note-ta" data-kind="med" data-id="' + esc(r.id) + '">' + esc(r.admin_notes || '') + '</textarea>' +
+        '<button type="button" class="save-note" data-kind="med" data-id="' + esc(r.id) + '">Save</button></td>' +
+        '<td><button type="button" class="btn-view" data-open-med="' + esc(r.id) + '">Open</button></td></tr>';
+    }).join('');
+    document.getElementById('medTbody').querySelectorAll('[data-open-med]').forEach(function (btn) {
+      btn.onclick = function () {
+        const mid = btn.getAttribute('data-open-med');
+        const row = cache.medical.find(function (x) { return String(x.id) === String(mid); });
+        if (row) showMedDrawer(row);
+      };
+    });
+    document.getElementById('medTbody').querySelectorAll('.status-select').forEach(function (sel) {
+      sel.onchange = function () {
+        const id = sel.getAttribute('data-id');
+        patchMed(id, { status: sel.value }).then(function (row) {
+          const ix = cache.medical.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.medical[ix] = row;
+          toast('Status updated');
+          renderDashboard();
+        }).catch(function () { toast('Could not update', true); });
+      };
+    });
+    document.getElementById('medTbody').querySelectorAll('.save-note').forEach(function (btn) {
+      btn.onclick = function () {
+        const id = btn.getAttribute('data-id');
+        const ta = document.getElementById('medTbody').querySelector('.note-ta[data-id="' + id + '"]');
+        btn.disabled = true;
+        patchMed(id, { admin_notes: ta.value }).then(function (row) {
+          const ix = cache.medical.findIndex(function (x) { return String(x.id) === String(id); });
+          if (ix !== -1) cache.medical[ix] = row;
+          toast('Notes saved');
+        }).catch(function () { toast('Save failed', true); }).finally(function () { btn.disabled = false; });
+      };
+    });
+  }
+
+  const titles = {
+    dashboard: ['Dashboard', 'Counts by category — open a section from the left'],
+    contact: ['Contact messages', 'General inquiries from the contact form'],
+    appointments: ['Appointment requests', 'Online booking requests from patients'],
+    insurance: ['Insurance verification', 'Benefit / coverage questions from the website'],
+    jobs: ['Job applications', 'Careers — open a row for full application + resume'],
+    medical: ['Medical record requests', 'HIPAA record release queue'],
+  };
+
+  function showPanel(name) {
+    document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
+    document.getElementById('panel-' + name).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-panel') === name);
+    });
+    const t = titles[name] || titles.dashboard;
+    document.getElementById('pageTitle').textContent = t[0];
+    document.getElementById('pageSub').textContent = t[1];
+  }
+
+  document.querySelectorAll('.nav-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const p = btn.getAttribute('data-panel');
+      showPanel(p);
+      if (p === 'contact') renderContact();
+      if (p === 'appointments') renderAppt();
+      if (p === 'insurance') renderInsurance();
+      if (p === 'jobs') renderJobs();
+      if (p === 'medical') renderMedical();
+    });
+  });
+
+  document.getElementById('filterContactStatus').onchange = renderContact;
+  document.getElementById('filterContactSearch').oninput = function () {
+    clearTimeout(document.getElementById('filterContactSearch')._t);
+    document.getElementById('filterContactSearch')._t = setTimeout(renderContact, 200);
+  };
+  document.getElementById('filterApptStatus').onchange = renderAppt;
+  document.getElementById('filterApptSearch').oninput = function () {
+    clearTimeout(document.getElementById('filterApptSearch')._t);
+    document.getElementById('filterApptSearch')._t = setTimeout(renderAppt, 200);
+  };
+  document.getElementById('filterInsStatus').onchange = renderInsurance;
+  document.getElementById('filterInsSearch').oninput = function () {
+    clearTimeout(document.getElementById('filterInsSearch')._t);
+    document.getElementById('filterInsSearch')._t = setTimeout(renderInsurance, 200);
+  };
+  document.getElementById('filterJobStatus').onchange = renderJobs;
+  document.getElementById('filterMedStatus').onchange = renderMedical;
+  document.getElementById('filterMedSearch').oninput = function () {
+    clearTimeout(document.getElementById('filterMedSearch')._t);
+    document.getElementById('filterMedSearch')._t = setTimeout(renderMedical, 200);
+  };
+
+  document.getElementById('btnRefresh').onclick = function () {
+    ['contactLoading', 'apptLoading', 'insLoading', 'jobsLoading', 'medLoading'].forEach(function (id) {
+      document.getElementById(id).style.display = 'block';
+    });
+    loadAll().then(function () {
+      renderDashboard();
+      const active = document.querySelector('.panel.active');
+      const id = active && active.id.replace('panel-', '');
+      if (id === 'contact') renderContact();
+      if (id === 'appointments') renderAppt();
+      if (id === 'insurance') renderInsurance();
+      if (id === 'jobs') renderJobs();
+      if (id === 'medical') renderMedical();
+      toast('Data refreshed');
+    }).catch(function () { toast('Refresh failed', true); });
+  };
+
+  loadAll().then(function () {
+    renderDashboard();
+    ['contactLoading', 'apptLoading', 'insLoading', 'jobsLoading', 'medLoading'].forEach(function (id) {
+      document.getElementById(id).style.display = 'none';
+    });
+    renderContact();
+    renderAppt();
+    renderInsurance();
+    renderJobs();
+    renderMedical();
+  }).catch(function () {
+    toast('Could not load data — try logging in again', true);
+  });
+})();
   </script>
 </body>
 </html>

@@ -1,29 +1,50 @@
-# PPSI – full site + PHP support
-# Main site (Node): http://localhost:3000  (clean URLs, API, admin)
-# PHP pages:         http://localhost:8080 (any .php file)
+# PPSI — Docker
+#
+# Production-style (Node only):
+#   docker compose up -d --build
+#   → http://localhost:3000
+#
+# + Legacy PHP (Apache on :8080):
+#   docker compose --profile php-local up -d --build
+#
+# Copy .env.example → .env and set ADMIN_PASSWORD + SESSION_SECRET for production.
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: ppsi-web
     container_name: ppsi-web
     ports:
       - "3000:3000"
     volumes:
-      - ./data:/app/data
+      # Live project mount: Docker always serves current HTML/CSS/JS/images without rebuild.
+      - ./:/app
+      # Keep container dependencies isolated from host.
+      - /app/server/node_modules
     environment:
-      - PORT=3000
-      - NODE_ENV=production
+      PORT: "3000"
+      NODE_ENV: production
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me-in-production}
+      SESSION_SECRET: ${SESSION_SECRET:-change-session-secret-in-production}
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:3000/',(r)=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 25s
     restart: unless-stopped
 
   php:
+    profiles: ["php-local"]
     image: php:8.2-apache
     container_name: ppsi-php
     ports:
       - "8080:80"
     volumes:
       - .:/var/www/html
-      - ./docker/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/000-default.conf:/etc/apache2/sites-available/000-default.conf:ro
     restart: unless-stopped
     command: >
       bash -c "a2enmod rewrite && apache2-foreground"

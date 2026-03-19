@@ -9,6 +9,114 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <style>
+    .section-legal-hero {
+      position: relative;
+      padding-top: 56px;
+      padding-bottom: 60px;
+      background:
+        radial-gradient(760px 320px at 10% 8%, rgba(15, 76, 129, 0.14), transparent 70%),
+        radial-gradient(700px 260px at 88% 14%, rgba(217, 106, 58, 0.11), transparent 70%),
+        linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%);
+      overflow: hidden;
+    }
+    .section-legal-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 100%);
+      pointer-events: none;
+    }
+    .section-legal-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    .legal-hero-panel {
+      max-width: 940px;
+      margin: 0 auto;
+      border-radius: 24px;
+      border: 1px solid rgba(15, 76, 129, 0.12);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 16px 34px rgba(15, 76, 129, 0.11);
+      padding: clamp(24px, 3vw, 34px);
+      text-align: center;
+    }
+    .legal-hero-panel .eyebrow {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .legal-hero-panel .section-title {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(34px, 4.4vw, 56px);
+    }
+    .legal-hero-panel .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 760px;
+    }
+    .section-legal-main {
+      padding-top: 74px;
+      background: linear-gradient(180deg, #fbfdff 0%, #f3f8fc 100%);
+    }
+    .terms-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .terms-block {
+      background: #fff;
+      border: 1px solid rgba(15, 76, 129, 0.12);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 26px rgba(15, 76, 129, 0.08);
+    }
+    .terms-block h3 {
+      margin: 0 0 10px;
+      font-family: "Sora", sans-serif;
+      font-size: 18px;
+      color: #0b3559;
+    }
+    .terms-block p,
+    .terms-block li {
+      color: var(--text-soft);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    .terms-block ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .terms-note {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: #eef5fb;
+      color: #0f4c81;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .terms-sticky {
+      position: sticky;
+      top: 130px;
+    }
+    @media (max-width: 960px) {
+      .terms-grid {
+        grid-template-columns: 1fr;
+      }
+      .terms-sticky {
+        position: static;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -53,7 +161,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +171,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +219,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +232,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +263,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +326,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +364,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +372,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,15 +422,66 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
+  <section class="section section-legal-hero">
     <div class="container">
-      <div class="eyebrow">Legal</div>
-      <h1 class="section-title">Terms of Service</h1>
-      <p class="section-sub">Please read these terms of service carefully. By using our website and services, you agree to these terms.</p>
-      <div style="margin-top:28px;">
-        <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
-        <a href="/locations" class="btn btn-secondary">Our Locations</a>
+      <div class="legal-hero-panel">
+        <div class="eyebrow">Legal</div>
+        <h1 class="section-title">Terms of Service</h1>
+        <p class="section-sub">These terms govern use of PPSI’s website and online services. By using this site, you agree to follow the terms below.</p>
+        <div class="terms-note">Last updated: March 2026</div>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-legal-main">
+    <div class="container terms-grid">
+      <div style="display:grid; gap:20px;">
+        <article class="terms-block">
+          <h3>Website use</h3>
+          <ul>
+            <li>Content is provided for general informational purposes and does not replace professional medical advice.</li>
+            <li>You agree not to misuse forms, upload malicious files, or attempt unauthorized access.</li>
+            <li>Availability of pages, forms, and online features may change without prior notice.</li>
+          </ul>
+        </article>
+
+        <article class="terms-block">
+          <h3>Appointments and communication</h3>
+          <ul>
+            <li>Submitting a form does not guarantee an appointment until confirmed by our staff.</li>
+            <li>For urgent or emergency care, call emergency services immediately instead of using web forms.</li>
+            <li>Phone/email communications may be used for scheduling and follow-up related to your request.</li>
+          </ul>
+        </article>
+
+        <article class="terms-block">
+          <h3>Intellectual property and content</h3>
+          <ul>
+            <li>Site branding, design, and written material are owned by PPSI or used with permission.</li>
+            <li>You may not copy or republish content for commercial use without written authorization.</li>
+            <li>Third-party links are provided for convenience and are subject to their own terms.</li>
+          </ul>
+        </article>
+
+        <article class="terms-block">
+          <h3>Limitations and updates</h3>
+          <ul>
+            <li>We aim for accuracy but do not guarantee that all website content is complete or current at all times.</li>
+            <li>PPSI may revise these terms at any time by updating this page.</li>
+            <li>Continued use of the site after updates constitutes acceptance of revised terms.</li>
+          </ul>
+        </article>
+      </div>
+
+      <aside class="terms-block terms-sticky">
+        <h3>Questions about terms?</h3>
+        <p>If you need clarification about allowed use, communications, or legal notices, contact us directly.</p>
+        <div style="display:grid; gap:10px; margin-top:14px;">
+          <a href="/contact-us" class="btn btn-primary">Contact Us</a>
+          <a href="/privacy-policy" class="btn btn-secondary">Privacy Policy</a>
+          <a href="tel:+17324448888" class="btn btn-secondary">Call (732) 444-8888</a>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -314,7 +490,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

@@ -1,5 +1,7 @@
-const express = require('express');
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+
+const express = require('express');
 const fs = require('fs');
 const session = require('express-session');
 const multer = require('multer');
@@ -18,6 +20,28 @@ const uploadsDir = path.join(dataDir, 'uploads');
 
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 const upload = multer({ dest: uploadsDir, limits: { fileSize: 5 * 1024 * 1024 } });
+
+/** Location photos: Linux is case-sensitive — serve both URL spellings from one folder */
+(function mountLocationPhotos() {
+  for (const name of ['Location-photos', 'location-photos']) {
+    const dir = path.join(ROOT, name);
+    try {
+      if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()) {
+        const real = fs.realpathSync(dir);
+        const locOpts = {
+          etag: true,
+          lastModified: true,
+          setHeaders(res) {
+            res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+          },
+        };
+        app.use('/Location-photos', express.static(real, locOpts));
+        app.use('/location-photos', express.static(real, locOpts));
+        break;
+      }
+    } catch (_) {}
+  }
+})();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -81,6 +105,8 @@ app.post('/medical-record-request', (req, res) => {
       phone: String(req.body.phone || '').trim(),
       mailing_address: String(req.body.mailing_address || '').trim(),
       details: String(req.body.details || '').trim(),
+      delivery_method: String(req.body.delivery_method || '').trim(),
+      location_visited: String(req.body.location_visited || '').trim(),
     });
     const db = getDb();
     db.prepare('INSERT INTO medical_record_requests (payload) VALUES (?)').run(payload);
@@ -89,6 +115,29 @@ app.post('/medical-record-request', (req, res) => {
   } catch (e) {
     console.error(e);
     return redirectForm(res, '/medical-record-request', false);
+  }
+});
+
+app.post('/insurance', (req, res) => {
+  try {
+    const payload = JSON.stringify({
+      name: String(req.body.name || '').trim(),
+      email: String(req.body.email || '').trim(),
+      phone: String(req.body.phone || '').trim(),
+      date_of_birth: String(req.body.date_of_birth || '').trim(),
+      insurance_carrier: String(req.body.insurance_carrier || '').trim(),
+      member_id: String(req.body.member_id || '').trim(),
+      group_number: String(req.body.group_number || '').trim(),
+      preferred_location: String(req.body.preferred_location || '').trim(),
+      message: String(req.body.message || '').trim(),
+    });
+    const db = getDb();
+    db.prepare('INSERT INTO submissions (type, payload) VALUES (?, ?)').run('insurance', payload);
+    db.close();
+    return redirectForm(res, '/insurance', true);
+  } catch (e) {
+    console.error(e);
+    return redirectForm(res, '/insurance', false);
   }
 });
 
@@ -145,6 +194,7 @@ const cleanUrlMap = {
   '/dr-wael-elkholy-resume': 'dr-wael-elkholy-resume.html',
   '/alexios-apazidis': 'alexios-apazidis.html',
   '/dr-ashraf-sakr': 'dr-ashraf-sakr.html',
+  '/dr-ashraf-sakr-resume': 'dr-ashraf-sakr-resume.html',
   '/fouad-karam': 'fouad-karam.html',
   '/edward-sofo': 'edward-sofo.html',
   '/patrick-nierva': 'patrick-nierva.html',
@@ -165,6 +215,15 @@ const cleanUrlMap = {
   '/terms-of-service': 'terms-of-service.html',
 };
 
+// Support relative asset paths on clean URLs (e.g. /edison/css/ppsi-shared.css -> /css/ppsi-shared.css)
+app.use((req, _res, next) => {
+  req.url = req.url.replace(
+    /^\/[^/]+\/(css|js|assets|_next|Location-photos|location-photos)\//,
+    '/$1/'
+  );
+  next();
+});
+
 function serveCleanUrl(req, res, next) {
   const p = req.path.replace(/\/$/, '') || '/';
   const file = cleanUrlMap[p];
@@ -180,7 +239,7 @@ function serveCleanUrl(req, res, next) {
 app.get(['/', '/about-us', '/contact-us', '/locations', '/medical-appointment', '/medical-records', '/medical-record-request',
   '/pain-management', '/spine-surgery', '/chiropractic', '/orthopedics', '/podiatry', '/physical-therapy', '/practice-areas',
   '/interventional', '/auto-injury', '/doctors', '/dr-wael-elkholy-m-d', '/dr-wael-elkholy-resume', '/alexios-apazidis',
-  '/dr-ashraf-sakr', '/fouad-karam', '/edward-sofo', '/patrick-nierva', '/north-brunswick', '/edison', '/clifton', '/clifton-new-jersey',
+  '/dr-ashraf-sakr', '/dr-ashraf-sakr-resume', '/fouad-karam', '/edward-sofo', '/patrick-nierva', '/north-brunswick', '/edison', '/clifton', '/clifton-new-jersey',
   '/jersey-city', '/elizabeth', '/hamilton', '/hamilton-new-jersey', '/patient-portal', '/insurance', '/careers', '/blogs', '/covid-19',
   '/privacy-policy', '/terms-of-service'], serveCleanUrl);
 

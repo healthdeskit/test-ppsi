@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <link rel="stylesheet" href="css/ppsi-patient-resources.css" />
 </head>
 <body>
 
@@ -53,7 +54,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +64,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +112,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +125,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +156,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +219,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +257,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +265,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,15 +315,125 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
+  <section class="page-hero page-hero--photo pr-hero-insurance" aria-label="Insurance">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-inner container">
+      <div class="eyebrow">Billing &amp; coverage</div>
+      <h1 class="page-hero-title">Insurance &amp; benefits</h1>
+      <p class="page-hero-sub">We work with many major plans across New Jersey. Verify coverage, copays, and referrals before your visit—online or by phone.</p>
+      <div class="page-hero-actions">
+        <a href="#insurance-form" class="btn btn-primary">Verify my coverage</a>
+        <a href="tel:+17324448888" class="btn btn-secondary">(732) 444-8888</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pr-section" id="insurance-form">
     <div class="container">
-      <div class="eyebrow">Billing &amp; Coverage</div>
-      <h1 class="section-title">Insurance</h1>
-      <p class="section-sub">PPSI works with many major insurance plans. Coverage varies by location and service—we recommend confirming your benefits before your visit.</p>
-      <p style="margin-top:16px; max-width:640px; color: var(--text-soft);">Call (732) 444-8888 to verify that we accept your plan and to ask about copays, referrals, or prior authorization. Our staff can help you understand your options so you can focus on your care.</p>
-      <div style="margin-top:28px;">
-        <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
-        <a href="/contact-us" class="btn btn-secondary">Contact Us</a>
+      <div class="pr-layout">
+        <div class="pr-sidebar" aria-label="How we help with insurance">
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-shield"></use></svg></div>
+            <div>
+              <h3>Plan verification</h3>
+              <p>Share your carrier and member ID—we&rsquo;ll confirm whether PPSI is in-network for your visit and service type.</p>
+            </div>
+          </div>
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-card"></use></svg></div>
+            <div>
+              <h3>Copays &amp; authorizations</h3>
+              <p>Ask about copays, deductibles, and whether your plan requires a referral or prior authorization for procedures.</p>
+            </div>
+          </div>
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-phone"></use></svg></div>
+            <div>
+              <h3>Prefer to call?</h3>
+              <p>Our team can walk you through benefits anytime at <a href="tel:+17324448888" style="color:var(--primary);font-weight:600;">(732) 444-8888</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pr-form-shell">
+          <div class="pr-form-head">
+            <h2>Insurance verification request</h2>
+            <p>Submit your plan details and we&rsquo;ll follow up with coverage information. For urgent scheduling, please call us directly.</p>
+          </div>
+          <div id="insurance-form-success" class="form-status form-status--success" style="display:none;" role="alert">
+            Thank you. We received your request and will contact you soon about your benefits.
+          </div>
+          <div id="insurance-form-error" class="form-status form-status--error" style="display:none;" role="alert">
+            Something went wrong. Please call <a href="tel:+17324448888">(732) 444-8888</a> or email <a href="mailto:mr@njnopain.com">mr@njnopain.com</a>.
+          </div>
+          <form id="insuranceVerificationForm" class="ppsi-form" method="post" action="/insurance">
+            <label for="ins-name">Full name *</label>
+            <input type="text" id="ins-name" name="name" required autocomplete="name" placeholder="First and last name" />
+
+            <div class="pr-form-grid-2">
+              <div>
+                <label for="ins-email">Email *</label>
+                <input type="email" id="ins-email" name="email" required autocomplete="email" placeholder="you@example.com" />
+              </div>
+              <div>
+                <label for="ins-phone">Phone *</label>
+                <input type="tel" id="ins-phone" name="phone" required autocomplete="tel" placeholder="(732) 555-0000" />
+              </div>
+            </div>
+
+            <label for="ins-dob">Date of birth</label>
+            <input type="text" id="ins-dob" name="date_of_birth" placeholder="MM/DD/YYYY" autocomplete="bday" />
+
+            <label for="ins-carrier">Insurance carrier *</label>
+            <input type="text" id="ins-carrier" name="insurance_carrier" required placeholder="e.g. Aetna, Horizon, UnitedHealthcare" />
+
+            <div class="pr-form-grid-2">
+              <div>
+                <label for="ins-member">Member / subscriber ID</label>
+                <input type="text" id="ins-member" name="member_id" placeholder="On your insurance card" autocomplete="off" />
+              </div>
+              <div>
+                <label for="ins-group">Group number</label>
+                <input type="text" id="ins-group" name="group_number" placeholder="If shown on card" autocomplete="off" />
+              </div>
+            </div>
+
+            <label for="ins-location">Preferred location (optional)</label>
+            <input type="text" id="ins-location" name="preferred_location" placeholder="e.g. Edison, Jersey City" />
+
+            <label for="ins-message">Questions or upcoming procedure</label>
+            <textarea id="ins-message" name="message" rows="3" placeholder="Tell us what you&rsquo;d like verified or any planned visits"></textarea>
+
+            <button type="submit" class="btn btn-primary">Submit verification request</button>
+            <p class="pr-form-note">This form is for benefit questions only—not for emergencies. By submitting, you agree we may contact you by phone or email.</p>
+          </form>
+        </div>
+      </div>
+
+      <div class="pr-feature-row" aria-label="What to know">
+        <div class="pr-feature-tile">
+          <h3>Coverage can vary</h3>
+          <p>Benefits depend on your specific plan, location, and the type of care. We&rsquo;ll help you understand what applies to you.</p>
+        </div>
+        <div class="pr-feature-tile">
+          <h3>Bring your card</h3>
+          <p>Please bring a current insurance card and photo ID to every visit so we can keep your file accurate.</p>
+        </div>
+        <div class="pr-feature-tile">
+          <h3>Self-pay options</h3>
+          <p>If you don&rsquo;t have insurance or a service isn&rsquo;t covered, ask our team about payment options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pr-photo-band pr-photo-band--team" aria-label="Care team">
+    <div class="pr-photo-band-inner">
+      <h2>Focused on your care—not paperwork</h2>
+      <p>Across eight New Jersey locations, the same clinical standards apply. Book a visit once your benefits are clear.</p>
+      <div class="pr-photo-band-actions">
+        <a href="/medical-appointment" class="btn btn-primary">Book appointment</a>
+        <a href="/locations" class="btn btn-secondary">View locations</a>
       </div>
     </div>
   </section>
@@ -315,7 +443,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.
@@ -415,6 +543,16 @@
   </button>
 
   <script src="js/ppsi-shared.js"></script>
+  <script>
+    (function() {
+      var q = window.location.search || '';
+      var ok = document.getElementById('insurance-form-success');
+      var err = document.getElementById('insurance-form-error');
+      var form = document.getElementById('insuranceVerificationForm');
+      if (q.indexOf('sent=1') !== -1 && ok && form) { ok.style.display = 'block'; form.style.display = 'none'; }
+      if (q.indexOf('error=1') !== -1 && err) err.style.display = 'block';
+    })();
+  </script>
 </body>
 </html>
 

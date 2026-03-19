@@ -6,7 +6,7 @@
   <title>About Us | Precision Pain & Spine Institute</title>
   <meta
     name="description"
-    content="Learn about Precision Pain & Spine Institute ? our story, values, facilities, and commitment to pain and spine care across New Jersey."
+    content="Learn about Precision Pain & Spine Institute, our story, values, facilities, and commitment to pain and spine care across New Jersey."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,13 +17,95 @@
   <link rel="stylesheet" href="css/ppsi-shared.css" />
 
   <style>
+    .about-page-intro {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0 44px;
+      background-color: #0a355a;
+      background-image: url("/_next/ppsi-team-hero-2.webp");
+      background-size: cover;
+      background-position: center 34%;
+      background-repeat: no-repeat;
+    }
+
+    .about-page-intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(6, 20, 38, 0.78) 0%, rgba(10, 48, 82, 0.72) 48%, rgba(6, 20, 38, 0.84) 100%),
+        radial-gradient(700px 300px at 84% 16%, rgba(255,255,255,0.08), transparent 68%);
+      pointer-events: none;
+    }
+
+    .about-page-intro .container {
+      position: relative;
+      z-index: 1;
+      max-width: 940px;
+      text-align: center;
+    }
+
+    .about-page-intro .eyebrow {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .about-page-intro .eyebrow::before {
+      background: rgba(255,255,255,0.9);
+    }
+
+    .about-page-intro-title {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(38px, 5.3vw, 68px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      color: #ffffff;
+      max-width: 840px;
+      margin: 0 auto;
+      text-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .about-page-intro-sub {
+      margin: 22px auto 0;
+      max-width: 760px;
+      font-size: 18px;
+      line-height: 1.85;
+      color: rgba(244, 250, 255, 0.92);
+      text-shadow: 0 4px 14px rgba(0,0,0,0.28);
+    }
+
+    .about-page-intro-chips {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .about-page-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(2, 12, 22, 0.22);
+    }
+
     .about-hero {
       position: relative;
       min-height: 78vh;
       display: flex;
       align-items: flex-end;
       background-color: #0a355a;
-      background-image: url("_next/group-of-doctors.jpg");
+      background-image: url("_next/group-of-doctors.webp");
       background-size: cover;
       background-position: center 42%;
       background-repeat: no-repeat;
@@ -93,6 +175,54 @@
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 36px;
       align-items: center;
+      position: relative;
+      padding: clamp(24px, 3vw, 34px);
+      border-radius: 30px;
+      border: 1px solid rgba(15, 76, 129, 0.12);
+      background:
+        radial-gradient(560px 220px at 92% 12%, rgba(15, 76, 129, 0.08), transparent 72%),
+        linear-gradient(180deg, #ffffff 0%, #fafdff 100%);
+      box-shadow: 0 18px 46px rgba(15, 76, 129, 0.09);
+    }
+
+    .about-first-section {
+      padding-top: 64px;
+      background:
+        radial-gradient(680px 280px at 92% 12%, rgba(15, 76, 129, 0.08), transparent 72%),
+        linear-gradient(180deg, #fbfdff 0%, #f5f9fc 100%);
+    }
+
+    .about-story-content .eyebrow,
+    .about-facilities-content .eyebrow,
+    .about-culture-content .eyebrow,
+    .about-growth-content .eyebrow {
+      margin-left: 0;
+      margin-right: 0;
+      justify-content: flex-start;
+    }
+
+    /* Middle split sections: left-aligned, slightly smaller titles */
+    .about-story-content .section-title,
+    .about-facilities-content .section-title,
+    .about-culture-content .section-title,
+    .about-growth-content .section-title {
+      text-align: left;
+      max-width: 640px;
+      margin-left: 0;
+      margin-right: 0;
+      font-size: clamp(22px, 2.35vw, 30px);
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+    }
+
+    .about-values-intro .section-title,
+    .about-locations-header .section-title {
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: -0.03em;
     }
 
     .about-story-image,
@@ -104,6 +234,7 @@
       border: 1px solid rgba(228, 231, 236, 0.95);
       box-shadow: var(--shadow-md);
       background: #eef5fb;
+      box-shadow: 0 18px 34px rgba(15, 76, 129, 0.12);
     }
 
     .about-story-image img,
@@ -121,7 +252,7 @@
     .about-facilities-content,
     .about-culture-content,
     .about-growth-content {
-      max-width: 640px;
+      max-width: none;
     }
 
     .about-story-text,
@@ -132,6 +263,10 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
+      max-width: 640px;
+      margin-left: 0;
+      margin-right: 0;
+      text-align: left;
     }
 
     .about-story-text p,
@@ -146,11 +281,15 @@
     }
 
     .section-about-values {
-      background: linear-gradient(180deg, #fbfdff 0%, #f5f9fc 100%);
+      background:
+        radial-gradient(700px 260px at 8% 20%, rgba(15, 76, 129, 0.08), transparent 72%),
+        linear-gradient(180deg, #fbfdff 0%, #f5f9fc 100%);
     }
 
     .about-values-intro {
       max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .about-values-grid {
@@ -161,11 +300,11 @@
     }
 
     .about-value-card {
-      background: var(--white);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border: 1px solid rgba(15, 76, 129, 0.12);
       border-radius: 20px;
       padding: 28px;
-      box-shadow: var(--shadow-xs);
+      box-shadow: 0 10px 24px rgba(15, 76, 129, 0.08);
       transition: transform 0.24s var(--ease), box-shadow 0.24s var(--ease), border-color 0.24s var(--ease);
       min-height: 100%;
     }
@@ -180,12 +319,14 @@
       width: 52px;
       height: 52px;
       border-radius: 14px;
-      background: var(--primary-soft);
+      background: linear-gradient(180deg, #eef6fd 0%, #e2eef9 100%);
       color: var(--primary);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 18px;
+      border: 1px solid rgba(15, 76, 129, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
     }
 
     .about-value-card h3 {
@@ -205,11 +346,15 @@
     }
 
     .section-about-locations {
-      background: var(--surface-soft);
+      background:
+        radial-gradient(760px 280px at 92% 10%, rgba(15, 76, 129, 0.08), transparent 74%),
+        var(--surface-soft);
     }
 
     .about-locations-header {
       max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .about-locations-list {
@@ -223,11 +368,11 @@
       display: block;
       text-decoration: none;
       color: inherit;
-      background: var(--white);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border: 1px solid rgba(15, 76, 129, 0.12);
       border-radius: 18px;
       padding: 22px 20px;
-      box-shadow: var(--shadow-xs);
+      box-shadow: 0 10px 22px rgba(15, 76, 129, 0.08);
       transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
       min-height: 100%;
     }
@@ -258,6 +403,7 @@
 
     .about-locations-cta {
       margin-top: 28px;
+      text-align: center;
     }
 
     .about-cta-block {
@@ -270,6 +416,11 @@
       gap: 30px;
       align-items: center;
       box-shadow: 0 20px 44px rgba(10, 53, 90, 0.2);
+    }
+
+    .about-cta-content {
+      text-align: center;
+      margin: 0 auto;
     }
 
     .about-cta-block .eyebrow {
@@ -300,7 +451,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .about-cta-phone {
@@ -316,6 +467,7 @@
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     @media (max-width: 1200px) {
@@ -326,6 +478,10 @@
     }
 
     @media (max-width: 1024px) {
+      .about-page-intro {
+        padding: 28px 0 18px;
+      }
+
       .about-story-layout,
       .about-facilities-layout,
       .about-culture-layout,
@@ -352,6 +508,15 @@
     }
 
     @media (max-width: 768px) {
+      .about-page-intro-sub {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .about-first-section {
+        padding-top: 34px;
+      }
+
       .about-hero-inner {
         padding-top: 88px;
         padding-bottom: 58px;
@@ -440,7 +605,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -450,7 +615,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain & Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -498,7 +663,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -511,11 +676,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -528,24 +707,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -558,7 +737,7 @@
             <a href="/locations" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
               <span>
-                <span class="dropdown-title">All Locations</span>
+                <span class="dropdown-title">All 8 Locations</span>
                 <span class="dropdown-desc">Find the clinic nearest to your home or work.</span>
               </span>
             </a>
@@ -591,7 +770,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -629,7 +808,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -637,34 +816,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
-              <a href="/locations">Passaic, NJ</a>
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
-              <a href="/locations">Somerset, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -686,31 +866,28 @@
 
   <div class="page-offset"></div>
 
-  <section class="about-hero" aria-label="About Precision Pain & Spine Institute">
-    <div class="about-hero-inner container">
-      <div class="eyebrow">Our Company</div>
-      <h1 class="about-hero-title">A New Jersey?based practice built on expertise, access, and steady growth.</h1>
-      <p class="about-hero-sub">
-        Precision Pain &amp; Spine Institute was built around a simple idea: make high-quality pain and spine care more accessible across New Jersey through coordinated specialists, consistent standards, and community-based locations.
-      </p>
-      <div class="about-hero-actions">
-        <a href="/doctors" class="btn btn-primary">Meet Our Team</a>
-        <a href="/locations" class="btn btn-secondary">Our Locations</a>
+  <section class="about-page-intro" aria-label="About Precision Pain and Spine Institute">
+    <div class="container">
+      <div class="eyebrow">About PPSI</div>
+      <h1 class="about-page-intro-title">A physician-led New Jersey practice built around access, trust, and coordinated care.</h1>
+      <p class="about-page-intro-sub">Precision Pain &amp; Spine Institute brings together specialists, modern facilities, and a long-term commitment to the communities we serve, so patients experience a more connected path from diagnosis through treatment and recovery.</p>
+      <div class="about-page-intro-chips" aria-label="Practice highlights">
+        <span class="about-page-chip">Physician-led organization</span>
+        <span class="about-page-chip">Multi-location New Jersey footprint</span>
+        <span class="about-page-chip">Coordinated specialty care</span>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <section class="section">
+  <section class="section about-first-section">
     <div class="container">
       <div class="about-story-layout">
         <div class="about-story-image">
-          <img src="_next/group-of-doctors.jpg" alt="PPSI physicians collaborating" loading="lazy" decoding="async" />
+          <img src="_next/group-of-doctors.webp" alt="PPSI physicians collaborating" loading="lazy" decoding="async" />
         </div>
         <div class="about-story-content">
           <div class="eyebrow">Our Story</div>
-          <h2 class="section-title">Founded by physicians, shaped by the needs of local communities.</h2>
+          <h2 class="section-title">Physician-led care with closer coordination.</h2>
           <div class="about-story-text">
             <p>Precision Pain &amp; Spine Institute was established by clinicians who saw a gap in how pain and spine care were delivered across New Jersey. Rather than sending patients between disconnected offices, we built a practice where physicians and providers coordinate care more closely.</p>
             <p>The organization began with a smaller footprint and expanded carefully into additional communities over time. Each new office has been developed to reflect the same clinical standards, operational consistency, and patient experience expectations.</p>
@@ -768,7 +945,7 @@
           </div>
         </div>
         <div class="about-facilities-image">
-          <img src="_next/edison-office.jpg" alt="PPSI Edison office" loading="lazy" decoding="async" />
+          <img src="_next/edison-office.webp" alt="PPSI Edison office" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -780,11 +957,11 @@
     <div class="container">
       <div class="about-culture-layout">
         <div class="about-culture-image">
-          <img src="_next/dr-karam-adjusting-patient.jpg" alt="PPSI provider with patient" loading="lazy" decoding="async" />
+          <img src="_next/dr-karam-adjusting-patient.webp" alt="PPSI provider with patient" loading="lazy" decoding="async" />
         </div>
         <div class="about-culture-content">
           <div class="eyebrow">Our Culture</div>
-          <h2 class="section-title">How we work ? and why it matters to patients.</h2>
+          <h2 class="section-title">Teams and handoffs that stay aligned.</h2>
           <div class="about-culture-text">
             <p>PPSI operates through collaboration. Pain specialists, surgeons, chiropractors, and support teams work through coordinated processes so handoffs feel smoother and treatment planning stays more consistent.</p>
             <p>We also value continuing education, professional development, and internal alignment. Stronger systems and better-trained teams support better patient experiences.</p>
@@ -802,7 +979,7 @@
       <div class="about-growth-layout">
         <div class="about-growth-content">
           <div class="eyebrow">Growth &amp; Commitment</div>
-          <h2 class="section-title">Growing responsibly while staying rooted in New Jersey.</h2>
+          <h2 class="section-title">New locations only when quality stays the same.</h2>
           <div class="about-growth-text">
             <p>Our growth has been shaped by community demand, operational readiness, and the ability to maintain consistent standards across locations. Expansion is approached deliberately rather than for scale alone.</p>
             <p>As the practice evolves, the goal remains the same: extend access where there is real need while preserving the quality, coordination, and physician-led structure that define the organization.</p>
@@ -810,7 +987,7 @@
           </div>
         </div>
         <div class="about-growth-image">
-          <img src="_next/dr-sakr-with-patient.jpg" alt="PPSI physician with patient" loading="lazy" decoding="async" />
+          <img src="_next/dr-sakr-with-patient.webp" alt="PPSI physician with patient" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -829,35 +1006,35 @@
       <div class="about-locations-list">
         <a href="/locations" class="about-loc-card">
           <span class="about-loc-name">Passaic</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
         <a href="/clifton-new-jersey" class="about-loc-card">
           <span class="about-loc-name">Clifton</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
         <a href="/jersey-city" class="about-loc-card">
           <span class="about-loc-name">Jersey City</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
         <a href="/locations" class="about-loc-card">
           <span class="about-loc-name">Somerset</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
         <a href="/elizabeth" class="about-loc-card">
           <span class="about-loc-name">Elizabeth</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
         <a href="/edison" class="about-loc-card">
           <span class="about-loc-name">Edison</span>
-          <span class="about-loc-meta">New Jersey ? Main Campus</span>
+          <span class="about-loc-meta">New Jersey • Main Campus</span>
         </a>
         <a href="/north-brunswick" class="about-loc-card">
           <span class="about-loc-name">North Brunswick</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
         <a href="/hamilton-new-jersey" class="about-loc-card">
           <span class="about-loc-name">Hamilton</span>
-          <span class="about-loc-meta">New Jersey ? Full Services</span>
+          <span class="about-loc-meta">New Jersey • Full Services</span>
         </a>
       </div>
 
@@ -892,7 +1069,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

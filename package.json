@@ -6,9 +6,17 @@
   "scripts": {
     "install:server": "cd server && npm install",
     "start": "node server/server.js",
-    "dev": "node server/server.js"
+    "dev": "node server/server.js",
+    "convert:webp": "node scripts/convert-to-webp.mjs",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f web",
+    "docker:php": "docker compose --profile php-local up -d --build"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <link rel="stylesheet" href="css/ppsi-patient-resources.css" />
 </head>
 <body>
 
@@ -53,7 +54,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +64,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +112,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +125,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +156,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +219,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +257,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +265,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,38 +315,111 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
-    <div class="container">
-      <div class="eyebrow">Patient Resources</div>
-      <h1 class="section-title">Medical Record Request</h1>
-      <p class="section-sub">Request a copy of your medical records from Precision Pain & Spine Institute. We will process your request as quickly as possible.</p>
-      <div style="margin-top:28px;">
-        <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
-        <a href="/locations" class="btn btn-secondary">Our Locations</a>
+  <section class="page-hero page-hero--photo pr-hero-mrr" aria-label="Medical record request">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-inner container">
+      <div class="eyebrow">Patient resources</div>
+      <h1 class="page-hero-title">Medical record request</h1>
+      <p class="page-hero-sub">Complete the form below so we can locate your chart and send the documents you need—securely and in line with HIPAA.</p>
+      <div class="page-hero-actions">
+        <a href="#mrr-form" class="btn btn-primary">Scroll to form</a>
+        <a href="/medical-records" class="btn btn-secondary">How requests work</a>
       </div>
-      <div class="form-block" style="margin-top:48px;max-width:560px;">
-        <h2 class="section-title" style="font-size:24px;margin-bottom:16px;">Medical record request form</h2>
-        <div id="medical-request-form-success" class="form-status form-status--success" style="display:none;" role="alert">
-          Your medical record request has been received. We will process it as soon as possible.
+    </div>
+  </section>
+
+  <section class="pr-section" id="mrr-form">
+    <div class="container">
+      <div class="pr-layout">
+        <div class="pr-sidebar">
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-shield"></use></svg></div>
+            <div>
+              <h3>Secure &amp; private</h3>
+              <p>Information you submit is used only to process your request. We may call or email to verify identity.</p>
+            </div>
+          </div>
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-clock"></use></svg></div>
+            <div>
+              <h3>Processing time</h3>
+              <p>We work to fulfill requests promptly. Some cases require a signed authorization or additional review.</p>
+            </div>
+          </div>
+          <div class="pr-cta-panel">
+            <h3>Need help now?</h3>
+            <p>Email <a href="mailto:mr@njnopain.com" style="color:var(--primary);font-weight:600;">mr@njnopain.com</a> or call <a href="tel:+17324448888" style="color:var(--primary);font-weight:600;">(732) 444-8888</a>.</p>
+            <a href="/medical-appointment" class="btn btn-secondary" style="display:inline-flex;">Book appointment</a>
+          </div>
         </div>
-        <div id="medical-request-form-error" class="form-status form-status--error" style="display:none;" role="alert">
-          Something went wrong. Please call (732) 444-8888 or email mr@njnopain.com.
+
+        <div class="pr-form-shell">
+          <div class="pr-form-head">
+            <h2>Request form</h2>
+            <p>Fields marked with * are required. Be as specific as possible about dates and types of records (e.g. visit notes, imaging reports).</p>
+          </div>
+          <div id="medical-request-form-success" class="form-status form-status--success" style="display:none;" role="alert">
+            Your medical record request has been received. We will process it as soon as possible.
+          </div>
+          <div id="medical-request-form-error" class="form-status form-status--error" style="display:none;" role="alert">
+            Something went wrong. Please call (732) 444-8888 or email <a href="mailto:mr@njnopain.com">mr@njnopain.com</a>.
+          </div>
+          <form id="medicalRequestForm" class="ppsi-form" method="post" action="/medical-record-request">
+            <label for="mrr-name">Full legal name *</label>
+            <input type="text" id="mrr-name" name="name" required autocomplete="name" placeholder="As it appears in our records" />
+
+            <div class="pr-form-grid-2">
+              <div>
+                <label for="mrr-dob">Date of birth *</label>
+                <input type="text" id="mrr-dob" name="date_of_birth" required placeholder="MM/DD/YYYY" autocomplete="bday" />
+              </div>
+              <div>
+                <label for="mrr-location">Location usually seen (optional)</label>
+                <input type="text" id="mrr-location" name="location_visited" placeholder="e.g. Edison, Clifton" />
+              </div>
+            </div>
+
+            <div class="pr-form-grid-2">
+              <div>
+                <label for="mrr-email">Email *</label>
+                <input type="email" id="mrr-email" name="email" required autocomplete="email" placeholder="your@email.com" />
+              </div>
+              <div>
+                <label for="mrr-phone">Phone *</label>
+                <input type="tel" id="mrr-phone" name="phone" required autocomplete="tel" placeholder="(732) 555-0000" />
+              </div>
+            </div>
+
+            <label for="mrr-delivery">Preferred delivery *</label>
+            <select id="mrr-delivery" name="delivery_method" required>
+              <option value="">Select one</option>
+              <option value="Secure email">Secure email (if available)</option>
+              <option value="Postal mail">Postal mail</option>
+              <option value="Pick up at office">Pick up at office</option>
+              <option value="Other / not sure">Other / not sure — contact me</option>
+            </select>
+
+            <label for="mrr-address">Mailing address (required if mailing records)</label>
+            <textarea id="mrr-address" name="mailing_address" rows="2" placeholder="Street, City, State, ZIP"></textarea>
+
+            <label for="mrr-details">Records needed *</label>
+            <textarea id="mrr-details" name="details" rows="4" required placeholder="Dates of service, visit types, imaging, referrals, or &ldquo;full copy of chart&rdquo;"></textarea>
+
+            <button type="submit" class="btn btn-primary">Submit record request</button>
+            <p class="pr-form-note">Not for emergencies. If you are experiencing a medical emergency, call 911. By submitting, you agree we may contact you about this request.</p>
+          </form>
         </div>
-        <form id="medicalRequestForm" class="ppsi-form" method="post" action="/medical-record-request">
-          <label for="mrr-name">Full name *</label>
-          <input type="text" id="mrr-name" name="name" required placeholder="As on file" />
-          <label for="mrr-dob">Date of birth</label>
-          <input type="text" id="mrr-dob" name="date_of_birth" placeholder="MM/DD/YYYY" />
-          <label for="mrr-email">Email *</label>
-          <input type="email" id="mrr-email" name="email" required placeholder="your@email.com" />
-          <label for="mrr-phone">Phone *</label>
-          <input type="tel" id="mrr-phone" name="phone" required placeholder="(732) 555-0000" />
-          <label for="mrr-address">Mailing address (for records)</label>
-          <textarea id="mrr-address" name="mailing_address" rows="2" placeholder="Street, City, State, ZIP"></textarea>
-          <label for="mrr-details">Request details</label>
-          <textarea id="mrr-details" name="details" rows="3" placeholder="Dates of service, specific records needed, etc."></textarea>
-          <button type="submit" class="btn btn-primary">Submit request</button>
-        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="pr-photo-band pr-photo-band--team" aria-label="Our team">
+    <div class="pr-photo-band-inner">
+      <h2>Your care team is here to help</h2>
+      <p>Questions about the portal, past visits, or follow-up care? We&rsquo;re one call away.</p>
+      <div class="pr-photo-band-actions">
+        <a href="tel:+17324448888" class="btn btn-primary">Call (732) 444-8888</a>
+        <a href="/contact-us" class="btn btn-secondary">Contact us</a>
       </div>
     </div>
   </section>
@@ -338,7 +429,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.
@@ -424,7 +515,7 @@
     </div>
 
     <div class="footer-bottom">
-      <div>� 2026 <strong style="color:rgba(255,255,255,0.9);">Precision Pain & Spine Institute</strong>. All rights reserved.</div>
+      <div>© 2026 <strong style="color:rgba(255,255,255,0.9);">Precision Pain &amp; Spine Institute</strong>. All rights reserved.</div>
       <div class="footer-bottom-links">
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms-of-service">Terms of Service</a>

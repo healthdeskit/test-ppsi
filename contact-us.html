@@ -9,6 +9,236 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <style>
+    .section-contact-hero {
+      position: relative;
+      padding-top: 56px;
+      padding-bottom: 62px;
+      background-color: #0a355a;
+      overflow: hidden;
+    }
+    /* Full-bleed photo behind first section */
+    .section-contact-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url("/_next/myra-and-doc-consult.webp");
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+    }
+    .section-contact-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(6, 20, 36, 0.62) 0%, rgba(10, 48, 82, 0.78) 45%, rgba(6, 18, 32, 0.85) 100%),
+        radial-gradient(900px 420px at 50% 0%, rgba(15, 76, 129, 0.35), transparent 65%),
+        radial-gradient(700px 280px at 92% 70%, rgba(217, 106, 58, 0.12), transparent 55%);
+      pointer-events: none;
+    }
+    .section-contact-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .contact-hero-panel {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 250, 255, 0.9) 48%, rgba(255, 255, 255, 0.93) 100%);
+      box-shadow:
+        0 28px 70px rgba(4, 18, 32, 0.28),
+        0 0 0 1px rgba(15, 76, 129, 0.06) inset,
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      padding: clamp(28px, 4vw, 44px) clamp(22px, 3.5vw, 40px);
+      backdrop-filter: blur(14px) saturate(1.15);
+      -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero-panel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(220px, 42%);
+      height: 4px;
+      border-radius: 0 0 999px 999px;
+      background: linear-gradient(90deg, transparent, var(--primary) 22%, var(--accent) 50%, var(--primary) 78%, transparent);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+    .contact-hero-panel .eyebrow {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 14px;
+    }
+    .contact-hero-panel .section-title {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: clamp(36px, 4.6vw, 58px);
+      letter-spacing: -0.045em;
+      line-height: 1.04;
+    }
+    .contact-hero-panel .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 640px;
+      margin-top: 18px;
+      font-size: 17px;
+      line-height: 1.78;
+      color: #3d556d;
+    }
+    .contact-hero-divider {
+      width: min(420px, 86%);
+      height: 1px;
+      margin: 26px auto 0;
+      background: linear-gradient(90deg, transparent, rgba(15, 76, 129, 0.18) 20%, rgba(15, 76, 129, 0.22) 50%, rgba(15, 76, 129, 0.18) 80%, transparent);
+    }
+    .contact-hero-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 14px;
+      justify-content: center;
+      align-items: center;
+    }
+    .contact-hero-panel .btn-primary {
+      min-height: 52px;
+      padding: 0 26px;
+      box-shadow: 0 12px 28px rgba(15, 76, 129, 0.22);
+    }
+    .contact-hero-panel .btn-secondary {
+      min-height: 52px;
+      padding: 0 26px;
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(15, 76, 129, 0.22);
+      color: var(--primary-deep);
+      font-weight: 700;
+    }
+    .contact-hero-panel .btn-secondary:hover {
+      background: var(--primary-soft);
+      border-color: var(--primary);
+    }
+    .section-contact-main {
+      padding-top: 74px;
+      background: linear-gradient(180deg, #fbfdff 0%, #f4f8fc 100%);
+    }
+    .contact-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .contact-card {
+      background: #fff;
+      border: 1px solid rgba(15, 76, 129, 0.12);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 26px rgba(15, 76, 129, 0.08);
+    }
+    .contact-quick-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .contact-quick {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      text-align: left;
+      border-radius: 18px;
+      padding: 18px 18px 18px 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+      border: 1px solid rgba(15, 76, 129, 0.11);
+      box-shadow: 0 10px 28px rgba(15, 76, 129, 0.07);
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+    .contact-quick:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 76, 129, 0.12);
+      border-color: rgba(15, 76, 129, 0.18);
+    }
+    .contact-quick-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #eef6fd 0%, #e2eef9 100%);
+      border: 1px solid rgba(15, 76, 129, 0.14);
+      color: var(--primary);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+    .contact-quick-icon .icon {
+      width: 22px;
+      height: 22px;
+    }
+    .contact-quick-body {
+      min-width: 0;
+    }
+    .contact-quick h4 {
+      margin: 0 0 8px;
+      font-family: "Sora", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0b3559;
+    }
+    .contact-quick p {
+      margin: 0;
+      color: #52606d;
+      font-size: 14px;
+      line-height: 1.68;
+    }
+    .contact-quick a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .contact-quick a:hover {
+      text-decoration: underline;
+    }
+    .contact-card h3 {
+      margin: 0 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: 20px;
+      color: #0b3559;
+    }
+    .contact-note {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #eef5fb;
+      color: #244a67;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    @media (max-width: 1024px) {
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+      .contact-quick-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-contact-hero {
+        padding-top: 44px;
+        padding-bottom: 52px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -53,7 +283,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +293,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +341,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +354,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +385,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +448,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +486,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +494,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,17 +544,48 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
+  <section class="section section-contact-hero">
     <div class="container">
-      <div class="eyebrow">Get in Touch</div>
-      <h1 class="section-title">Contact Us</h1>
-      <p class="section-sub">Reach out to our team for appointments, questions, or referrals. We serve patients from all over New Jersey with eight convenient locations.</p>
-      <div style="margin-top:28px;">
-        <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
-        <a href="/locations" class="btn btn-secondary">Our Locations</a>
+      <div class="contact-hero-panel">
+        <div class="eyebrow">Get in Touch</div>
+        <h1 class="section-title">Contact Us</h1>
+        <p class="section-sub">Have a scheduling question, referral request, or insurance concern? Send a message and our team will route your request to the right department.</p>
+        <div class="contact-hero-divider" aria-hidden="true"></div>
+        <div class="contact-hero-actions">
+          <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
+          <a href="/locations" class="btn btn-secondary">Our Locations</a>
+        </div>
+        <div class="contact-quick-grid">
+          <div class="contact-quick">
+            <span class="contact-quick-icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"></use></svg></span>
+            <div class="contact-quick-body">
+              <h4>Main Phone</h4>
+              <p><a href="tel:+17324448888">(732) 444-8888</a><br />Monday–Friday scheduling support.</p>
+            </div>
+          </div>
+          <div class="contact-quick">
+            <span class="contact-quick-icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"></use></svg></span>
+            <div class="contact-quick-body">
+              <h4>Medical Records</h4>
+              <p><a href="mailto:mr@njnopain.com">mr@njnopain.com</a><br />For records and record-related questions.</p>
+            </div>
+          </div>
+          <div class="contact-quick">
+            <span class="contact-quick-icon" aria-hidden="true"><svg class="icon"><use href="#i-location"></use></svg></span>
+            <div class="contact-quick-body">
+              <h4>Locations</h4>
+              <p>Care across New Jersey.<br /><a href="/locations">View all locations</a></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-block" style="margin-top:48px;max-width:560px;">
-        <h2 class="section-title" style="font-size:24px;margin-bottom:16px;">Send a message</h2>
+    </div>
+  </section>
+
+  <section class="section section-contact-main">
+    <div class="container contact-shell">
+      <div class="contact-card">
+        <h3>Send a message</h3>
         <div id="contact-form-success" class="form-status form-status--success" style="display:none;" role="alert">
           Thank you. We have received your message and will get back to you soon.
         </div>
@@ -322,10 +600,25 @@
           <label for="contact-phone">Phone</label>
           <input type="tel" id="contact-phone" name="phone" placeholder="(732) 555-0000" />
           <label for="contact-message">Message *</label>
-          <textarea id="contact-message" name="message" required rows="4" placeholder="How can we help?"></textarea>
+          <textarea id="contact-message" name="message" required rows="5" placeholder="How can we help?"></textarea>
           <button type="submit" class="btn btn-primary">Send message</button>
         </form>
       </div>
+
+      <aside class="contact-card">
+        <h3>Before you submit</h3>
+        <p style="color:var(--text-soft); line-height:1.75; margin:0;">
+          For fastest response, include your preferred location, callback number, and a short summary of your request.
+        </p>
+        <div class="contact-note">
+          <strong>Important:</strong> This form is not for emergencies. If you have urgent symptoms, call emergency services immediately.
+        </div>
+        <div style="display:grid; gap:10px; margin-top:16px;">
+          <a href="/medical-appointment" class="btn btn-primary">Request Appointment</a>
+          <a href="/medical-record-request" class="btn btn-secondary">Medical Record Request</a>
+          <a href="/insurance" class="btn btn-secondary">Insurance Information</a>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -334,7 +627,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

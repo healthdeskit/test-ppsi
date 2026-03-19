@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Alexios Apazidis | PPSI</title>
-  <meta name="description" content="Meet Dr. Alexios Apazidis M.D., Orthopedic Spine Surgeon at Precision Pain & Spine Institute in New Jersey. Minimally invasive spine surgery, disc replacement, and complex spinal care across 8 locations." />
+  <meta name="description" content="Meet Dr. Alexios Apazidis M.D., Orthopedic Spine Surgeon at Precision Pain &amp; Spine Institute in New Jersey. Minimally invasive spine surgery, disc replacement, and complex spinal care." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
 </head>
-<body>
+<body class="page-provider-premium">
 
   <svg width="0" height="0" style="position:absolute;visibility:hidden;">
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></symbol>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +63,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +111,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +124,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +155,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +218,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +256,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +264,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,24 +314,59 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
+    <section class="section section-provider-hero-start">
     <div class="container">
       <div class="provider-hero">
         <div class="provider-hero-image-wrap">
-          <img src="_next/Alexios_Apazidis_L.png" alt="Dr. Alexios Apazidis, Orthopedic Spine Surgeon in New Jersey" loading="eager" decoding="async" />
+          <img src="_next/Alexios_Apazidis_L.webp" alt="Dr. Alexios Apazidis, Orthopedic Spine Surgeon in New Jersey" loading="eager" decoding="async" />
         </div>
-        <div>
+        <div class="provider-hero-content provider-hero-content--unified">
           <div class="eyebrow">Our Doctors</div>
-          <h1 class="provider-hero-name">Dr. Alexios Apazidis M.D.</h1>
+          <h1 class="section-title">Dr. Alexios Apazidis M.D.</h1>
           <p class="provider-hero-role">Orthopedic Spine Surgeon</p>
-          <p class="section-sub" style="margin-top:20px;">
-            Dr. Alexios Apazidis is an Orthopedic Spine Surgeon at Precision Pain &amp; Spine Institute with specialized expertise in spine surgery and advanced structural treatment planning. He performs minimally invasive procedures, disc replacement, fusion, and revision surgeries for patients with complex spine conditions across New Jersey. His surgical approach prioritizes precision, reduced recovery time, and lasting outcomes.
-          </p>
           <div class="provider-hero-actions">
             <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
             <a href="/locations" class="btn btn-secondary">Our Locations</a>
           </div>
+          <p class="section-sub provider-hero-bio">Dr. Alexios Apazidis is an Orthopedic Spine Surgeon at Precision Pain &amp; Spine Institute, specializing in minimally invasive spine surgery, disc replacement, fusion, and revision procedures for complex conditions statewide.</p>
+          <p class="section-sub provider-hero-bio provider-hero-bio--secondary">His approach emphasizes precision, thoughtful timing of surgery, and clear expectations for recovery and long-term function.</p>
+          <div class="provider-hero-stats" aria-label="Surgical focus">
+            <div class="provider-hero-stat">
+              <span class="provider-hero-stat-num is-label-stat">MIS spine</span>
+              <span class="provider-hero-stat-label">Minimally invasive techniques</span>
+            </div>
+            <div class="provider-hero-stat">
+              <span class="provider-hero-stat-num is-label-stat">Motion</span>
+              <span class="provider-hero-stat-label">Disc replacement when appropriate</span>
+            </div>
+            <div class="provider-hero-stat">
+              <span class="provider-hero-stat-num is-label-stat">Revision</span>
+              <span class="provider-hero-stat-label">Complex &amp; prior surgery cases</span>
+            </div>
+            <div class="provider-hero-stat">
+              <span class="provider-hero-stat-num is-label-stat">Outcomes</span>
+              <span class="provider-hero-stat-label">Recovery-focused planning</span>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="provider-practice-wide" aria-labelledby="apazidis-practice-heading">
+        <div class="provider-practice-wide__intro">
+          <span class="eyebrow">In practice</span>
+          <h2 id="apazidis-practice-heading">In the office, focused on each visit</h2>
+          <p class="provider-practice-wide__lead">
+            In clinic, Dr. Apazidis takes time to review symptoms and imaging with patients, explain what the findings mean, and outline surgical and non-surgical paths when appropriate. Visits are structured so you understand the plan, the timing of any procedure, and what recovery typically looks like.
+          </p>
+        </div>
+        <figure class="provider-practice-wide__media">
+          <img
+            src="/_next/Alexios_Apazidis_withpatient.webp"
+            alt="Dr. Apazidis meeting with a patient in the office"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
       </div>
 
       <div class="provider-section">
@@ -386,7 +438,7 @@
       <div class="provider-section">
         <h2>Where to See Dr. Alexios Apazidis in New Jersey</h2>
         <p>
-          Dr. Apazidis sees patients at Precision Pain &amp; Spine Institute locations across New Jersey. Surgical procedures may be performed at affiliated hospitals or ambulatory surgery centers. To schedule a consultation with Dr. Alexios Apazidis or learn more about spine surgery options at PPSI, call (732) 444-8888 or request an appointment online.
+          Dr. Apazidis sees surgical and consultation patients at select Precision Pain &amp; Spine Institute locations; procedures may be performed at affiliated hospitals or ambulatory surgery centers. To schedule a consultation, request an appointment online—our team will guide you to the appropriate site.
         </p>
         <div class="provider-hero-actions" style="margin-top:24px;">
           <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
@@ -401,7 +453,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

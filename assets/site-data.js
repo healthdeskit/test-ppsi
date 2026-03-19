@@ -9,7 +9,7 @@ window.SITE_DATA = {
   "header": {
     "logoHref": "index.html",
     "logoAlt": "Precision Pain and Spine Institute",
-    "logoSrc": "assets/ppsi-logo.png",
+    "logoSrc": "assets/ppsi-logo.webp",
     "cta": [
       {
         "label": "Our locations",

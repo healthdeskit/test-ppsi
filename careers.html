@@ -10,6 +10,262 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
   <link rel="stylesheet" href="css/ppsi-service-pages.css" />
+  <style>
+    .svc-hero--careers::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(760px 360px at 86% 20%, rgba(255,255,255,0.14), transparent 72%),
+        radial-gradient(700px 320px at 8% 78%, rgba(255,255,255,0.1), transparent 70%);
+    }
+    .careers-jobs-grid .careers-job-card {
+      border-radius: 22px;
+      border: 1px solid rgba(15, 76, 129, 0.12);
+      box-shadow: 0 14px 36px rgba(15, 76, 129, 0.1);
+    }
+    .careers-job-card h3 {
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      color: #0b3559;
+    }
+    .careers-job-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      background: #eef5fb;
+      color: #0f4c81;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+    }
+    .careers-job-desc,
+    .careers-job-reqs {
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+    .careers-apply-inner {
+      border-radius: 22px;
+      border: 1px solid rgba(15, 76, 129, 0.12);
+      box-shadow: 0 14px 34px rgba(15, 76, 129, 0.08);
+      background: #fff;
+      padding: 24px;
+    }
+
+    /* Full-bleed team photo CTA — premium glass panel */
+    .careers-team-cta {
+      position: relative;
+      padding: clamp(64px, 10vw, 104px) 0;
+      overflow: hidden;
+    }
+
+    .careers-team-cta__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("_next/all-ppsi-team.webp");
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      transform: scale(1.03);
+    }
+
+    .careers-team-cta__scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        118deg,
+        rgba(6, 28, 48, 0.94) 0%,
+        rgba(10, 53, 90, 0.82) 38%,
+        rgba(15, 76, 129, 0.5) 72%,
+        rgba(8, 40, 70, 0.75) 100%
+      );
+    }
+
+    .careers-team-cta__grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    .careers-team-cta__inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .careers-team-cta__panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(260px, 0.88fr);
+      gap: clamp(22px, 4vw, 40px);
+      align-items: stretch;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 880px) {
+      .careers-team-cta__panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .careers-team-cta__copy {
+      position: relative;
+      padding: clamp(28px, 4vw, 44px) clamp(26px, 4vw, 44px);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      box-shadow:
+        0 28px 72px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .careers-team-cta__accent {
+      display: block;
+      width: 52px;
+      height: 4px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #d96a3a 0%, #f0b49a 100%);
+      margin-bottom: 6px;
+    }
+
+    .careers-team-cta__copy .eyebrow {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .careers-team-cta__copy .eyebrow::before {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .careers-team-cta__title {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(28px, 4.2vw, 44px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin: 14px 0 0;
+      text-shadow: 0 2px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .careers-team-cta__sub {
+      margin-top: 18px;
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 540px;
+    }
+
+    .careers-team-cta__tags {
+      list-style: none;
+      margin: 26px 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .careers-team-cta__tags li {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .careers-team-cta__card {
+      background: #fff;
+      border-radius: 26px;
+      padding: 30px 32px;
+      border: 1px solid rgba(15, 76, 129, 0.1);
+      box-shadow:
+        0 24px 64px rgba(0, 0, 0, 0.22),
+        0 10px 28px rgba(10, 53, 90, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .careers-team-cta__card-label {
+      font-family: "Sora", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .careers-team-cta__card-lead {
+      margin: 10px 0 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .careers-team-cta__card-note {
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-soft);
+    }
+
+    .careers-team-cta__card-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .careers-team-cta__card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .careers-team-cta__card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(15, 76, 129, 0.12);
+    }
+
+    .careers-team-cta__card-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 8px 0;
+    }
+
+    .careers-team-cta__card-actions a:hover {
+      color: var(--primary-deep);
+    }
+
+    .careers-team-cta__card-actions a .icon {
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -54,7 +310,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -64,7 +320,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -112,7 +368,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -125,11 +381,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -142,24 +412,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -205,7 +475,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -243,7 +513,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -251,32 +521,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -303,11 +576,11 @@
     <div class="container">
       <span class="svc-eyebrow">Careers</span>
       <h1>Join the PPSI Team</h1>
-      <p class="svc-hero-sub">We’re growing across New Jersey and looking for skilled, caring professionals—clinical and administrative—who want to be part of a multidisciplinary pain and spine practice. Competitive compensation, benefits, and the chance to work alongside board-certified specialists.</p>
+      <p class="svc-hero-sub">Build your career with a physician-led team focused on patient outcomes, operational excellence, and long-term growth across New Jersey. We hire for both clinical and administrative roles.</p>
       <div class="svc-hero-features">
-        <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> 8 NJ Locations</span>
-        <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Clinical &amp; Admin Roles</span>
-        <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Apply Online</span>
+        <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Multi-location opportunities</span>
+        <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Clinical + administrative pathways</span>
+        <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Structured onboarding and team support</span>
       </div>
       <div class="svc-hero-actions">
         <a href="#open-positions" class="btn btn-primary">View Open Positions</a>
@@ -328,7 +601,7 @@
       <div class="svc-section-header">
         <span class="svc-section-label">We're Hiring</span>
         <h2 class="svc-section-title">Open Positions</h2>
-        <p class="svc-section-desc">Full-time and part-time opportunities at multiple PPSI locations. Apply below and our team will review your application.</p>
+        <p class="svc-section-desc">Current openings for team members who value quality care, reliability, and a patient-first service mindset. Apply online and our recruiting team will follow up.</p>
       </div>
       <div class="careers-jobs-grid">
         <article class="careers-job-card">
@@ -411,30 +684,46 @@
     </div>
   </section>
 
-  <!-- CTA (same as homepage) -->
-  <section class="section section-cta-blue">
-    <div class="container">
-      <div class="cta-banner cta-banner--on-blue">
-        <div class="cta-banner-text">
+  <!-- CTA: full team photo + premium glass panel -->
+  <section class="careers-team-cta" aria-label="Questions about careers">
+    <div class="careers-team-cta__bg" aria-hidden="true"></div>
+    <div class="careers-team-cta__scrim" aria-hidden="true"></div>
+    <div class="careers-team-cta__grain" aria-hidden="true"></div>
+    <div class="container careers-team-cta__inner">
+      <div class="careers-team-cta__panel">
+        <div class="careers-team-cta__copy">
+          <span class="careers-team-cta__accent" aria-hidden="true"></span>
           <div class="eyebrow">Questions?</div>
-          <h2 class="cta-title">Get in touch with our team.</h2>
-          <p class="cta-sub">
-            Not sure which role fits, or want to learn more about PPSI before applying? Reach out—we’re happy to talk.
+          <h2 class="careers-team-cta__title">Questions? We handle careers online only.</h2>
+          <p class="careers-team-cta__sub">
+            Not sure which role fits, or want a bit more context before you apply? Use the contact form or submit an application here&mdash;our hiring team will follow up by email. Please don&rsquo;t call clinic lines for job inquiries; it keeps front desk and clinical staff focused on patients.
           </p>
+          <ul class="careers-team-cta__tags" aria-label="How to reach us about careers">
+            <li>Apply online</li>
+            <li>Email follow-up</li>
+            <li>8 NJ locations</li>
+          </ul>
         </div>
-        <div class="cta-side cta-side--white">
-          <div class="cta-side-row">
-            <span class="cta-side-icon"><svg class="icon icon-sm"><use href="#i-phone"></use></svg></span>
+        <aside class="careers-team-cta__card">
+          <div class="careers-team-cta__card-row">
+            <span class="careers-team-cta__card-icon"><svg class="icon icon-sm"><use href="#i-mail"></use></svg></span>
             <div>
-              <div class="cta-side-label">Call to Schedule</div>
-              <div class="cta-side-phone">(732) 444-8888</div>
+              <div class="careers-team-cta__card-label">Next steps</div>
+              <p class="careers-team-cta__card-lead">Career questions and applications are only accepted through this website.</p>
+              <p class="careers-team-cta__card-note">Choose the contact form for general questions, or go straight to the application if you&rsquo;re ready to apply.</p>
             </div>
           </div>
-          <a href="/contact-us" class="cta-side-link">
-            <svg class="icon icon-sm"><use href="#i-location"></use></svg>
-            Contact Us
-          </a>
-        </div>
+          <div class="careers-team-cta__card-actions">
+            <a href="/contact-us">
+              <svg class="icon icon-sm"><use href="#i-mail"></use></svg>
+              Career question &mdash; contact form
+            </a>
+            <a href="#job-apply-form">
+              <svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg>
+              Submit application online
+            </a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -444,7 +733,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

@@ -1,31 +1,30 @@
-# Git
 .git
 .gitignore
+.env
+.env.*
+!.env.example
 
-# Dependencies (we npm install in container)
 node_modules
 server/node_modules
 
-# Data (runtime; use volume or platform disk)
+# Runtime data (use volume)
 data/*.json
 data/uploads/*
 !data/.gitkeep
 
-# Docs / dev (optional)
+# Dev / docs
 *.md
-!DEPLOY-FREE.md
-_templates
-scripts
-
-# IDE / OS
-.idea
 .vscode
+.idea
 *.log
 .DS_Store
 Thumbs.db
 
-# PHP (not used in Node Docker image)
+# Not needed inside Node image
 php
 admin/*.php
-docker
+_templates
+scripts
+
+# Optional: keep compose file out of image context bloat (already excluded by COPY scope — harmless)
 docker-compose*.yml

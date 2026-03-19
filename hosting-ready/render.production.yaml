@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ppsi-web
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+    disks:
+      - name: ppsi-data
+        mountPath: /app/data
+        sizeGB: 1
+    plan: starter

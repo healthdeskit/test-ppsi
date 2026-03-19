@@ -1,16 +1,312 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Fouad Karam | PPSI</title>
-  <meta name="description" content="Meet Dr. Fouad Karam, Doctor of Chiropractic at Precision Pain & Spine Institute in New Jersey. Conservative spinal care, movement improvement, and functional recovery across 8 locations." />
+  <meta name="description" content="Meet Dr. Fouad Karam, Doctor of Chiropractic at Precision Spine and Sports Medicine, in coordination with Precision Pain &amp; Spine Institute (PPSI) in New Jersey. Conservative spinal care and functional recovery." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <style>
+    .karam-name-premium {
+      font-size: clamp(2.5rem, 4.2vw, 3.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    @media (max-width: 640px) {
+      .karam-name-premium {
+        font-size: clamp(2.1rem, 9vw, 2.8rem);
+        letter-spacing: -0.03em;
+      }
+    }
+
+    .section.karam-visual-band {
+      padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+      padding-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+    }
+
+    .karam-visual-band {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      min-height: min(42vh, 400px);
+      display: flex;
+      align-items: center;
+      background: #0f172a;
+    }
+
+    .karam-visual-band__bg {
+      position: absolute;
+      inset: 0;
+      background: url("_next/dr-karam-adjusting-patient.webp") center center / cover no-repeat;
+    }
+
+    .karam-visual-band__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.78) 42%, rgba(15, 23, 42, 0.5) 72%, rgba(15, 76, 129, 0.2) 100%);
+      pointer-events: none;
+    }
+
+    .karam-visual-band .container {
+      position: relative;
+      z-index: 2;
+      width: min(var(--container, 1200px), calc(100% - 32px));
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    .karam-visual-band__row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: clamp(1.25rem, 3vw, 2rem);
+      flex-wrap: wrap;
+    }
+
+    .karam-visual-band__main {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: min(34rem, 100%);
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    .karam-visual-band__eyebrow {
+      display: inline;
+      font-family: "Sora", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      margin: 0;
+    }
+
+    .karam-visual-band__head-one-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.5rem 0.75rem;
+      margin: 0 0 1.1rem;
+      line-height: 1.2;
+    }
+
+    .karam-visual-band__head-one-line .karam-visual-band__eyebrow {
+      flex-shrink: 0;
+    }
+
+    .karam-visual-band__title {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #fff;
+      margin: 0;
+    }
+
+    .karam-visual-band__head-sep {
+      width: 1px;
+      height: 1.1em;
+      background: rgba(255, 255, 255, 0.35);
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .karam-visual-band__lead {
+      margin: 0;
+      max-width: 100%;
+      font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      overflow-wrap: break-word;
+    }
+
+    .karam-visual-band__note {
+      margin: 1.25rem 0 0;
+      max-width: 100%;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65);
+      overflow-wrap: break-word;
+    }
+
+    .karam-visual-band__cta {
+      flex: 0 0 auto;
+      align-self: flex-start;
+      max-width: 100%;
+    }
+
+    .karam-visual-band__call-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 200px;
+      padding: 18px 26px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #0f172a;
+      background: linear-gradient(165deg, #ffffff 0%, #f0f7fc 100%);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(15, 76, 129, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .karam-visual-band__call-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(15, 76, 129, 0.12);
+    }
+
+    .karam-visual-band__call-btn .karam-visual-band__call-label {
+      font-family: "Sora", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .karam-visual-band__call-btn .karam-visual-band__call-num {
+      font-family: "Sora", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f4c81;
+    }
+
+    .karam-visual-band__call-btn .icon {
+      width: 22px;
+      height: 22px;
+      color: #0f4c81;
+      margin-bottom: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .karam-visual-band__row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .karam-visual-band__main {
+        max-width: 100%;
+      }
+
+      .karam-visual-band__cta {
+        align-self: stretch;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .karam-visual-band__head-sep {
+        display: none;
+      }
+
+      .karam-visual-band__cta {
+        align-self: stretch;
+      }
+
+      .karam-visual-band__call-btn {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 16px;
+        min-width: 0;
+      }
+
+      .karam-visual-band__call-btn .icon {
+        margin-bottom: 0;
+      }
+    }
+
+    .karam-hands-on-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(1.75rem, 4vw, 3rem);
+      align-items: center;
+    }
+
+    .karam-hands-on-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #e8eef4;
+      border: 1px solid rgba(15, 76, 129, 0.1);
+      box-shadow:
+        0 4px 6px -1px rgba(15, 76, 129, 0.08),
+        0 22px 48px -18px rgba(15, 76, 129, 0.16);
+      min-height: min(52vw, 520px);
+      max-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(0.5rem, 2vw, 1.25rem);
+    }
+
+    .karam-hands-on-frame img {
+      width: 100%;
+      height: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .karam-hero2-below {
+      margin-top: clamp(2rem, 5vw, 3rem);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 76, 129, 0.08);
+      box-shadow: 0 16px 40px -20px rgba(15, 76, 129, 0.2);
+      max-height: 420px;
+    }
+
+    .karam-hero2-below img {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      max-height: 420px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .karam-hands-on-row {
+        grid-template-columns: 1fr;
+      }
+
+      .karam-hands-on-frame {
+        min-height: 360px;
+        max-height: 480px;
+        order: 2;
+      }
+
+      .karam-hands-on-row .consult-content {
+        order: 1;
+      }
+
+      .karam-hands-on-frame img {
+        max-height: 440px;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="page-provider-premium">
 
   <svg width="0" height="0" style="position:absolute;visibility:hidden;">
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></symbol>
@@ -53,7 +349,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +359,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +407,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +420,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +451,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +514,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +552,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +560,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,33 +610,82 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
+    <section class="section section-provider-hero-start">
     <div class="container">
       <div class="provider-hero">
         <div class="provider-hero-image-wrap">
-          <img src="_next/Fouad_Karam_Large_d66562935f1a99.png" alt="Dr. Fouad Karam, Chiropractor in New Jersey" loading="eager" decoding="async" />
+          <img src="_next/Fouad_Karam_Large_d66562935f1a99.webp" alt="Dr. Fouad Karam, Chiropractor in New Jersey" loading="eager" decoding="async" />
         </div>
-        <div>
+        <div class="provider-hero-content provider-hero-content--unified">
           <div class="eyebrow">Our Doctors</div>
-          <h1 class="provider-hero-name">Dr. Fouad Karam</h1>
+          <h1 class="section-title karam-name-premium">Dr. Fouad Karam</h1>
           <p class="provider-hero-role">Doctor of Chiropractic</p>
-          <p class="section-sub" style="margin-top:20px;">
-            Dr. Fouad Karam is a Doctor of Chiropractic at Precision Pain &amp; Spine Institute, offering conservative care planning to improve movement, comfort, and functional recovery. He combines hands-on spinal adjustments with rehabilitative exercises and lifestyle guidance to help patients achieve lasting relief from back pain, neck pain, and musculoskeletal conditions across New Jersey.
-          </p>
           <div class="provider-hero-actions">
             <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
             <a href="/locations" class="btn btn-secondary">Our Locations</a>
           </div>
+          <p class="section-sub provider-hero-bio">Dr. Fouad Karam delivers conservative chiropractic care through <strong>Precision Spine and Sports Medicine</strong>, in coordination with <strong>Precision Pain &amp; Spine Institute (PPSI)</strong>. His focus includes spinal adjustments, rehabilitative exercise, and lifestyle guidance for back pain, neck pain, and musculoskeletal recovery. He sees adults across activity levels, from desk workers with posture-related strain to athletes managing soreness, stiffness, or training load. Each plan is shaped around your exam findings, your goals, and what you want to return to doing comfortably.</p>
+          <p class="section-sub provider-hero-bio provider-hero-bio--secondary">Care is evidence-based and patient-first. <strong>Precision Spine and Sports Medicine</strong> and <strong>PPSI</strong> are linked organizations, so when your case benefits from pain management, physical therapy, imaging, or specialty input, referrals and communication stay coordinated. Dr. Karam explains options in plain language, checks in on how you are responding, and adjusts treatment as you improve. For appointments at his Precision Spine and Sports Medicine pathway, you can call <strong>(732) 422-3400</strong>; for general PPSI scheduling, use Book Appointment or our main line as listed site-wide.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section karam-visual-band" aria-labelledby="karam-visual-heading">
+    <div class="karam-visual-band__bg" role="img" aria-label="Dr. Karam performing hands-on chiropractic care in the clinic"></div>
+    <div class="karam-visual-band__overlay" aria-hidden="true"></div>
+    <div class="container">
+      <div class="karam-visual-band__row">
+        <div class="karam-visual-band__main">
+          <h2 id="karam-visual-heading" class="karam-visual-band__head-one-line">
+            <span class="karam-visual-band__eyebrow">In practice</span>
+            <span class="karam-visual-band__head-sep" aria-hidden="true"></span>
+            <span class="karam-visual-band__title">Dr. Karam in the clinic</span>
+          </h2>
+          <p class="karam-visual-band__lead">Hands-on evaluation and adjustment, paired with clear guidance on movement and recovery. Dr. Karam&rsquo;s practice is rooted in <strong>Precision Spine and Sports Medicine</strong>, with pathways to the broader <strong>PPSI</strong> team when your case benefits from pain management, PT, or specialty spine care.</p>
+          <p class="karam-visual-band__note">Precision Spine and Sports Medicine and Precision Pain &amp; Spine Institute are affiliated; care is coordinated across both when appropriate.</p>
+        </div>
+        <div class="karam-visual-band__cta">
+          <a href="tel:+17324223400" class="karam-visual-band__call-btn" aria-label="Call (732) 422-3400 to schedule an appointment with Dr. Karam">
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
+            <span class="karam-visual-band__call-label">Call to schedule</span>
+            <span class="karam-visual-band__call-num">(732) 422-3400</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="section section-soft section-consult">
+    <div class="container">
+      <div class="karam-hands-on-row">
+        <div class="karam-hands-on-frame">
+          <img src="_next/dr-karam-adjusting-patient.webp" alt="Dr. Karam performing hands-on chiropractic care in the clinic" loading="lazy" decoding="async" />
+        </div>
+        <div class="consult-content">
+          <div class="eyebrow">Clinical focus</div>
+          <h2 class="consult-heading">Conservative care with a sports-minded lens</h2>
+          <p class="consult-text">At <strong>Precision Spine and Sports Medicine</strong>, Dr. Karam emphasizes non-surgical options first: spinal and joint care, soft-tissue work, and exercise-based rehab. When your plan needs more than chiropractic alone, he can align with colleagues at <strong>PPSI</strong> so you stay on one coordinated path.</p>
+        </div>
+      </div>
+      <div class="karam-hero2-below">
+        <img src="_next/home-page-hero-2.jpeg" alt="Precision Spine and Sports Medicine and PPSI clinical environment" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
 
       <div class="provider-section">
-        <h2>About Dr. Fouad Karam &amp; Chiropractic Care at PPSI</h2>
+        <h2>About Dr. Fouad Karam</h2>
         <p>
-          Dr. Fouad Karam brings a patient-focused, evidence-based approach to chiropractic care at Precision Pain &amp; Spine Institute. As part of PPSI's multidisciplinary team, he works alongside pain management physicians, spine surgeons, and physical therapists to provide integrated care for spine and musculoskeletal conditions. His conservative care philosophy prioritizes non-invasive options, patient education, and sustainable outcomes.
+          Dr. Fouad Karam brings a patient-focused, evidence-based approach to chiropractic care at <strong>Precision Spine and Sports Medicine</strong>, working in coordination with <strong>Precision Pain &amp; Spine Institute (PPSI)</strong>. He collaborates with pain management physicians, spine specialists, and physical therapists when integrated care supports spine and musculoskeletal conditions. His conservative philosophy prioritizes non-invasive options, patient education, and sustainable outcomes.
         </p>
         <p>
-          Dr. Karam is known for his hands-on expertise and personalized treatment plans. Patients often seek him for chronic back pain, neck pain, headaches, and joint dysfunction. He takes time to assess posture, mobility, and functional limitations before recommending a care plan tailored to each patient's goals and lifestyle.
+          Dr. Karam is known for his hands-on expertise and personalized treatment plans. Patients often seek him for chronic back pain, neck pain, headaches, and joint dysfunction. He takes time to assess posture, mobility, and functional limitations before recommending a care plan tailored to each patient&rsquo;s goals and lifestyle.
         </p>
       </div>
 
@@ -333,7 +695,7 @@
           Dr. Karam specializes in spinal manipulation, mobilization, soft tissue techniques, and rehabilitative exercise programming. He treats conditions such as lumbar and cervical spine dysfunction, disc-related pain, sciatica, whiplash, and repetitive strain injuries. His approach integrates chiropractic adjustments with stretching, strengthening, and ergonomic recommendations to support long-term mobility and comfort.
         </p>
         <p>
-          He is experienced in treating patients of all ages and activity levels, from office workers with posture-related pain to active individuals recovering from injuries. He coordinates with other PPSI providers when imaging, injections, or surgical consultation may be beneficial, ensuring patients receive the right care at the right time.
+          He treats patients across ages and activity levels, from office workers with posture-related pain to active individuals recovering from injuries. When imaging, injections, or surgical consultation may help, he coordinates with providers through <strong>Precision Spine and Sports Medicine</strong> and <strong>PPSI</strong> so you receive the right care at the right time.
         </p>
       </div>
 
@@ -343,7 +705,7 @@
           Dr. Fouad Karam holds a Doctor of Chiropractic (D.C.) degree from an accredited chiropractic college. His training includes extensive coursework in anatomy, physiology, biomechanics, and clinical diagnosis. He maintains active licensure and continues his education to stay current with evidence-based chiropractic techniques and collaborative care models.
         </p>
         <p>
-          At PPSI, he adheres to clinical guidelines for spinal manipulation and communicates openly with patients about treatment expectations. He supports informed consent and shared decision-making, ensuring patients understand their options and feel confident in their care plan.
+          In practice at <strong>Precision Spine and Sports Medicine</strong> and in coordination with <strong>PPSI</strong>, he follows clinical guidelines for spinal manipulation and communicates openly about treatment expectations, informed consent, and shared decision-making.
         </p>
       </div>
 
@@ -379,14 +741,14 @@
       <div class="provider-section">
         <h2>Why Patients Choose Dr. Fouad Karam for Chiropractic Care</h2>
         <p>
-          Patients consistently rate Dr. Karam highly for his skill, patience, and ability to deliver lasting relief. His integrative approach�combining chiropractic adjustments with exercises and lifestyle guidance�helps patients not only feel better but also understand how to maintain their progress. As part of PPSI's multidisciplinary team, he ensures that patients receive coordinated care when chiropractic is combined with pain management, physical therapy, or other services.
+          Patients value Dr. Karam for his skill, patience, and practical relief. His approach combines adjustments with exercises and lifestyle guidance so patients understand how to maintain progress. Through <strong>Precision Spine and Sports Medicine</strong> and linked care at <strong>PPSI</strong>, he can help coordinate pain management, physical therapy, or other services when your case calls for it.
         </p>
       </div>
 
       <div class="provider-section">
         <h2>Where to See Dr. Fouad Karam in New Jersey</h2>
         <p>
-          Dr. Fouad Karam sees patients at Precision Pain &amp; Spine Institute locations across New Jersey. To schedule a consultation with Dr. Karam or learn more about chiropractic care at PPSI, call (732) 444-8888 or request an appointment online.
+          Dr. Fouad Karam sees patients through <strong>Precision Spine and Sports Medicine</strong>, with scheduling and sites also connected to <strong>Precision Pain &amp; Spine Institute (PPSI)</strong>. Request an appointment online and our team will confirm the right location and availability.
         </p>
         <div class="provider-hero-actions" style="margin-top:24px;">
           <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
@@ -401,7 +763,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.
@@ -487,7 +849,7 @@
     </div>
 
     <div class="footer-bottom">
-      <div>� 2026 <strong style="color:rgba(255,255,255,0.9);">Precision Pain & Spine Institute</strong>. All rights reserved.</div>
+      <div>  2026 <strong style="color:rgba(255,255,255,0.9);">Precision Pain & Spine Institute</strong>. All rights reserved.</div>
       <div class="footer-bottom-links">
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms-of-service">Terms of Service</a>

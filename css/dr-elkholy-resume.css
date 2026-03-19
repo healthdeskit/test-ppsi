@@ -1,0 +1,655 @@
+/**
+ * Dr. Elkholy CV — document-style layout + print / Save as PDF
+ */
+
+/* ---- Screen: feels like opening a formal CV ---- */
+.resume-cv-page {
+  background: #cfd8e6;
+}
+
+.resume-cv-page .resume-section-wrap.resume-cv-shell {
+  background: linear-gradient(165deg, #c5d0e0 0%, #d8e0eb 40%, #e4eaf2 100%);
+  min-height: calc(100vh - 0px);
+  padding-bottom: 72px;
+}
+
+.resume-cv-page .resume-page {
+  max-width: 100%;
+  padding: 20px 18px 56px;
+}
+
+.resume-cv-page .resume-document {
+  max-width: 8.27in;
+  margin: 0 auto;
+  background: #fefefe;
+  color: #0f172a;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 12px 40px rgba(15, 76, 129, 0.1),
+    0 0 0 1px rgba(15, 76, 129, 0.07);
+  border-radius: 3px;
+  padding: 44px 48px 52px;
+  position: relative;
+}
+
+/* Subtle paper edge */
+.resume-cv-page .resume-document::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Print toolbar */
+.resume-print-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(254, 254, 254, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 76, 129, 0.12);
+  padding: 14px 20px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 20px rgba(15, 76, 129, 0.06);
+}
+
+.resume-print-toolbar-inner {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resume-print-toolbar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resume-print-toolbar-brand strong {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.resume-print-toolbar-brand span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.resume-print-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.resume-print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 8px;
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #0f4c81 0%, #155a90 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(15, 76, 129, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resume-print-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.4);
+}
+
+.resume-print-back {
+  font-family: "Sora", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary, #0f4c81);
+  text-decoration: none;
+  padding: 8px 4px;
+  white-space: nowrap;
+}
+
+.resume-print-back:hover {
+  text-decoration: underline;
+}
+
+.resume-print-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Document header (inside paper) */
+.resume-cv-page .resume-document .resume-hero {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 28px 36px;
+  align-items: start;
+  margin-bottom: 36px;
+  padding: 0 0 28px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 2px solid #0f4c81;
+}
+
+.resume-cv-page .resume-document .resume-hero-photo {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.resume-cv-page .resume-document .resume-eyebrow {
+  letter-spacing: 0.22em;
+  font-size: 10px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.resume-cv-page .resume-document .resume-hero-name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.resume-cv-page .resume-document .resume-hero-role {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f4c81;
+  margin-bottom: 10px;
+}
+
+.resume-cv-page .resume-document .resume-hero-positions {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #475569;
+  margin-bottom: 14px;
+  max-width: 52rem;
+}
+
+.resume-cv-page .resume-document .resume-hero-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 4px;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 4px;
+  padding-top: 14px;
+}
+
+.resume-cv-page .resume-document .resume-contact-item {
+  font-family: "Sora", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f4c81;
+}
+
+.resume-cv-page .resume-document .resume-contact-item svg {
+  opacity: 0.75;
+}
+
+/* Section blocks: minimal, typographic */
+.resume-cv-page .resume-document .resume-section {
+  margin-top: 28px;
+}
+
+.resume-cv-page .resume-document .resume-section-card {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  padding-top: 22px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.resume-cv-page .resume-document .resume-hero + .resume-section.resume-section-card {
+  border-top: none;
+  padding-top: 0;
+}
+
+.resume-cv-page .resume-document .resume-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Sora", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #0f4c81;
+  margin: 0 0 16px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.resume-cv-page .resume-document .resume-section-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #cbd5e1, transparent);
+  margin-left: 4px;
+}
+
+.resume-cv-page .resume-document .resume-section-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #0f4c81;
+}
+
+.resume-cv-page .resume-document .resume-section h2 {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.resume-cv-page .resume-document .resume-entry-title {
+  font-family: "Sora", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.resume-cv-page .resume-document .resume-entry-meta {
+  font-family: "Sora", sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.resume-cv-page .resume-document .resume-entry p,
+.resume-cv-page .resume-document .resume-entry ul,
+.resume-cv-page .resume-document .resume-section-card > p {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.62;
+  color: #334155;
+}
+
+.resume-cv-page .resume-document .resume-entry ul {
+  padding-left: 18px;
+}
+
+.resume-cv-page .resume-document .resume-entry li {
+  margin-bottom: 5px;
+}
+
+.resume-cv-page .resume-document .resume-grid-2 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
+  gap: 8px 28px;
+}
+
+.resume-cv-page .resume-document .resume-grid-2 > div {
+  padding: 6px 0;
+  padding-left: 14px;
+  border-left: 2px solid #e2e8f0;
+}
+
+.resume-cv-page .resume-document .resume-section-card > ul {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 13px;
+  line-height: 1.58;
+  color: #334155;
+  padding-left: 18px;
+  margin: 0;
+}
+
+.resume-cv-page .resume-document .resume-section-card > ul li {
+  margin-bottom: 6px;
+}
+
+.resume-cv-page .resume-document .resume-pub {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 12.5px;
+  line-height: 1.58;
+  color: #475569;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  border-left: 2px solid #e2e8f0;
+}
+
+.resume-cv-page .resume-back-link {
+  margin-top: 28px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 8.27in;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .resume-cv-page .resume-document {
+    padding: 28px 22px 36px;
+  }
+
+  .resume-cv-page .resume-document .resume-hero {
+    grid-template-columns: 96px 1fr;
+    gap: 20px;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-name {
+    font-size: 1.5rem;
+  }
+
+  .resume-cv-page .resume-document .resume-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== PRINT / Save as PDF ========== */
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 0.45in 0.48in;
+  }
+
+  html,
+  body.resume-cv-page {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10.5pt;
+    widows: 2;
+    orphans: 2;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print,
+  .resume-print-toolbar,
+  .site-header,
+  .mobile-menu-overlay,
+  .mobile-menu-panel,
+  .site-footer,
+  .scroll-top,
+  .page-offset {
+    display: none !important;
+  }
+
+  .resume-cv-page .resume-section-wrap.resume-cv-shell {
+    background: #fff !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .resume-cv-page .resume-page,
+  .resume-cv-page .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .resume-cv-page .resume-document {
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .resume-cv-page .resume-document::before {
+    display: none !important;
+  }
+
+  /* Hero: float photo so long bio text flows across pages (grid breaks badly in print) */
+  .resume-cv-page .resume-document .resume-hero {
+    display: block !important;
+    page-break-inside: auto;
+    break-inside: auto;
+    margin: 0 0 14pt 0 !important;
+    padding: 0 0 12pt 0 !important;
+    border-bottom: 1pt solid #000 !important;
+    overflow: visible !important;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-photo {
+    float: left !important;
+    width: 84pt !important;
+    height: 84pt !important;
+    max-width: 84pt !important;
+    margin: 0 14pt 6pt 0 !important;
+    padding: 0 !important;
+    border: 0.5pt solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-photo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-content {
+    display: block !important;
+    overflow: visible !important;
+    min-width: 0 !important;
+  }
+
+  .resume-cv-page .resume-document .resume-hero::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-name {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 18pt !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin: 0 0 4pt 0 !important;
+    page-break-after: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-eyebrow {
+    font-size: 8pt !important;
+    margin-bottom: 4pt !important;
+    color: #333 !important;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-role {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin: 0 0 6pt 0 !important;
+    page-break-after: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-positions {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    color: #111 !important;
+    margin: 0 0 8pt 0 !important;
+    max-width: none !important;
+    page-break-inside: auto;
+  }
+
+  .resume-cv-page .resume-document .resume-hero-contact {
+    clear: both;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6pt 14pt !important;
+    padding-top: 8pt !important;
+    margin-top: 8pt !important;
+    border-top: 0.5pt solid #ccc !important;
+    font-size: 9.5pt !important;
+    page-break-inside: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-section-card {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    border-top: 0.5pt solid #bbb !important;
+    padding: 10pt 0 0 0 !important;
+    margin: 10pt 0 0 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .resume-cv-page .resume-document .resume-hero + .resume-section.resume-section-card {
+    border-top: none !important;
+    padding-top: 8pt !important;
+    margin-top: 0 !important;
+  }
+
+  .resume-cv-page .resume-document .resume-section-heading {
+    display: block !important;
+    font-size: 10.5pt !important;
+    color: #000 !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    margin: 0 0 6pt 0 !important;
+    padding: 0 0 4pt 0 !important;
+    border-bottom: 0.75pt solid #333 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .resume-cv-page .resume-document .resume-section-heading::after {
+    display: none !important;
+  }
+
+  .resume-cv-page .resume-document .resume-section-icon {
+    display: none !important;
+  }
+
+  /* Large job blocks must be allowed to split across pages */
+  .resume-cv-page .resume-document .resume-entry {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    margin: 0 0 10pt 0 !important;
+  }
+
+  .resume-cv-page .resume-document .resume-entry-title {
+    font-size: 10.5pt !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-entry-meta {
+    font-size: 9.5pt !important;
+    color: #222 !important;
+    margin-bottom: 4pt !important;
+    page-break-after: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-entry p,
+  .resume-cv-page .resume-document .resume-entry ul,
+  .resume-cv-page .resume-document .resume-section-card > p,
+  .resume-cv-page .resume-document .resume-section-card > ul {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 10pt !important;
+    line-height: 1.38 !important;
+    color: #111 !important;
+    margin: 0 0 6pt 0 !important;
+  }
+
+  .resume-cv-page .resume-document .resume-entry ul,
+  .resume-cv-page .resume-document .resume-section-card > ul {
+    padding-left: 18pt !important;
+  }
+
+  .resume-cv-page .resume-document .resume-entry li,
+  .resume-cv-page .resume-document .resume-section-card li {
+    margin-bottom: 3pt !important;
+    page-break-inside: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-grid-2 {
+    display: block !important;
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 9.75pt !important;
+    line-height: 1.35 !important;
+  }
+
+  .resume-cv-page .resume-document .resume-grid-2 > div {
+    display: block !important;
+    margin: 0 0 2pt 0 !important;
+    padding: 0 0 0 12pt !important;
+    position: relative;
+    page-break-inside: avoid;
+  }
+
+  .resume-cv-page .resume-document .resume-grid-2 > div::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  .resume-cv-page .resume-document .resume-pub {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+    color: #111 !important;
+    margin: 0 0 6pt 0 !important;
+    page-break-inside: auto;
+    break-inside: auto;
+    orphans: 2;
+    widows: 2;
+  }
+
+  .resume-cv-page .resume-document .resume-contact-item {
+    color: #000 !important;
+  }
+
+  .resume-cv-page .resume-document a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  .resume-cv-page .resume-document a[href^="http"]::after {
+    content: "" !important;
+  }
+
+  .resume-cv-page .resume-document svg {
+    display: none !important;
+  }
+
+}

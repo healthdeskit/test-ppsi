@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <link rel="stylesheet" href="css/ppsi-patient-resources.css" />
 </head>
 <body>
 
@@ -53,7 +54,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +64,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +112,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +125,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +156,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +219,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +257,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +265,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,15 +315,77 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
+  <section class="page-hero page-hero--photo pr-hero-records" aria-label="Medical records">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-inner container">
+      <div class="eyebrow">Patient resources</div>
+      <h1 class="page-hero-title">Medical records</h1>
+      <p class="page-hero-sub">Request copies of your chart, imaging reports, or visit summaries securely. We follow HIPAA and respond as quickly as we can.</p>
+      <div class="page-hero-actions">
+        <a href="/medical-record-request" class="btn btn-primary">Start record request</a>
+        <a href="mailto:mr@njnopain.com" class="btn btn-secondary">Email records team</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pr-section pr-section--alt">
     <div class="container">
-      <div class="eyebrow">Patient Resources</div>
-      <h1 class="section-title">Medical Records</h1>
-      <p class="section-sub">Request a copy of your medical records from Precision Pain &amp; Spine Institute. We handle requests in line with HIPAA and your privacy rights.</p>
-      <p style="margin-top:16px; max-width:640px; color: var(--text-soft);">For medical records requests, email <a href="mailto:mr@njnopain.com" style="color: var(--primary); font-weight: 600;">mr@njnopain.com</a> or call (732) 444-8888. Include your full name, date of birth, and what records you need. You may need to complete a signed release form. We will respond as quickly as possible.</p>
-      <div style="margin-top:28px;">
-        <a href="/medical-record-request" class="btn btn-primary">Request Records</a>
-        <a href="/contact-us" class="btn btn-secondary">Contact Us</a>
+      <div class="pr-layout">
+        <div class="pr-sidebar">
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-shield"></use></svg></div>
+            <div>
+              <h3>HIPAA &amp; privacy</h3>
+              <p>Your health information is protected. We only release records with proper authorization or as the law allows.</p>
+            </div>
+          </div>
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-mail"></use></svg></div>
+            <div>
+              <h3>Email</h3>
+              <p><a href="mailto:mr@njnopain.com" style="color:var(--primary);font-weight:600;">mr@njnopain.com</a> — include your full name, date of birth, and what you need.</p>
+            </div>
+          </div>
+          <div class="pr-side-card">
+            <div class="pr-side-card-icon"><svg class="icon"><use href="#i-phone"></use></svg></div>
+            <div>
+              <h3>Phone</h3>
+              <p>Questions about status or delivery? Call <a href="tel:+17324448888" style="color:var(--primary);font-weight:600;">(732) 444-8888</a>.</p>
+            </div>
+          </div>
+          <div class="pr-cta-panel">
+            <h3>Ready to request?</h3>
+            <p>Use our secure form for the fastest routing to the records team. You may be asked to confirm identity or sign an authorization.</p>
+            <a href="/medical-record-request" class="btn btn-primary" style="display:inline-flex;">Open request form</a>
+          </div>
+        </div>
+        <div>
+          <div class="section-head" style="text-align:left;max-width:none;margin-bottom:24px;">
+            <h2 class="section-title" style="font-size:clamp(24px,3vw,34px);">How requests work</h2>
+            <p class="section-sub" style="margin-top:12px;text-align:left;max-width:560px;">Most requests are processed within the timeframes allowed by law. Complex requests or records from multiple visits may take longer.</p>
+          </div>
+          <ol class="pr-steps">
+            <li><strong style="color:var(--text);">Submit your request</strong> online with your contact details and what documents you need (dates of service help).</li>
+            <li><strong style="color:var(--text);">Verification</strong> — we may contact you to confirm identity or send a release for signature.</li>
+            <li><strong style="color:var(--text);">Delivery</strong> — secure email, mail, or pickup as agreed. Third-party requests need legal documentation.</li>
+          </ol>
+          <div class="pr-trust-strip" aria-label="Assurances">
+            <span><svg class="icon icon-xs"><use href="#i-shield"></use></svg> HIPAA-compliant handling</span>
+            <span><svg class="icon icon-xs"><use href="#i-clock"></use></svg> Timely processing</span>
+            <span><svg class="icon icon-xs"><use href="#i-location"></use></svg> All PPSI locations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pr-photo-band pr-photo-band--office" aria-label="Our clinics">
+    <div class="pr-photo-band-inner">
+      <h2>Records for every visit across New Jersey</h2>
+      <p>Whether you were seen in Edison, Jersey City, or another PPSI office, one team coordinates your documentation.</p>
+      <div class="pr-photo-band-actions">
+        <a href="/locations" class="btn btn-primary">Find a location</a>
+        <a href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Patient portal</a>
       </div>
     </div>
   </section>
@@ -315,7 +395,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.

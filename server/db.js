@@ -90,4 +90,98 @@ function saveJobApplication(payload) {
   writeJson(jobsPath, list);
 }
 
-module.exports = { getDb, initDb, saveJobApplication };
+/* ——— Admin: list + patch with status / notes ——— */
+
+function normalizeSubmission(row) {
+  return {
+    ...row,
+    status: row.status || 'new',
+    admin_notes: row.admin_notes != null ? String(row.admin_notes) : '',
+  };
+}
+
+function normalizeJob(row) {
+  return {
+    ...row,
+    status: row.status || 'new',
+    admin_notes: row.admin_notes != null ? String(row.admin_notes) : '',
+  };
+}
+
+function normalizeMedical(row) {
+  return {
+    ...row,
+    status: row.status || 'new',
+    admin_notes: row.admin_notes != null ? String(row.admin_notes) : '',
+  };
+}
+
+function listSubmissionsSorted() {
+  return readJson(submissionsPath, [])
+    .map(normalizeSubmission)
+    .sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+}
+
+function listMedicalSorted() {
+  return readJson(medicalPath, [])
+    .map(normalizeMedical)
+    .sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+}
+
+function listJobsSorted() {
+  return readJson(jobsPath, [])
+    .map(normalizeJob)
+    .sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+}
+
+function patchSubmission(id, { status, admin_notes }) {
+  const list = readJson(submissionsPath, []);
+  const i = list.findIndex((r) => String(r.id) === String(id));
+  if (i === -1) return null;
+  if (status != null) list[i].status = String(status).slice(0, 64);
+  if (admin_notes != null) list[i].admin_notes = String(admin_notes).slice(0, 4000);
+  writeJson(submissionsPath, list);
+  return normalizeSubmission(list[i]);
+}
+
+function patchMedical(id, { status, admin_notes }) {
+  const list = readJson(medicalPath, []);
+  const i = list.findIndex((r) => String(r.id) === String(id));
+  if (i === -1) return null;
+  if (status != null) list[i].status = String(status).slice(0, 64);
+  if (admin_notes != null) list[i].admin_notes = String(admin_notes).slice(0, 4000);
+  writeJson(medicalPath, list);
+  return normalizeMedical(list[i]);
+}
+
+function patchJob(id, { status, admin_notes }) {
+  const list = readJson(jobsPath, []);
+  const i = list.findIndex((r) => String(r.id) === String(id));
+  if (i === -1) return null;
+  if (status != null) list[i].status = String(status).slice(0, 64);
+  if (admin_notes != null) list[i].admin_notes = String(admin_notes).slice(0, 4000);
+  writeJson(jobsPath, list);
+  return normalizeJob(list[i]);
+}
+
+function getJobById(id) {
+  const list = readJson(jobsPath, []);
+  const row = list.find((r) => String(r.id) === String(id));
+  return row ? normalizeJob(row) : null;
+}
+
+module.exports = {
+  getDb,
+  initDb,
+  saveJobApplication,
+  submissionsPath,
+  medicalPath,
+  jobsPath,
+  listSubmissionsSorted,
+  listMedicalSorted,
+  listJobsSorted,
+  patchSubmission,
+  patchMedical,
+  patchJob,
+  getJobById,
+};

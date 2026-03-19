@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/ppsi-shared.css" />
+  <link rel="stylesheet" href="css/ppsi-appointment.css" />
 </head>
 <body>
 
@@ -53,7 +54,7 @@
           </div>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item soft" href="/patient-portal">Patient Portal</a>
+          <a class="topbar-item soft" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer">Patient Portal</a>
           <a class="topbar-item soft" href="/medical-records">Medical Records</a>
           <a class="topbar-item soft" href="/insurance">Insurance</a>
           <a class="topbar-item soft" href="/careers">Careers</a>
@@ -63,7 +64,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -111,7 +112,7 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Doctors
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -124,11 +125,25 @@
                 <span class="dropdown-desc">Founder and Chief of Pain Management.</span>
               </span>
             </a>
+            <a href="/dr-ashraf-sakr" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Ashraf Sakr M.D.</span>
+                <span class="dropdown-desc">Anesthesiologist with interventional and perioperative expertise.</span>
+              </span>
+            </a>
             <a href="/alexios-apazidis" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
               <span>
                 <span class="dropdown-title">Dr. Alexios Apazidis</span>
                 <span class="dropdown-desc">Orthopedic spine surgeon with advanced surgical expertise.</span>
+              </span>
+            </a>
+            <a href="/fouad-karam" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-user"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Dr. Fouad Karam</span>
+                <span class="dropdown-desc">Doctor of Chiropractic focused on conservative spine care.</span>
               </span>
             </a>
             <a href="/doctors" class="dropdown-link">
@@ -141,24 +156,24 @@
           </div>
         </div>
 
-        <div class="nav-item has-dropdown">
+                <div class="nav-item has-dropdown">
           <button class="nav-button" type="button" aria-expanded="false">
             Locations
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="dropdown-panel">
-            <a href="/clifton-new-jersey" class="dropdown-link">
-              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-              <span>
-                <span class="dropdown-title">Clifton, NJ</span>
-                <span class="dropdown-desc">Full-service location with convenient access.</span>
-              </span>
-            </a>
             <a href="/edison" class="dropdown-link">
               <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
               <span>
                 <span class="dropdown-title">Edison, NJ</span>
                 <span class="dropdown-desc">Main campus with expanded clinical capabilities.</span>
+              </span>
+            </a>
+            <a href="/clifton-new-jersey" class="dropdown-link">
+              <span class="dropdown-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+              <span>
+                <span class="dropdown-title">Clifton, NJ</span>
+                <span class="dropdown-desc">Full-service location with convenient access.</span>
               </span>
             </a>
             <a href="/jersey-city" class="dropdown-link">
@@ -204,7 +219,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.png" alt="Precision Pain &amp; Spine Institute" />
+      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -242,7 +257,7 @@
           </div>
         </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -250,32 +265,35 @@
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
               <a href="/dr-wael-elkholy-m-d">Dr. Wael Elkholy M.D.</a>
+              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr M.D.</a>
               <a href="/alexios-apazidis">Dr. Alexios Apazidis</a>
-              <a href="/dr-ashraf-sakr">Dr. Ashraf Sakr</a>
+              <a href="/fouad-karam">Dr. Fouad Karam</a>
               <a href="/doctors">Meet All Doctors</a>
             </div>
           </div>
         </div>
+        </div>
 
-        <div class="mobile-accordion">
+                <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
           </button>
           <div class="mobile-accordion-panel">
             <div class="mobile-subnav">
+              <a href="/edison">Edison, NJ</a>
               <a href="/clifton-new-jersey">Clifton, NJ</a>
               <a href="/jersey-city">Jersey City, NJ</a>
               <a href="/elizabeth">Elizabeth, NJ</a>
-              <a href="/edison">Edison, NJ</a>
               <a href="/north-brunswick">North Brunswick, NJ</a>
               <a href="/hamilton-new-jersey">Hamilton, NJ</a>
             </div>
           </div>
         </div>
+        </div>
 
         <a class="mobile-nav-link" href="/about-us"><span>About</span></a>
-        <a class="mobile-nav-link" href="/patient-portal"><span>Patient Portal</span></a>
+        <a class="mobile-nav-link" href="https://my.eclinicalworks.com/eCRM/portal/login.jsp" target="_blank" rel="noopener noreferrer"><span>Patient Portal</span></a>
         <a class="mobile-nav-link" href="/medical-records"><span>Medical Records</span></a>
         <a class="mobile-nav-link" href="/insurance"><span>Insurance</span></a>
         <a class="mobile-nav-link" href="/careers"><span>Careers</span></a>
@@ -297,48 +315,130 @@
 
   <div class="page-offset"></div>
 
-    <section class="section">
-    <div class="container">
-      <div class="eyebrow">Schedule</div>
-      <h1 class="section-title">Book an Appointment</h1>
-      <p class="section-sub">Start your recovery journey with a clearer plan. Schedule an appointment and connect with specialists who focus on diagnosis and treatment precision.</p>
-      <div style="margin-top:28px;">
-        <a href="/medical-appointment" class="btn btn-primary">Book Appointment</a>
-        <a href="/locations" class="btn btn-secondary">Our Locations</a>
-      </div>
-      <div class="form-block" style="margin-top:48px;max-width:560px;">
-        <h2 class="section-title" style="font-size:24px;margin-bottom:16px;">Request an appointment</h2>
-        <div id="appointment-form-success" class="form-status form-status--success" style="display:none;" role="alert">
-          Thank you. Your appointment request has been received. We will contact you to confirm.
+  <main class="apt-page" id="aptMain">
+    <div class="apt-inner">
+      <header class="apt-hero">
+        <div class="apt-hero-grid">
+          <div class="apt-hero-copy">
+            <div class="apt-hero-badge">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg>
+              Book online
+            </div>
+            <h1>Schedule your visit</h1>
+            <p class="apt-hero-lead">Tell us how to reach you and where you&rsquo;d like to be seen. Our team will follow up to confirm your appointment.</p>
+            <p class="apt-hero-call">
+              Prefer to call? <a href="tel:+17324448888"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 5.18 2 2 0 0 1 5.06 3h3a2 2 0 0 1 2 1.72c.12.91.33 1.8.63 2.64a2 2 0 0 1-.45 2.11L9.1 10.6a16 16 0 0 0 4.3 4.3l1.13-1.14a2 2 0 0 1 2.11-.45c.84.3 1.73.51 2.64.63A2 2 0 0 1 22 16.92z"></path></svg> (732) 444-8888</a>
+              &nbsp;&middot;&nbsp; <a href="/locations">View all locations</a>
+            </p>
+          </div>
+          <div class="apt-hero-visual">
+            <img src="assets/doctor-patient-consultation-pain-management-nj.webp" width="640" height="480" alt="Physician consulting with a patient at PPSI" loading="eager" decoding="async" />
+            <div class="apt-hero-visual-caption">Compassionate, patient-centered care across New Jersey</div>
+          </div>
         </div>
-        <div id="appointment-form-error" class="form-status form-status--error" style="display:none;" role="alert">
-          Something went wrong. Please call (732) 444-8888 or try again.
+      </header>
+
+      <div class="apt-layout">
+        <aside class="apt-side" aria-label="Why book with PPSI">
+          <div class="apt-side-card">
+            <div class="apt-side-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
+            <div>
+              <h3>Same-week availability</h3>
+              <p>We work to offer visits soon, including mornings and select evenings.</p>
+            </div>
+          </div>
+          <div class="apt-side-card">
+            <div class="apt-side-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.33-6-11a6 6 0 1 1 12 0c0 5.67-6 11-6 11z"></path><circle cx="12" cy="10" r="2.2"></circle></svg></div>
+            <div>
+              <h3>8 New Jersey locations</h3>
+              <p>Choose the clinic that fits you&mdash;from Edison to Jersey City and beyond.</p>
+            </div>
+          </div>
+          <div class="apt-side-card">
+            <div class="apt-side-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.4 8.3-7 10-3.6-1.7-7-5-7-10V6l7-3z"></path></svg></div>
+            <div>
+              <h3>Major insurance accepted</h3>
+              <p>Our staff can help verify coverage before your visit.</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="apt-form-shell" id="aptFormBlock">
+          <div id="appointment-form-wrap">
+            <div class="apt-form-head">
+              <h2>Appointment request</h2>
+              <p>Fields marked with <span class="req" style="color:#fecaca;">*</span> are required. We never sell your information.</p>
+            </div>
+            <div class="apt-form-body">
+              <div id="appointment-form-error" class="apt-status apt-status--err" style="display:none;" role="alert">
+                Something went wrong. Please call <a href="tel:+17324448888">(732) 444-8888</a> or try again.
+              </div>
+              <form id="appointmentForm" method="post" action="/medical-appointment">
+                <div class="apt-field">
+                  <label class="apt-label" for="apt-name">Full name <span class="req">*</span></label>
+                  <input class="apt-input" type="text" id="apt-name" name="name" required autocomplete="name" placeholder="First and last name" />
+                </div>
+                <div class="apt-row apt-row-2">
+                  <div class="apt-field">
+                    <label class="apt-label" for="apt-phone">Phone <span class="req">*</span></label>
+                    <input class="apt-input" type="tel" id="apt-phone" name="phone" required autocomplete="tel" placeholder="(732) 555-0000" />
+                  </div>
+                  <div class="apt-field">
+                    <label class="apt-label" for="apt-email">Email <span class="req">*</span></label>
+                    <input class="apt-input" type="email" id="apt-email" name="email" required autocomplete="email" placeholder="you@example.com" />
+                  </div>
+                </div>
+                <div class="apt-field">
+                  <label class="apt-label" for="apt-location">Preferred location</label>
+                  <select class="apt-select" id="apt-location" name="preferred_location">
+                    <option value="">Select a location (optional)</option>
+                    <option value="Edison, NJ">Edison (Main campus)</option>
+                    <option value="North Brunswick, NJ">North Brunswick</option>
+                    <option value="Clifton, NJ">Clifton</option>
+                    <option value="Jersey City, NJ">Jersey City</option>
+                    <option value="Elizabeth, NJ">Elizabeth</option>
+                    <option value="Hamilton, NJ">Hamilton</option>
+                    <option value="Passaic, NJ">Passaic</option>
+                    <option value="Somerset, NJ">Somerset</option>
+                    <option value="Not sure / closest to me">Not sure &mdash; recommend closest</option>
+                  </select>
+                </div>
+                <div class="apt-field">
+                  <label class="apt-label" for="apt-date">Preferred date or time</label>
+                  <input class="apt-input" type="text" id="apt-date" name="date_preference" placeholder="e.g. Next Tuesday, weekday mornings" autocomplete="off" />
+                </div>
+                <div class="apt-field">
+                  <label class="apt-label" for="apt-message">Reason for visit or questions</label>
+                  <textarea class="apt-textarea" id="apt-message" name="message" rows="4" placeholder="Briefly describe what you&rsquo;d like help with (optional)"></textarea>
+                </div>
+                <div class="apt-submit-wrap">
+                  <button type="submit" class="apt-submit">Submit appointment request</button>
+                  <p class="apt-note">By submitting, you agree we may contact you by phone or email about scheduling. This form is not for emergencies.</p>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div id="appointment-form-success" class="apt-success-panel" style="display:none;" role="alert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4L12 14.01l-3-3"></path></svg>
+            <h2>Request received</h2>
+            <p>Thank you. We&rsquo;ll contact you shortly to confirm your appointment. If you need immediate help, please call us.</p>
+            <div class="btn-wrap">
+              <a href="/locations" class="btn btn-primary">Explore locations</a>
+              <a href="/" class="btn btn-secondary">Back to home</a>
+            </div>
+          </div>
         </div>
-        <form id="appointmentForm" class="ppsi-form" method="post" action="/medical-appointment">
-          <label for="apt-name">Name *</label>
-          <input type="text" id="apt-name" name="name" required placeholder="Your name" />
-          <label for="apt-phone">Phone *</label>
-          <input type="tel" id="apt-phone" name="phone" required placeholder="(732) 555-0000" />
-          <label for="apt-email">Email *</label>
-          <input type="email" id="apt-email" name="email" required placeholder="your@email.com" />
-          <label for="apt-location">Preferred location</label>
-          <input type="text" id="apt-location" name="preferred_location" placeholder="e.g. Edison, North Brunswick" />
-          <label for="apt-date">Preferred date or timeframe</label>
-          <input type="text" id="apt-date" name="date_preference" placeholder="e.g. Next week, mornings" />
-          <label for="apt-message">Message</label>
-          <textarea id="apt-message" name="message" rows="3" placeholder="Brief reason for visit or questions"></textarea>
-          <button type="submit" class="btn btn-primary">Submit request</button>
-        </form>
       </div>
     </div>
-  </section>
+  </main>
 
   <footer class="site-footer">
 
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.png" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.
@@ -442,9 +542,12 @@
     (function() {
       var q = window.location.search || '';
       var success = document.getElementById('appointment-form-success');
+      var wrap = document.getElementById('appointment-form-wrap');
       var err = document.getElementById('appointment-form-error');
-      var form = document.getElementById('appointmentForm');
-      if (q.indexOf('sent=1') !== -1 && success && form) { success.style.display = 'block'; form.style.display = 'none'; }
+      if (q.indexOf('sent=1') !== -1 && success && wrap) {
+        wrap.style.display = 'none';
+        success.style.display = 'block';
+      }
       if (q.indexOf('error=1') !== -1 && err) err.style.display = 'block';
     })();
   </script>
