@@ -11,11 +11,11 @@ services:
       - key: PORT
         value: "10000"
       - key: ADMIN_PASSWORD
-        sync: false
+        value: change-me-in-render-dashboard
       - key: SESSION_SECRET
-        sync: false
-    disks:
-      - name: ppsi-data
-        mountPath: /app/data
-        sizeGB: 1
+        generateValue: true
+    disk:
+      name: ppsi-data
+      mountPath: /app/data
+      sizeGB: 1
     plan: starter
