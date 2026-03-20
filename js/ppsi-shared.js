@@ -1,17 +1,21 @@
-﻿(function() {
+(function() {
   const siteHeader = document.getElementById("siteHeader");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 
   function handleScrollUI() {
-    if (window.scrollY > 12) {
-      siteHeader.classList.add("scrolled");
-    } else {
-      siteHeader.classList.remove("scrolled");
+    if (siteHeader) {
+      if (window.scrollY > 12) {
+        siteHeader.classList.add("scrolled");
+      } else {
+        siteHeader.classList.remove("scrolled");
+      }
     }
-    if (window.scrollY > 700) {
-      scrollTopBtn.classList.add("visible");
-    } else {
-      scrollTopBtn.classList.remove("visible");
+    if (scrollTopBtn) {
+      if (window.scrollY > 700) {
+        scrollTopBtn.classList.add("visible");
+      } else {
+        scrollTopBtn.classList.remove("visible");
+      }
     }
   }
 

@@ -10,9 +10,15 @@
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Core fonts: always load. DM Serif only on wider screens (saves mobile render + bytes). -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
     rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet"
+    media="(min-width: 769px)"
   />
 
   <style>
@@ -2191,6 +2197,11 @@
       background: var(--primary-deep);
     }
 
+    /* Shown only on small screens (e.g. Insurance when the full strip is hidden) */
+    .footer-link-mobile-only {
+      display: none;
+    }
+
     /* Responsive */
     @media (max-width: 1280px) {
       .hero-inner {
@@ -2410,6 +2421,160 @@
         padding: 22px 0;
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      /* —— Mobile performance + app-style footer —— */
+      .footer-link-mobile-only {
+        display: inline-block;
+      }
+
+      .hero-title .accent,
+      .hero-text-slider-line span,
+      .doctor-floating-name,
+      .card-num,
+      .doctor-grid-name {
+        font-family: "Sora", sans-serif;
+        font-style: normal;
+      }
+
+      .hero-title .accent {
+        font-weight: 800;
+      }
+
+      .card-num {
+        font-weight: 800;
+        font-size: 40px;
+      }
+
+      .doctor-grid-name {
+        font-weight: 700;
+        font-size: 22px;
+      }
+
+      .doctor-floating-name {
+        font-weight: 700;
+      }
+
+      .hero--team-bg .hero-bg-slides {
+        animation: none;
+      }
+
+      .section-patient-experience {
+        background-image: none;
+        background-color: #0e3d66;
+      }
+
+      .insurance-strip {
+        display: none;
+      }
+
+      .faq-image-wrap {
+        display: none;
+      }
+
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        border-radius: 22px 22px 0 0;
+        overflow: hidden;
+        margin-top: 4px;
+        box-shadow: 0 -12px 40px rgba(6, 28, 48, 0.14);
+      }
+
+      .site-footer .footer-copy {
+        display: none;
+      }
+
+      .site-footer .footer-top > div:nth-child(2),
+      .site-footer .footer-top > div:nth-child(3),
+      .site-footer .footer-top > div:nth-child(4) {
+        display: none;
+      }
+
+      .site-footer .footer-top {
+        padding: 24px 0 16px;
+        gap: 16px;
+      }
+
+      .site-footer .footer-top > div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .site-footer .footer-logo .logo-mark {
+        max-height: 42px;
+        width: auto;
+      }
+
+      .site-footer .footer-social {
+        justify-content: center;
+      }
+
+      .site-footer .footer-contact-column {
+        width: 100%;
+        max-width: 320px;
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      .site-footer .footer-title {
+        text-align: center;
+      }
+
+      .site-footer .footer-contact-list {
+        align-items: center;
+      }
+
+      .site-footer .footer-contact-item {
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .site-footer .footer-contact-item:nth-child(3),
+      .site-footer .footer-contact-item:nth-child(4) {
+        display: none;
+      }
+
+      .site-footer .footer-contact-item:first-child {
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .site-footer .footer-email-note {
+        display: block;
+        width: 100%;
+        font-size: 11px;
+        opacity: 0.85;
+        margin-top: 2px;
+      }
+
+      .footer-bottom {
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 18px 0 28px;
+      }
+
+      .footer-bottom-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero--team-bg .hero-bg-slides {
+        animation: none;
+      }
+
+      .hero-text-slider-line {
+        animation: none !important;
+        opacity: 1;
       }
     }
 
@@ -3467,6 +3632,7 @@
     <div class="footer-bottom">
       <div>© 2026 <strong style="color:rgba(255,255,255,0.9);">Precision Pain &amp; Spine Institute</strong>. All rights reserved.</div>
       <div class="footer-bottom-links">
+        <a href="/insurance" class="footer-link-mobile-only">Insurance</a>
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms-of-service">Terms of Service</a>
         <a href="/contact-us">Contact</a>

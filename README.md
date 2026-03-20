@@ -1,6 +1,6 @@
 # Precision Pain & Spine Institute (PPSI) — website
 
-Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, SQLite submissions, `/admin`.
+Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, JSON-backed submissions and job data, `/admin`.
 
 ## Project layout
 
@@ -12,7 +12,7 @@ Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, SQLit
 | `assets/` | Logo, images |
 | `_next/` | Optimized images |
 | `Location-photos/` | Location gallery assets |
-| `server/` | Express app (`server.js`, routes, SQLite) |
+| `server/` | Express app (`server.js`, routes; persists to `data/*.json`) |
 | `data/` | Runtime JSON + uploads (volume in Docker) |
 | `data/seed/` | **Demo data** copied into `data/*.json` only when those files are missing (fresh server / empty disk) |
 | `admin/` | Legacy PHP admin (optional; primary admin is Node `/admin`) |
@@ -22,9 +22,16 @@ Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, SQLit
 
 ```bash
 cd server && npm install && cd ..
-node server/server.js
+npm start
+# or: node server/server.js
 # → http://localhost:3000
 ```
+
+### Careers page (`/careers`)
+
+- Open **`http://localhost:3000/careers`** (or your deployed site URL). Job cards load from **`/api/careers/open-positions`** — that route exists only on **this Node server**.
+- Opening **`careers.html` directly from disk** (`file://…`) or using a **static-only** dev server (no Express) will show a “could not load job listings” message — that’s expected.
+- If port **3000** is already used by another app, either stop that app or run `set PORT=3010` (PowerShell: `$env:PORT='3010'`) before `npm start`, then use `http://localhost:3010/careers`.
 
 ## Docker (production-style)
 
@@ -55,7 +62,7 @@ PowerShell: `.\start-docker.ps1` (web only) or `.\start-docker.ps1 -PhpLocal` (w
 ## Publish checklist
 
 1. **Secrets:** `ADMIN_PASSWORD`, `SESSION_SECRET` — never use defaults in production.
-2. **Persistence:** Mount `data/` so SQLite and uploads survive restarts.
+2. **Persistence:** Mount `data/` so JSON stores (`submissions`, medical requests, jobs, listings) and `uploads/` survive restarts.
 3. **Health:** Container healthcheck hits `/` (200).
 4. **Forms:** Test contact, appointment, careers after deploy.
 5. **Admin:** Log in at `/admin`, verify submissions.
@@ -73,11 +80,11 @@ PowerShell: `.\start-docker.ps1` (web only) or `.\start-docker.ps1 -PhpLocal` (w
 
 **Fastest path static-only:** Zip the folder or push to Git → **Netlify** “Deploy site” → connect domain. (Contact/appointment forms will need a separate form service or backend.)
 
-## Why Docker looked different from opening HTML locally
+## Clean URLs and asset paths
 
-Pages use **relative** asset paths (`css/ppsi-shared.css`, `assets/…`, `_next/…`). That’s fine when you open `index.html` from disk (base URL = that folder) or when you’re at `http://localhost:3000/` (base = `/`). But with **clean URLs** like `http://localhost:3000/edison` or `http://localhost:3000/medical-appointment`, the browser’s base URL is `/edison` or `/medical-appointment`, so it requested `/edison/css/ppsi-shared.css` (wrong) and CSS/images broke.
+Many pages use **relative** asset paths (`css/ppsi-shared.css`, `assets/…`, `_next/…`). On a path like `/edison`, the browser would otherwise resolve those as `/edison/css/…` (broken).
 
-**Fix applied:** Every page now has `<base href="/" />` in the `<head>`, so all relative URLs resolve from the site root. Docker (and any Node/hosted setup) should now match the original look.
+**Fix applied:** `server.js` rewrites requests so `/edison/css/…` (and same for `js`, `assets`, `_next`, location photos) is served from the site root. **`careers.html`** also uses **root-relative** `/css/…`, `/js/…`, `/assets/…` for predictable loading; it still needs the Node server for `/api/careers/open-positions` and `/careers/apply`.
 
 ## Deploy (Render example)
 

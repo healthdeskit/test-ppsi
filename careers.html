@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="/" />
   <title>Careers | PPSI</title>
   <meta name="description" content="Careers at Precision Pain &amp; Spine Institute. Join our team of pain and spine specialists across New Jersey." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/ppsi-shared.css" />
-  <link rel="stylesheet" href="css/ppsi-service-pages.css" />
+  <link rel="stylesheet" href="/css/ppsi-shared.css" />
+  <link rel="stylesheet" href="/css/ppsi-service-pages.css" />
   <style>
     .svc-hero--careers::after {
       content: "";
@@ -56,6 +55,12 @@
       padding: 24px;
     }
 
+    /* In-page targets: sticky header offset; use /careers#… so hash works from any entry URL */
+    #open-positions,
+    #job-apply-form {
+      scroll-margin-top: 96px;
+    }
+
     /* Full-bleed team photo CTA — premium glass panel */
     .careers-team-cta {
       position: relative;
@@ -66,7 +71,7 @@
     .careers-team-cta__bg {
       position: absolute;
       inset: 0;
-      background-image: url("_next/all-ppsi-team.webp");
+      background-image: url("/_next/all-ppsi-team.webp");
       background-size: cover;
       background-position: center 30%;
       background-repeat: no-repeat;
@@ -321,7 +326,7 @@
 
     <div class="header-main">
       <a href="/" class="header-logo" aria-label="Precision Pain &amp; Spine Institute home">
-        <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
+        <img class="logo-mark" src="/assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       </a>
 
       <nav class="desktop-nav" aria-label="Main navigation">
@@ -476,7 +481,7 @@
 
   <aside class="mobile-menu-panel" id="mobileMenuPanel" aria-hidden="true">
     <div class="mobile-menu-head">
-      <img src="assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
+      <img src="/assets/ppsi-logo.webp" alt="Precision Pain &amp; Spine Institute" />
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close menu">
         <svg class="icon icon-sm"><use href="#i-close"></use></svg>
       </button>
@@ -584,7 +589,7 @@
         <span class="svc-hero-feature"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Structured onboarding and team support</span>
       </div>
       <div class="svc-hero-actions">
-        <a href="#open-positions" class="btn btn-primary">View Open Positions</a>
+        <a href="/careers#open-positions" class="btn btn-primary">View Open Positions</a>
         <a href="/contact-us" class="btn btn-hero-outline">Contact Us</a>
       </div>
     </div>
@@ -723,7 +728,7 @@
     <div class="footer-top">
       <div>
         <a href="/" class="footer-logo">
-          <img class="logo-mark" src="assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
+          <img class="logo-mark" src="/assets/ppsi-logo.webp" alt="Precision Pain & Spine Institute" />
         </a>
         <p class="footer-copy">
           Board-certified pain and spine specialists delivering coordinated, technology-supported care for patients all over New Jersey.
@@ -811,6 +816,7 @@
     <div class="footer-bottom">
       <div>© 2026 <strong style="color:rgba(255,255,255,0.9);">Precision Pain & Spine Institute</strong>. All rights reserved.</div>
       <div class="footer-bottom-links">
+        <a href="/insurance" class="footer-link-mobile-only">Insurance</a>
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms-of-service">Terms of Service</a>
         <a href="/contact-us">Contact</a>
@@ -822,23 +828,113 @@
     <svg class="icon icon-sm"><use href="#i-up"></use></svg>
   </button>
 
-  <script src="js/ppsi-shared.js"></script>
+  <script src="/js/ppsi-shared.js"></script>
   <script>
     (function() {
+      /** Shown if /api is unreachable (static host, wrong proxy, etc.) — matches seed roles; live server still overrides when API works */
+      var CAREERS_FALLBACK_JOBS = [
+        { slug: 'medical-assistant', title: 'Medical Assistant', meta: 'Full-time · Multiple locations (Edison, North Brunswick, Clifton, Elizabeth, Jersey City, Hamilton)', description: 'Support our physicians and clinical team with rooming patients, vitals, history intake, and preparation for procedures. You will work directly with pain management and spine specialists in a fast-paced, patient-centered environment. Ideal for certified or certified-eligible medical assistants who want to grow in a multispecialty practice.', requirements: 'MA certification (or eligible), strong communication skills, EHR experience preferred. BLS a plus.' },
+        { slug: 'front-desk', title: 'Front Desk / Patient Services', meta: 'Full-time · Edison, North Brunswick, and other NJ locations', description: 'Be the first point of contact for our patients. You will handle scheduling, check-in, insurance verification, and patient inquiries while ensuring a welcoming and efficient experience.', requirements: 'High school diploma or equivalent; 1+ year front desk or medical office experience preferred; strong customer service and computer skills.' },
+        { slug: 'physical-therapy-aide', title: 'Physical Therapy Aide', meta: 'Full-time / Part-time · Edison, North Brunswick', description: 'Assist licensed therapists with patient flow, equipment setup, modality prep, and maintaining a clean, safe gym environment.', requirements: 'High school diploma; prior healthcare or customer service experience preferred; ability to lift and move equipment safely.' },
+        { slug: 'billing-specialist', title: 'Medical Billing Specialist', meta: 'Full-time · Hybrid (Edison HQ + remote after training)', description: 'Submit clean claims, work denials and appeals, post payments, and support prior authorizations in coordination with our clinical sites.', requirements: '2+ years medical billing experience; knowledge of CPT/ICD-10; experience with major EMRs; HIPAA awareness.' }
+      ];
+
       function esc(s) {
         return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
       }
+      function scrollToApplyForm() {
+        var el = document.getElementById('job-apply-form');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
       function bindApplyLinks() {
         document.querySelectorAll('a[data-job-id][data-job-title]').forEach(function(a) {
-          a.addEventListener('click', function() {
+          a.addEventListener('click', function(e) {
+            e.preventDefault();
             var id = this.getAttribute('data-job-id');
             var title = this.getAttribute('data-job-title');
             var idIn = document.getElementById('job-id-input');
             var titleIn = document.getElementById('job-title-input');
             if (idIn) idIn.value = id || '';
             if (titleIn) titleIn.value = title || '';
+            scrollToApplyForm();
           });
         });
+      }
+
+      /** e.g. /careers?apply=front-desk — select role and scroll (Render-safe: no full /careers reload) */
+      function applyFromQueryString(jobs) {
+        try {
+          var params = new URLSearchParams(window.location.search || '');
+          var slug = params.get('apply');
+          if (!slug || !Array.isArray(jobs)) return;
+          var match = null;
+          for (var i = 0; i < jobs.length; i++) {
+            if (jobs[i].slug === slug) { match = jobs[i]; break; }
+          }
+          if (!match) return;
+          var idIn = document.getElementById('job-id-input');
+          var titleIn = document.getElementById('job-title-input');
+          if (idIn) idIn.value = match.slug || '';
+          if (titleIn) titleIn.value = match.title || '';
+          scrollToApplyForm();
+        } catch (err) {}
+      }
+
+      function parseJobsFromText(text) {
+        try {
+          var j = JSON.parse(text);
+          return Array.isArray(j) ? j : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function renderJobCards(jobs, opts) {
+        opts = opts || {};
+        var grid = document.getElementById('careers-jobs-grid');
+        var loading = document.getElementById('careers-jobs-loading');
+        var empty = document.getElementById('careers-jobs-empty');
+        var form = document.getElementById('jobApplicationForm');
+        var q = window.location.search || '';
+
+        if (loading) loading.style.display = 'none';
+        if (!Array.isArray(jobs) || !jobs.length) {
+          if (empty) {
+            empty.style.display = 'block';
+            empty.innerHTML = '<strong>No open positions right now.</strong> Check back soon or submit a general application below.';
+          }
+          return;
+        }
+        if (empty) {
+          empty.style.display = 'none';
+          empty.innerHTML = '<strong>No open positions right now.</strong> Check back soon or submit a general application below.';
+        }
+        if (!grid) return;
+
+        var notice = '';
+        if (opts.offlineFallback) {
+          notice = '<div class="careers-api-fallback" role="status" style="margin-bottom:1.25rem;padding:14px 18px;border-radius:14px;background:#fffbeb;border:1px solid #fcd34d;color:#78350f;font-size:14px;line-height:1.55;max-width:52rem;"><strong>Live job board unavailable.</strong> Typical roles are shown below. You can still apply — our team will confirm current openings. If you manage this site, ensure the Node server serves <code style="background:#fff7ed;padding:2px 6px;border-radius:4px;">/api/careers/open-positions</code> as JSON.</div>';
+        }
+        grid.innerHTML = notice + jobs.map(function(j) {
+          var sid = String(j.slug == null ? '' : j.slug).replace(/[^a-zA-Z0-9_-]/g, '') || 'role';
+          var reqs = j.requirements ? '<p class="careers-job-reqs"><strong>Requirements:</strong> ' + esc(j.requirements) + '</p>' : '';
+          return '<article class="careers-job-card" id="job-posting-' + sid + '">' +
+            '<h3>' + esc(j.title) + '</h3>' +
+            (j.meta ? '<p class="careers-job-meta">' + esc(j.meta) + '</p>' : '') +
+            (j.description ? '<p class="careers-job-desc">' + esc(j.description) + '</p>' : '') + reqs +
+            '<a href="#job-apply-form" class="btn btn-primary careers-job-apply-btn" data-job-id="' + esc(j.slug) + '" data-job-title="' + esc(j.title) + '">Apply for this position</a>' +
+            '</article>';
+        }).join('');
+        bindApplyLinks();
+        var first = jobs[0];
+        if (first && form && !q.match(/sent=1/)) {
+          var idIn = document.getElementById('job-id-input');
+          var titleIn = document.getElementById('job-title-input');
+          if (idIn && !idIn.value) idIn.value = first.slug || '';
+          if (titleIn && !titleIn.value) titleIn.value = first.title || '';
+        }
+        if (!q.match(/sent=1/)) applyFromQueryString(jobs);
       }
 
       var q = window.location.search || '';
@@ -848,43 +944,20 @@
       if (q.indexOf('sent=1') !== -1 && success && form) { success.style.display = 'block'; form.style.display = 'none'; }
       if (q.indexOf('error=1') !== -1 && err) err.style.display = 'block';
 
-      var grid = document.getElementById('careers-jobs-grid');
-      var loading = document.getElementById('careers-jobs-loading');
-      var empty = document.getElementById('careers-jobs-empty');
       fetch('/api/careers/open-positions', { headers: { Accept: 'application/json' } })
-        .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function(r) {
+          return r.text().then(function(text) {
+            if (!r.ok) return Promise.reject(new Error('bad status'));
+            var jobs = parseJobsFromText(text);
+            if (!jobs) return Promise.reject(new Error('not json array'));
+            return jobs;
+          });
+        })
         .then(function(jobs) {
-          if (loading) loading.style.display = 'none';
-          if (!Array.isArray(jobs) || !jobs.length) {
-            if (empty) empty.style.display = 'block';
-            return;
-          }
-          if (empty) empty.style.display = 'none';
-          if (!grid) return;
-          grid.innerHTML = jobs.map(function(j) {
-            var reqs = j.requirements ? '<p class="careers-job-reqs"><strong>Requirements:</strong> ' + esc(j.requirements) + '</p>' : '';
-            return '<article class="careers-job-card">' +
-              '<h3>' + esc(j.title) + '</h3>' +
-              (j.meta ? '<p class="careers-job-meta">' + esc(j.meta) + '</p>' : '') +
-              (j.description ? '<p class="careers-job-desc">' + esc(j.description) + '</p>' : '') + reqs +
-              '<a href="#job-apply-form" class="btn btn-primary" data-job-id="' + esc(j.slug) + '" data-job-title="' + esc(j.title) + '">Apply for this position</a>' +
-              '</article>';
-          }).join('');
-          bindApplyLinks();
-          var first = jobs[0];
-          if (first && form && !q.match(/sent=1/)) {
-            var idIn = document.getElementById('job-id-input');
-            var titleIn = document.getElementById('job-title-input');
-            if (idIn && !idIn.value) idIn.value = first.slug || '';
-            if (titleIn && !titleIn.value) titleIn.value = first.title || '';
-          }
+          renderJobCards(jobs, { offlineFallback: false });
         })
         .catch(function() {
-          if (loading) loading.style.display = 'none';
-          if (empty) {
-            empty.style.display = 'block';
-            empty.innerHTML = '<strong>Could not load positions.</strong> If you opened this file directly, run the site from the server (e.g. localhost:3000).';
-          }
+          renderJobCards(CAREERS_FALLBACK_JOBS, { offlineFallback: true });
         });
     })();
   </script>

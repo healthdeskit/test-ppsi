@@ -2515,6 +2515,11 @@
       color: rgba(255, 255, 255, 0.92);
     }
 
+    /* Shown only on small screens (compact footer + quick Insurance access) */
+    .footer-link-mobile-only {
+      display: none;
+    }
+
     /* Scroll top */
     .scroll-top {
       position: fixed;
@@ -2762,6 +2767,103 @@
         padding: 22px 0;
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      /* App-style compact footer (phone) — same behavior as home */
+      .footer-link-mobile-only {
+        display: inline-block;
+      }
+
+      .site-footer {
+        border-radius: 22px 22px 0 0;
+        overflow: hidden;
+        margin-top: 4px;
+        box-shadow: 0 -12px 40px rgba(6, 28, 48, 0.14);
+      }
+
+      .site-footer .footer-copy {
+        display: none;
+      }
+
+      .site-footer .footer-top > div:nth-child(2),
+      .site-footer .footer-top > div:nth-child(3),
+      .site-footer .footer-top > div:nth-child(4) {
+        display: none;
+      }
+
+      .site-footer .footer-top {
+        padding: 24px 0 16px;
+        gap: 16px;
+      }
+
+      .site-footer .footer-top > div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .site-footer .footer-logo .logo-mark,
+      .site-footer .footer-logo img {
+        max-height: 42px;
+        width: auto;
+        height: auto;
+      }
+
+      .site-footer .footer-social {
+        justify-content: center;
+      }
+
+      .site-footer .footer-contact-column {
+        width: 100%;
+        max-width: 320px;
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      .site-footer .footer-title {
+        text-align: center;
+      }
+
+      .site-footer .footer-contact-list {
+        align-items: center;
+      }
+
+      .site-footer .footer-contact-item {
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+
+      .site-footer .footer-contact-item:nth-child(3),
+      .site-footer .footer-contact-item:nth-child(4) {
+        display: none;
+      }
+
+      .site-footer .footer-contact-item:first-child {
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .site-footer .footer-email-note {
+        display: block;
+        width: 100%;
+        font-size: 11px;
+        opacity: 0.85;
+        margin-top: 2px;
+      }
+
+      .footer-bottom {
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 18px 0 28px;
+      }
+
+      .footer-bottom-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
       }
     }
 

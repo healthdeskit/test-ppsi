@@ -30,5 +30,37 @@
     "created_at": "2026-03-13 11:05:00",
     "status": "closed",
     "admin_notes": "Replied with general info — sample."
+  },
+  {
+    "id": 5,
+    "type": "contact",
+    "payload": "{\"name\":\"Priya Nair\",\"email\":\"priya.nair.sample@example.com\",\"phone\":\"(732) 555-0144\",\"message\":\"Interested in chiropractic co-care with PPSI. Neck stiffness x 6 weeks. Can I book at North Brunswick?\"}",
+    "created_at": "2026-03-18 10:30:00",
+    "status": "new",
+    "admin_notes": ""
+  },
+  {
+    "id": 6,
+    "type": "appointment",
+    "payload": "{\"name\":\"James Okafor\",\"phone\":\"(732) 555-0155\",\"email\":\"j.okafor.sample@example.com\",\"preferred_location\":\"Edison\",\"date_preference\":\"Next available PM slot\",\"message\":\"New patient — lumbar radiculopathy. MRI on file from ortho.\"}",
+    "created_at": "2026-03-18 13:45:00",
+    "status": "new",
+    "admin_notes": ""
+  },
+  {
+    "id": 7,
+    "type": "appointment",
+    "payload": "{\"name\":\"Elena Volkov\",\"phone\":\"(732) 555-0166\",\"email\":\"elena.v.sample@example.com\",\"preferred_location\":\"Elizabeth\",\"date_preference\":\"Fridays preferred\",\"message\":\"PT referral from PPSI — want to align scheduling with pain follow-up.\"}",
+    "created_at": "2026-03-19 08:20:00",
+    "status": "new",
+    "admin_notes": ""
+  },
+  {
+    "id": 8,
+    "type": "contact",
+    "payload": "{\"name\":\"Marcus Webb\",\"email\":\"marcus.webb.sample@example.com\",\"phone\":\"(732) 555-0177\",\"message\":\"Careers question (sample): do you hire PT aides at multiple sites?\"}",
+    "created_at": "2026-03-19 15:00:00",
+    "status": "new",
+    "admin_notes": ""
   }
 ]

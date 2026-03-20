@@ -24,5 +24,31 @@
     "created_at": "2026-03-13 09:50:00",
     "status": "new",
     "admin_notes": ""
+  },
+  {
+    "id": 3,
+    "job_id": "physical-therapy-aide",
+    "job_title": "Physical Therapy Aide",
+    "name": "Dev Patel",
+    "email": "dev.patel.sample@example.com",
+    "phone": "(732) 555-0303",
+    "message": "Exercise science grad; 1 year aide experience. Comfortable with equipment setup and patient escort.",
+    "resume_file": "",
+    "created_at": "2026-03-16 11:10:00",
+    "status": "new",
+    "admin_notes": ""
+  },
+  {
+    "id": 4,
+    "job_id": "billing-specialist",
+    "job_title": "Medical Billing Specialist",
+    "name": "Casey Nguyen",
+    "email": "casey.nguyen.sample@example.com",
+    "phone": "(732) 555-0304",
+    "message": "3 yrs multi-specialty billing; strong on denials and ERA posting. Hybrid OK after onboarding.",
+    "resume_file": "",
+    "created_at": "2026-03-17 14:25:00",
+    "status": "new",
+    "admin_notes": "Sample — interview scheduled (demo)."
   }
 ]
