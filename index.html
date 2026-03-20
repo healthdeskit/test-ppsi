@@ -758,6 +758,8 @@
     .hero--team-bg {
       position: relative;
       overflow: hidden;
+      /* Explicit height so crop is stable on nav vs refresh (avoids bfcache/layout glitch) */
+      min-height: min(70vh, 520px);
     }
 
     /* Full-bleed hero: single team photo */
@@ -766,6 +768,9 @@
       inset: 0;
       z-index: 0;
       animation: heroImageReveal 1.6s ease-out forwards;
+      /* Stable layer to avoid refresh/bfcache render glitches */
+      backface-visibility: hidden;
+      transform: translateZ(0);
     }
 
     .hero--team-bg .hero-bg-img {
@@ -774,12 +779,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 28%;
       pointer-events: none;
       opacity: 1;
     }
 
     .hero--team-bg .hero-bg-img--a {
-      object-position: center 40%;
       z-index: 0;
     }
 
@@ -2241,6 +2246,10 @@
         padding: 50px 0 56px;
       }
 
+      .hero--team-bg {
+        min-height: min(60vh, 420px);
+      }
+
       .hero--team-bg .hero-inner {
         min-height: min(60vh, 420px);
       }
@@ -3664,6 +3673,18 @@
 
     window.addEventListener("scroll", handleScrollUI, { passive: true });
     handleScrollUI();
+
+    /* Fix hero image crop on bfcache restore (logo click / back nav vs refresh glitch) */
+    window.addEventListener("pageshow", function(e) {
+      if (e.persisted) {
+        var hero = document.querySelector(".hero--team-bg .hero-bg-img");
+        if (hero) {
+          hero.style.transform = "translateZ(0)";
+          hero.offsetHeight;
+          hero.style.transform = "";
+        }
+      }
+    });
 
     scrollTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
