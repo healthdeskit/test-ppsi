@@ -18,6 +18,17 @@ Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, JSON-
 | `admin/` | Legacy PHP admin (optional; primary admin is Node `/admin`) |
 | `docker/` | Apache config (PHP profile only) |
 
+## SEO (canonical, OG, Twitter, schema)
+
+Canonical links, Open Graph, Twitter Card meta tags, and a base `MedicalOrganization` JSON-LD schema are injected into all pages. To update the base URL for production:
+
+```bash
+# PowerShell:
+$env:SITE_BASE_URL='https://yoursite.com'; node scripts/inject-seo.js
+# CMD:
+set SITE_BASE_URL=https://yoursite.com && node scripts/inject-seo.js
+```
+
 ## Run locally
 
 ```bash
