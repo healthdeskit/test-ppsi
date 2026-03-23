@@ -385,6 +385,12 @@
             <h2>Insurance verification request</h2>
             <p>Submit your plan details and we&rsquo;ll follow up with coverage information. For urgent scheduling, please call us directly.</p>
           </div>
+          <div class="pr-internal-ref-bar">
+            <button type="button" class="pr-internal-ref-trigger" id="insInternalGuidelineOpen" aria-haspopup="dialog" aria-controls="insInternalGuidelineDialog" aria-expanded="false">
+              Internal guideline: PIP &amp; web copy
+            </button>
+            <span class="pr-internal-ref-hint">For HR / stakeholder demos only. Not a patient-facing feature or legal advice.</span>
+          </div>
           <div id="insurance-form-success" class="form-status form-status--success" style="display:none;" role="alert">
             Thank you. We received your request and will contact you soon about your benefits.
           </div>
@@ -549,6 +555,65 @@
     </div>
   </footer>
 
+  <div class="pr-internal-modal" id="insInternalGuidelineModal" hidden data-internal-modal aria-hidden="true">
+    <div class="pr-internal-modal__backdrop" tabindex="-1" aria-hidden="true" data-internal-modal-close></div>
+    <div class="pr-internal-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="insInternalGuidelineTitle" id="insInternalGuidelineDialog">
+      <div class="pr-internal-modal__head">
+        <div class="pr-internal-modal__head-text">
+          <h2 id="insInternalGuidelineTitle">Internal reference: PIP &amp; payment options on the site</h2>
+          <p>Orienting HR, compliance, or stakeholders on how our neutral &ldquo;payment options&rdquo; language fits common New Jersey frameworks. This is not patient-facing legal advice.</p>
+        </div>
+        <button type="button" class="pr-internal-modal__close" aria-label="Close guideline" data-internal-modal-close>
+          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <div class="pr-internal-modal__body">
+        <div class="pr-internal-modal__banner">
+          <strong>Internal use only</strong>
+          Use this during website walkthroughs or training. It does not change what patients see in the care path, and it is not a substitute for counsel on your specific facts.
+        </div>
+
+        <div class="pr-internal-modal__section">
+          <h3>Why this topic comes up</h3>
+          <p>We list accepted payment and coverage types (including PIP where applicable) in a factual way so patients know what kinds of billing paths may exist. The question is how that fits fraud, advertising, and insurance oversight in New Jersey &mdash; not whether we mention PIP at all.</p>
+        </div>
+
+        <div class="pr-internal-modal__section">
+          <h3>New Jersey regulatory context (high level)</h3>
+          <ul class="pr-internal-modal__list">
+            <li><strong>NJ Insurance Fraud Prevention Act (N.J.S.A. 17:33A)</strong> targets fraudulent billing, kickbacks, and similar schemes &mdash; not accurate website listings of payment types.</li>
+            <li><strong>NJ Division of Consumer Affairs</strong> addresses false or deceptive <em>advertising</em>. Stating that PIP is among accepted options, alongside workers&rsquo; comp, self-pay, or auto carriers, is factual positioning &mdash; not a deceptive claim by itself.</li>
+            <li><strong>DOBI</strong> (Department of Banking and Insurance) focuses on PIP <em>claim conduct and insurance market rules</em>, not how a provider neutrally describes payment options in marketing copy.</li>
+          </ul>
+        </div>
+
+        <div class="pr-internal-modal__section">
+          <h3>How our typical usage lines up</h3>
+          <p>When the site presents PIP under a neutral heading such as payment or coverage options, together with other standard categories, and without promises about outcomes, it generally aligns with a conservative, factual approach:</p>
+          <ul class="pr-internal-modal__list pr-internal-modal__list--ok">
+            <li><strong>Factual listing.</strong> PIP appears as one option among others (e.g. workers&rsquo; comp, self-pay, major medical, auto carriers).</li>
+            <li><strong>No guarantees.</strong> We do not promise reimbursement, maximum benefits, or specific claim results.</li>
+            <li><strong>No coaching on claims.</strong> We do not instruct patients how to file, inflate, or optimize claims on the public site.</li>
+            <li><strong>No tied incentives.</strong> We do not offer rewards for choosing PIP or for coming in under a PIP claim.</li>
+          </ul>
+        </div>
+
+        <div class="pr-internal-modal__section pr-internal-modal__warn">
+          <h3>Language that would raise risk (avoid on the site)</h3>
+          <ul>
+            <li>Claims like &ldquo;we maximize your PIP benefits&rdquo; or similar outcome guarantees.</li>
+            <li>Directions that could read as encouraging inflated or improper claims.</li>
+            <li>Incentives tied specifically to using PIP or to the volume of PIP cases.</li>
+          </ul>
+        </div>
+
+        <div class="pr-internal-modal__foot">
+          This summary supports internal alignment only. For definitive guidance on campaigns, agreements, or billing practices, rely on your compliance team and licensed counsel.
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
     <svg class="icon icon-sm"><use href="#i-up"></use></svg>
   </button>
@@ -562,6 +627,49 @@
       var form = document.getElementById('insuranceVerificationForm');
       if (q.indexOf('sent=1') !== -1 && ok && form) { ok.style.display = 'block'; form.style.display = 'none'; }
       if (q.indexOf('error=1') !== -1 && err) err.style.display = 'block';
+    })();
+  </script>
+  <script>
+    (function() {
+      var modal = document.getElementById('insInternalGuidelineModal');
+      var openBtn = document.getElementById('insInternalGuidelineOpen');
+      if (!modal || !openBtn) return;
+
+      var dialog = document.getElementById('insInternalGuidelineDialog');
+      var closers = modal.querySelectorAll('[data-internal-modal-close]');
+
+      function setOpen(isOpen) {
+        if (isOpen) {
+          modal.removeAttribute('hidden');
+          modal.classList.add('is-open');
+          modal.setAttribute('aria-hidden', 'false');
+          openBtn.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+          var c = modal.querySelector('.pr-internal-modal__close');
+          if (c) c.focus();
+        } else {
+          modal.setAttribute('hidden', '');
+          modal.classList.remove('is-open');
+          modal.setAttribute('aria-hidden', 'true');
+          openBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+          openBtn.focus();
+        }
+      }
+
+      openBtn.addEventListener('click', function() { setOpen(true); });
+
+      closers.forEach(function(el) {
+        el.addEventListener('click', function() { setOpen(false); });
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) setOpen(false);
+      });
     })();
   </script>
 </body>
