@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Applies SEO best practices: title overrides, page-type schema (Physician, MedicalClinic, FAQPage, BreadcrumbList).
  * Run: node scripts/apply-seo-improvements.js
@@ -30,7 +30,7 @@ const TITLE_OVERRIDES = {
   'dr-wael-elkholy-m-d.html': 'Dr. Wael Elkholy, Pain Management Specialist in New Jersey | PPSI',
   'dr-wael-elkholy-resume.html': 'Dr. Wael Elkholy M.D. Curriculum Vitae | Board-Certified Pain Specialist | PPSI',
   'alexios-apazidis.html': 'Dr. Alexios Apazidis, Spine Surgeon in New Jersey | PPSI',
-  'dr-ashraf-sakr.html': 'Dr. Ashraf Sakr, Anesthesiologist & Pain Specialist in New Jersey | PPSI',
+  'dr-ashraf-sakr.html': 'Dr. Ashraf Sakr, Pain Management Specialist in New Jersey | PPSI',
   'dr-ashraf-sakr-resume.html': 'Dr. Ashraf Sakr M.D. Curriculum Vitae | PPSI',
   'fouad-karam.html': 'Dr. Fouad Karam, Pain Management Specialist in New Jersey | PPSI',
   'edward-sofo.html': 'Dr. Edward Sofo, Chiropractor for Athletes & Back Pain | New Jersey | PPSI',
@@ -64,7 +64,7 @@ const FAQ_ITEMS = [
 
 const DOCTOR_SPECIALTIES = {
   'dr-wael-elkholy-m-d.html': 'Interventional Pain Management',
-  'dr-ashraf-sakr.html': 'Anesthesiology',
+  'dr-ashraf-sakr.html': 'Pain Management',
   'alexios-apazidis.html': 'Orthopedic Spine Surgery',
   'fouad-karam.html': 'Pain Management',
   'edward-sofo.html': 'Chiropractic',
