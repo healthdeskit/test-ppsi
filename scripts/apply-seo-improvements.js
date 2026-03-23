@@ -34,7 +34,7 @@ const TITLE_OVERRIDES = {
   'dr-ashraf-sakr-resume.html': 'Dr. Ashraf Sakr M.D. Curriculum Vitae | PPSI',
   'fouad-karam.html': 'Dr. Fouad Karam, Pain Management Specialist in New Jersey | PPSI',
   'edward-sofo.html': 'Dr. Edward Sofo, Chiropractor for Athletes & Back Pain | New Jersey | PPSI',
-  'patrick-nierva.html': 'Dr. Patrick Nierva, Chiropractor | Back & Neck Pain Care NJ | PPSI',
+  'patrick-nierva.html': 'Dr. Patrick Nierva, Doctor of Chiropractic | Back & Neck Pain Care NJ | PPSI',
   'patient-portal.html': 'Patient Portal | Access Your Care | PPSI',
   'insurance.html': 'Insurance & Payment Options | Pain Management NJ | PPSI',
   'careers.html': 'Careers at PPSI | Join Our Pain & Spine Team in New Jersey',
