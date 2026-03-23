@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Applies SEO best practices: title overrides, page-type schema (Physician, MedicalClinic, FAQPage, BreadcrumbList).
  * Run: node scripts/apply-seo-improvements.js
@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const BASE = process.env.SITE_BASE_URL || 'https://www.ppsinj.com';
+const BASE = process.env.SITE_BASE_URL || 'https://njnopain.com';
 
 const TITLE_OVERRIDES = {
   'about-us.html': 'About Precision Pain & Spine Institute | Pain Management & Spine Care in NJ | PPSI',

@@ -26,5 +26,5 @@ admin/*.php
 _templates
 scripts
 
-# Optional: keep compose file out of image context bloat (already excluded by COPY scope — harmless)
+# Optional: keep compose file out of image context bloat (already excluded by COPY scope; harmless)
 docker-compose*.yml

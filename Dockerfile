@@ -1,4 +1,4 @@
-# PPSI — Node server + static site (production)
+# PPSI: Node server + static site (production)
 FROM node:20-bookworm-slim
 
 WORKDIR /app

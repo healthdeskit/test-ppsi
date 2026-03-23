@@ -2,7 +2,7 @@
 
 - **URL:** `/admin` (Node server must be running from the `server` folder: `npm start`)
 - **Login:** Value of `ADMIN_PASSWORD` in **`server/.env`** (created for you). Default local password: **`ppsi-admin-2025`**
-- **Important:** After changing `.env`, **restart** the Node server. If login fails, an old server may still be on port 3000 — stop it and run `node server.js` again.
+- **Important:** After changing `.env`, **restart** the Node server. If login fails, an old server may still be on port 3000, stop it and run `node server.js` again.
 
 ## Sample data (optional)
 

@@ -1,4 +1,4 @@
-# PPSI — Docker: Node site on :3000; optional PHP with -PhpLocal
+# PPSI, Docker: Node site on :3000; optional PHP with -PhpLocal
 # Usage: .\start-docker.ps1          → web only
 #        .\start-docker.ps1 -PhpLocal → web + PHP on :8080
 

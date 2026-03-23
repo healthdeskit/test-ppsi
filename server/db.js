@@ -192,7 +192,7 @@ function saveJobApplication(payload) {
   writeJson(jobsPath, list);
 }
 
-/* ——— Admin: list + patch with status / notes ——— */
+/* Admin: list + patch with status / notes */
 
 function normalizeSubmission(row) {
   return {
@@ -272,7 +272,7 @@ function getJobById(id) {
   return row ? normalizeJob(row) : null;
 }
 
-/* ——— Job listings (open positions on /careers) ——— */
+/* Job listings (open positions on /careers) */
 
 function normalizeJobListing(row) {
   if (!row || typeof row !== 'object') return null;

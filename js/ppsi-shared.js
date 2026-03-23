@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
   const siteHeader = document.getElementById("siteHeader");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 

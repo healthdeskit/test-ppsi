@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const {
@@ -20,7 +20,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'ppsi-admin-2025';
 
 const UPLOADS_DIR = path.join(__dirname, '..', '..', 'data', 'uploads');
 
-/** Whitelist — invalid values rejected */
+/** Whitelist, invalid values rejected */
 const LEAD_STATUSES = ['new', 'contacted', 'qualified', 'not_qualified', 'scheduled', 'closed', 'spam'];
 const JOB_STATUSES = ['new', 'under_review', 'interview', 'offer', 'hired', 'rejected', 'withdrawn', 'on_hold'];
 const MEDICAL_STATUSES = ['new', 'processing', 'completed', 'closed'];
@@ -155,7 +155,7 @@ router.get('/api/jobs', requireAuth, (req, res) => {
   }
 });
 
-/** Open positions posted on /careers — full CRUD */
+/** Open positions posted on /careers, full CRUD */
 router.get('/api/job-listings', requireAuth, (req, res) => {
   try {
     res.json(listJobListingsSorted());

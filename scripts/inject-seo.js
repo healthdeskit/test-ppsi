@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Injects canonical, OG, Twitter meta tags and base JSON-LD schema into all HTML pages.
  * Run: node scripts/inject-seo.js
@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const BASE = process.env.SITE_BASE_URL || 'https://www.ppsinj.com';
+const BASE = process.env.SITE_BASE_URL || 'https://njnopain.com';
 
 const FILE_TO_PATH = {
   'index.html': '/',

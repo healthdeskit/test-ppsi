@@ -477,7 +477,7 @@
           <div class="topbar-logo"><img src="/assets/ppsi-logo.webp" alt="" width="40" height="40" /></div>
           <div>
             <h1 id="pageTitle">Dashboard</h1>
-            <p id="pageSub">Inbound forms, hiring, and HIPAA requests — separated by category</p>
+            <p id="pageSub">Inbound forms, hiring, and HIPAA requests, separated by category</p>
           </div>
         </div>
         <button type="button" class="refresh-btn" id="btnRefresh">Refresh data</button>
@@ -489,10 +489,10 @@
           <div class="card">
             <div class="card-hd"><h2>How this hub is organized</h2></div>
             <div class="guide-card" style="padding:22px 24px;">
-              <p><strong>Contact / Appointments / Insurance</strong> are <strong>separate lists</strong> — each comes from the website but is kept in its own queue. Open any row to see the <strong>full submission</strong> with clear sections.</p>
+              <p><strong>Contact / Appointments / Insurance</strong> are <strong>separate lists</strong>, each comes from the website but is kept in its own queue. Open any row to see the <strong>full submission</strong> with clear sections.</p>
               <p><strong>Job postings</strong> control which roles appear on the public <strong>/careers</strong> page. Add, edit, activate/deactivate, or remove listings here.</p>
-              <p><strong>Job applications</strong> are candidate submissions — cover message, role, and <strong>resume download</strong> when uploaded.</p>
-              <p><strong>Medical records</strong> are HIPAA requests only — structured patient and delivery fields.</p>
+              <p><strong>Job applications</strong> are candidate submissions, cover message, role, and <strong>resume download</strong> when uploaded.</p>
+              <p><strong>Medical records</strong> are HIPAA requests only, structured patient and delivery fields.</p>
             </div>
           </div>
         </div>
@@ -500,7 +500,7 @@
         <div id="panel-contact" class="panel">
           <div class="card">
             <div class="card-hd">
-              <h2>Contact form — website messages</h2>
+              <h2>Contact form, website messages</h2>
               <div class="filters">
                 <label>Status<select id="filterContactStatus"><option value="">All</option></select></label>
                 <label>Search<input type="search" id="filterContactSearch" placeholder="Name, email…" /></label>
@@ -551,12 +551,12 @@
         <div id="panel-job-postings" class="panel">
           <div class="card">
             <div class="card-hd">
-              <h2>Open positions — careers page</h2>
+              <h2>Open positions, careers page</h2>
               <div class="filters">
                 <button type="button" class="refresh-btn" id="btnNewJobPosting" style="margin:0;">+ New posting</button>
               </div>
             </div>
-            <p style="margin:0 24px 16px;font-size:13px;color:var(--muted);line-height:1.55;">These roles are loaded on <strong>/careers</strong>. “Job ID” is stored with each application (<code>job_id</code>) — change it only if you understand existing applications may still reference the old id.</p>
+            <p style="margin:0 24px 16px;font-size:13px;color:var(--muted);line-height:1.55;">These roles are loaded on <strong>/careers</strong>. “Job ID” is stored with each application (<code>job_id</code>), change it only if you understand existing applications may still reference the old id.</p>
             <div id="jobPostingsLoading" class="loading">Loading…</div>
             <div id="jobPostingsEmpty" class="empty" style="display:none;padding:0 24px 24px;"><strong>No postings yet.</strong> Click “New posting” to add a role.</div>
             <div class="table-wrap" id="jobPostingsTableWrap" style="display:none;">
@@ -777,7 +777,7 @@
     drawerMeta.textContent = 'Submitted ' + r.created_at + ' · Record #' + r.id;
     let body = '<section class="detail-section"><h3 class="detail-section-title">Sender</h3><dl class="detail-dl">' +
       rowField('Full name', p.name) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
-    body += '<section class="detail-section"><h3 class="detail-section-title">Message</h3><p class="detail-block-text">' + esc(p.message || '—') + '</p></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Message</h3><p class="detail-block-text">' + esc(p.message || '-') + '</p></section>';
     body += drawerFooterSubmission(r.id, r.status, r.admin_notes);
     drawerBody.innerHTML = body;
     bindDrawerSubmissionHandlers(r.id);
@@ -791,7 +791,7 @@
       rowField('Full name', p.name) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
     body += '<section class="detail-section"><h3 class="detail-section-title">Scheduling preferences</h3><dl class="detail-dl">' +
       rowField('Preferred location', p.preferred_location) + rowField('Date / time preference', p.date_preference) + '</dl></section>';
-    body += '<section class="detail-section"><h3 class="detail-section-title">Additional notes</h3><p class="detail-block-text">' + esc(p.message || '—') + '</p></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Additional notes</h3><p class="detail-block-text">' + esc(p.message || '-') + '</p></section>';
     body += drawerFooterSubmission(r.id, r.status, r.admin_notes);
     drawerBody.innerHTML = body;
     bindDrawerSubmissionHandlers(r.id);
@@ -806,7 +806,7 @@
     body += '<section class="detail-section"><h3 class="detail-section-title">Insurance plan</h3><dl class="detail-dl">' +
       rowField('Carrier', p.insurance_carrier) + rowField('Member / subscriber ID', p.member_id) + rowField('Group number', p.group_number) + '</dl></section>';
     body += '<section class="detail-section"><h3 class="detail-section-title">Location &amp; notes</h3><dl class="detail-dl">' +
-      rowField('Preferred location', p.preferred_location) + '</dl><p class="detail-block-text" style="margin-top:12px;">' + esc(p.message || '—') + '</p></section>';
+      rowField('Preferred location', p.preferred_location) + '</dl><p class="detail-block-text" style="margin-top:12px;">' + esc(p.message || '-') + '</p></section>';
     body += drawerFooterSubmission(r.id, r.status, r.admin_notes);
     drawerBody.innerHTML = body;
     bindDrawerSubmissionHandlers(r.id);
@@ -828,7 +828,7 @@
     body += '<section class="detail-section"><h3 class="detail-section-title">Candidate</h3><dl class="detail-dl">' +
       rowField('Full name', r.name) + rowField('Email', r.email) + rowField('Phone', r.phone) + '</dl></section>';
     body += resumeBlock;
-    body += '<section class="detail-section"><h3 class="detail-section-title">Cover message</h3><p class="detail-block-text">' + esc(fullMsg || '—') + '</p></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Cover message</h3><p class="detail-block-text">' + esc(fullMsg || '-') + '</p></section>';
     body += drawerFooterJob(r.id, r.status, r.admin_notes);
     drawerBody.innerHTML = body;
     bindDrawerJobHandlers(r.id);
@@ -842,7 +842,7 @@
       rowField('Full legal name', p.name) + rowField('Date of birth', p.date_of_birth) + rowField('Email', p.email) + rowField('Phone', p.phone) + '</dl></section>';
     body += '<section class="detail-section"><h3 class="detail-section-title">Delivery &amp; location</h3><dl class="detail-dl">' +
       rowField('Preferred delivery', p.delivery_method) + rowField('Location usually seen', p.location_visited) + rowField('Mailing address', p.mailing_address) + '</dl></section>';
-    body += '<section class="detail-section"><h3 class="detail-section-title">Records requested</h3><p class="detail-block-text">' + esc(p.details || '—') + '</p></section>';
+    body += '<section class="detail-section"><h3 class="detail-section-title">Records requested</h3><p class="detail-block-text">' + esc(p.details || '-') + '</p></section>';
     body += drawerFooterMed(r.id, r.status, r.admin_notes);
     drawerBody.innerHTML = body;
     bindDrawerMedHandlers(r.id);
@@ -974,7 +974,7 @@
       const p = parsePayload(r.payload);
       const name = p.name || 'Unknown';
       const sub = [p.email, p.phone].filter(Boolean).join(' · ');
-      let preview = (p.message || p.insurance_carrier || p.preferred_location || '—').slice(0, 100);
+      let preview = (p.message || p.insurance_carrier || p.preferred_location || '-').slice(0, 100);
       return '<tr class="row-main">' +
         '<td class="meta">' + esc(r.created_at) + '</td>' +
         '<td><div class="person"><div class="avatar">' + esc(initials(name)) + '</div><div><div class="person-name">' + esc(name) + '</div>' +
@@ -1164,7 +1164,7 @@
     drawerTitle.textContent = isNew ? 'New job posting' : 'Edit job posting';
     drawerMeta.textContent = isNew
       ? 'Saves to careers page (/careers). Use a short Job ID (slug) for URLs and applications.'
-      : ('Record #' + row.id + ' · last updated ' + (row.updated_at || '—'));
+      : ('Record #' + row.id + ' · last updated ' + (row.updated_at || '-'));
     const r = row || {};
     drawerBody.innerHTML =
       '<div class="jp-form">' +
@@ -1253,7 +1253,7 @@
         '<td>' + st + '</td>' +
         '<td><strong>' + esc(r.title) + '</strong></td>' +
         '<td><code style="font-size:12px;">' + esc(r.slug) + '</code></td>' +
-        '<td class="meta">' + esc(r.updated_at || '—') + '</td>' +
+        '<td class="meta">' + esc(r.updated_at || '-') + '</td>' +
         '<td><button type="button" class="btn-sm btn-primary-sm" data-edit-posting="' + esc(r.id) + '">Edit</button></td></tr>';
     }).join('');
     document.getElementById('jobPostingsTbody').querySelectorAll('[data-edit-posting]').forEach(function (btn) {
@@ -1268,12 +1268,12 @@
   document.getElementById('btnNewJobPosting').onclick = function () { openJobPostingDrawer(null); };
 
   const titles = {
-    dashboard: ['Dashboard', 'Counts by category — open a section from the left'],
+    dashboard: ['Dashboard', 'Counts by category, open a section from the left'],
     contact: ['Contact messages', 'General inquiries from the contact form'],
     appointments: ['Appointment requests', 'Online booking requests from patients'],
     insurance: ['Insurance verification', 'Benefit / coverage questions from the website'],
-    'job-postings': ['Job postings', 'Roles on /careers — create, edit, delete, show or hide'],
-    jobs: ['Job applications', 'Candidate submissions — open a row for full application + resume'],
+    'job-postings': ['Job postings', 'Roles on /careers, create, edit, delete, show or hide'],
+    jobs: ['Job applications', 'Candidate submissions, open a row for full application + resume'],
     medical: ['Medical record requests', 'HIPAA record release queue'],
   };
 
@@ -1355,7 +1355,7 @@
     renderJobs();
     renderMedical();
   }).catch(function () {
-    toast('Could not load data — try logging in again', true);
+    toast('Could not load data, try logging in again', true);
   });
 })();
   </script>

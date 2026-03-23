@@ -1,4 +1,4 @@
-const path = require('path');
+﻿const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const express = require('express');
@@ -21,7 +21,7 @@ const uploadsDir = path.join(dataDir, 'uploads');
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 const upload = multer({ dest: uploadsDir, limits: { fileSize: 5 * 1024 * 1024 } });
 
-/** Location photos: Linux is case-sensitive — serve both URL spellings from one folder */
+/** Location photos: Linux is case-sensitive, serve both URL spellings from one folder */
 (function mountLocationPhotos() {
   for (const name of ['Location-photos', 'location-photos']) {
     const dir = path.join(ROOT, name);

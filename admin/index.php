@@ -61,7 +61,7 @@ usort($jobs, fn($a, $b) => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''
             <tr>
               <td class="admin-meta"><?php echo htmlspecialchars($r['created_at'] ?? ''); ?></td>
               <td><span class="admin-badge admin-badge-<?php echo ($r['type'] ?? '') === 'contact' ? 'contact' : 'appointment'; ?>"><?php echo htmlspecialchars($r['type'] ?? ''); ?></span></td>
-              <td><div class="admin-payload"><?php echo htmlspecialchars(implode(' · ', array_map(function($k, $v) { return $k . ': ' . (is_string($v) ? $v : (string)$v) ?: '—'; }, array_keys($p), $p))); ?></div></td>
+              <td><div class="admin-payload"><?php echo htmlspecialchars(implode(' · ', array_map(function($k, $v) { return $k . ': ' . (is_string($v) ? $v : (string)$v) ?: '-'; }, array_keys($p), $p))); ?></div></td>
             </tr>
             <?php endforeach; ?>
           </tbody>
@@ -82,7 +82,7 @@ usort($jobs, fn($a, $b) => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''
             <?php foreach ($medical as $r): $p = json_decode($r['payload'] ?? '{}', true) ?: []; ?>
             <tr>
               <td class="admin-meta"><?php echo htmlspecialchars($r['created_at'] ?? ''); ?></td>
-              <td><div class="admin-payload"><?php echo htmlspecialchars(implode(' · ', array_map(function($k, $v) { return $k . ': ' . (is_string($v) ? $v : (string)$v) ?: '—'; }, array_keys($p), $p))); ?></div></td>
+              <td><div class="admin-payload"><?php echo htmlspecialchars(implode(' · ', array_map(function($k, $v) { return $k . ': ' . (is_string($v) ? $v : (string)$v) ?: '-'; }, array_keys($p), $p))); ?></div></td>
             </tr>
             <?php endforeach; ?>
           </tbody>
@@ -103,7 +103,7 @@ usort($jobs, fn($a, $b) => strcmp($b['created_at'] ?? '', $a['created_at'] ?? ''
             <?php foreach ($jobs as $r): $p = json_decode($r['payload'] ?? '{}', true) ?: []; ?>
             <tr>
               <td class="admin-meta"><?php echo htmlspecialchars($r['created_at'] ?? ''); ?></td>
-              <td><strong><?php echo htmlspecialchars($p['job_title'] ?? $p['job_id'] ?? '—'); ?></strong></td>
+              <td><strong><?php echo htmlspecialchars($p['job_title'] ?? $p['job_id'] ?? '-'); ?></strong></td>
               <td><?php echo htmlspecialchars(($p['name'] ?? '') . ' · ' . ($p['email'] ?? '')); ?></td>
               <td><div class="admin-payload"><?php echo htmlspecialchars(($p['phone'] ?? '') . ($p['resume_file'] ? ' · Resume: ' . $p['resume_file'] : '')); ?></div></td>
             </tr>

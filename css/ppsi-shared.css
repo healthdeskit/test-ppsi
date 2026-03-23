@@ -393,7 +393,7 @@
       color: var(--primary);
     }
 
-    /* Conditions treated — editorial, clinical directory style */
+    /* Conditions treated, editorial, clinical directory style */
     .provider-conditions-block.provider-conditions-showcase {
       background: transparent !important;
       border: none !important;
@@ -2769,7 +2769,7 @@
         align-items: flex-start;
       }
 
-      /* App-style compact footer (phone) — same behavior as home */
+      /* App-style compact footer (phone), same behavior as home */
       .footer-link-mobile-only {
         display: inline-block;
       }
@@ -3117,7 +3117,7 @@
       margin-bottom: 0;
     }
 
-    /* Premium provider pages — typography + gallery (Dr. Elkholy + all doctor profiles) */
+    /* Premium provider pages, typography + gallery (Dr. Elkholy + all doctor profiles) */
     .page-provider-premium .provider-hero-image-wrap {
       box-shadow:
         0 4px 6px -1px rgba(15, 76, 129, 0.07),
@@ -4912,7 +4912,7 @@
     .form-status--success { background: var(--primary-soft); color: var(--primary); }
     .form-status--error { background: #fef2f2; color: #b91c1c; }
 
-    /* Chiropractor profile lite (Sofo, Nierva) — matches Karam band + single image row */
+    /* Chiropractor profile lite (Sofo, Nierva), matches Karam band + single image row */
     .chiro-doc-name {
       font-size: clamp(2.5rem, 4.2vw, 3.5rem);
       letter-spacing: -0.04em;

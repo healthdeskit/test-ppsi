@@ -2,7 +2,7 @@
   {
     "id": 1,
     "type": "contact",
-    "payload": "{\"name\":\"Jordan Lee\",\"email\":\"jordan.lee.sample@example.com\",\"phone\":\"(732) 555-0101\",\"message\":\"Hi — I'm looking for a pain management consult for chronic lower back pain. Do you accept Horizon BCBS? Prefer Edison or North Brunswick if possible.\"}",
+    "payload": "{\"name\":\"Jordan Lee\",\"email\":\"jordan.lee.sample@example.com\",\"phone\":\"(732) 555-0101\",\"message\":\"Hi, I'm looking for a pain management consult for chronic lower back pain. Do you accept Horizon BCBS? Prefer Edison or North Brunswick if possible.\"}",
     "created_at": "2026-03-10 14:22:00",
     "status": "new",
     "admin_notes": ""
@@ -13,7 +13,7 @@
     "payload": "{\"name\":\"Maria Santos\",\"phone\":\"(732) 555-0102\",\"email\":\"maria.santos.sample@example.com\",\"preferred_location\":\"Jersey City\",\"date_preference\":\"Weekday mornings, after 9am\",\"message\":\"Follow-up for epidural discussion. Primary care referred me.\"}",
     "created_at": "2026-03-11 09:15:00",
     "status": "contacted",
-    "admin_notes": "Called — left VM, callback requested."
+    "admin_notes": "Called, left VM, callback requested."
   },
   {
     "id": 3,
@@ -29,7 +29,7 @@
     "payload": "{\"name\":\"Sam Rivera\",\"email\":\"sam.rivera.sample@example.com\",\"phone\":\"\",\"message\":\"Website question: do you offer transportation assistance? (Sample demo entry.)\"}",
     "created_at": "2026-03-13 11:05:00",
     "status": "closed",
-    "admin_notes": "Replied with general info — sample."
+    "admin_notes": "Replied with general info, sample."
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
   {
     "id": 6,
     "type": "appointment",
-    "payload": "{\"name\":\"James Okafor\",\"phone\":\"(732) 555-0155\",\"email\":\"j.okafor.sample@example.com\",\"preferred_location\":\"Edison\",\"date_preference\":\"Next available PM slot\",\"message\":\"New patient — lumbar radiculopathy. MRI on file from ortho.\"}",
+    "payload": "{\"name\":\"James Okafor\",\"phone\":\"(732) 555-0155\",\"email\":\"j.okafor.sample@example.com\",\"preferred_location\":\"Edison\",\"date_preference\":\"Next available PM slot\",\"message\":\"New patient, lumbar radiculopathy. MRI on file from ortho.\"}",
     "created_at": "2026-03-18 13:45:00",
     "status": "new",
     "admin_notes": ""
@@ -50,7 +50,7 @@
   {
     "id": 7,
     "type": "appointment",
-    "payload": "{\"name\":\"Elena Volkov\",\"phone\":\"(732) 555-0166\",\"email\":\"elena.v.sample@example.com\",\"preferred_location\":\"Elizabeth\",\"date_preference\":\"Fridays preferred\",\"message\":\"PT referral from PPSI — want to align scheduling with pain follow-up.\"}",
+    "payload": "{\"name\":\"Elena Volkov\",\"phone\":\"(732) 555-0166\",\"email\":\"elena.v.sample@example.com\",\"preferred_location\":\"Elizabeth\",\"date_preference\":\"Fridays preferred\",\"message\":\"PT referral from PPSI, want to align scheduling with pain follow-up.\"}",
     "created_at": "2026-03-19 08:20:00",
     "status": "new",
     "admin_notes": ""

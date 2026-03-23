@@ -1,4 +1,4 @@
-# PPSI — Docker
+# PPSI, Docker
 #
 # Production-style (Node only):
 #   docker compose up -d --build

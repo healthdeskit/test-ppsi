@@ -1,4 +1,4 @@
-window.SITE_DATA = {
+﻿window.SITE_DATA = {
   "siteName": "Precision Pain & Spine Institute",
   "contact": {
     "phone": "(732) 444-8888",

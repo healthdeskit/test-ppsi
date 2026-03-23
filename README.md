@@ -1,4 +1,4 @@
-# Precision Pain & Spine Institute (PPSI) — website
+# Precision Pain & Spine Institute (PPSI), website
 
 Static HTML/CSS + **Node.js** server (Express): clean URLs, form handling, JSON-backed submissions and job data, `/admin`.
 
@@ -40,8 +40,8 @@ npm start
 
 ### Careers page (`/careers`)
 
-- Open **`http://localhost:3000/careers`** (or your deployed site URL). Job cards load from **`/api/careers/open-positions`** — that route exists only on **this Node server**.
-- Opening **`careers.html` directly from disk** (`file://…`) or using a **static-only** dev server (no Express) will show a “could not load job listings” message — that’s expected.
+- Open **`http://localhost:3000/careers`** (or your deployed site URL). Job cards load from **`/api/careers/open-positions`**, that route exists only on **this Node server**.
+- Opening **`careers.html` directly from disk** (`file://…`) or using a **static-only** dev server (no Express) will show a “could not load job listings” message, that’s expected.
 - If port **3000** is already used by another app, either stop that app or run `set PORT=3010` (PowerShell: `$env:PORT='3010'`) before `npm start`, then use `http://localhost:3010/careers`.
 
 ## Docker (production-style)
@@ -62,7 +62,7 @@ ADMIN_PASSWORD=your-strong-password
 SESSION_SECRET=long-random-string
 ```
 
-**Optional — PHP + Apache** (legacy `.php` files on port 8080):
+**Optional, PHP + Apache** (legacy `.php` files on port 8080):
 
 ```bash
 docker compose --profile php-local up -d --build
@@ -72,7 +72,7 @@ PowerShell: `.\start-docker.ps1` (web only) or `.\start-docker.ps1 -PhpLocal` (w
 
 ## Publish checklist
 
-1. **Secrets:** `ADMIN_PASSWORD`, `SESSION_SECRET` — never use defaults in production.
+1. **Secrets:** `ADMIN_PASSWORD`, `SESSION_SECRET`, never use defaults in production.
 2. **Persistence:** Mount `data/` so JSON stores (`submissions`, medical requests, jobs, listings) and `uploads/` survive restarts.
 3. **Health:** Container healthcheck hits `/` (200).
 4. **Forms:** Test contact, appointment, careers after deploy.

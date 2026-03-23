@@ -8,17 +8,17 @@
     name="description"
     content="Precision Pain &amp; Spine Institute offers advanced pain management and spine care across New Jersey at multiple locations."
   />
-<link rel="canonical" href="https://www.ppsinj.com" />
+<link rel="canonical" href="https://njnopain.com" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.ppsinj.com" />
+  <meta property="og:url" content="https://njnopain.com" />
   <meta property="og:title" content="Pain Management and Spine Specialists in New Jersey | Precision Pain &amp; Spine Institute" />
   <meta property="og:description" content="Precision Pain &amp; Spine Institute offers advanced pain management and spine care across New Jersey at multiple locations." />
-  <meta property="og:image" content="https://www.ppsinj.com/assets/ppsi-logo.webp" />
+  <meta property="og:image" content="https://njnopain.com/assets/ppsi-logo.webp" />
   <meta property="og:site_name" content="Precision Pain &amp; Spine Institute" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pain Management and Spine Specialists in New Jersey | Precision Pain &amp; Spine Institute" />
   <meta name="twitter:description" content="Precision Pain &amp; Spine Institute offers advanced pain management and spine care across New Jersey at multiple locations." />
-  <meta name="twitter:image" content="https://www.ppsinj.com/assets/ppsi-logo.webp" />
+  <meta name="twitter:image" content="https://njnopain.com/assets/ppsi-logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Core fonts: always load. DM Serif only on wider screens (saves mobile render + bytes). -->
@@ -1134,6 +1134,7 @@
       margin-top: 56px;
       display: grid;
       gap: 22px;
+      grid-auto-flow: row;
     }
 
     .card-grid.four {
@@ -1146,6 +1147,13 @@
 
     .card-grid.two {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Locations: one column sooner so phones / small tablets read top-to-bottom like /locations */
+    @media (max-width: 900px) {
+      .card-grid.locations-on-home.three {
+        grid-template-columns: 1fr;
+      }
     }
 
     .info-card {
@@ -1285,7 +1293,7 @@
       line-height: 1.6;
     }
 
-    /* Patient Stories — blue gradient, clean white cards */
+    /* Patient Stories, blue gradient, clean white cards */
     .section-patient-stories {
       position: relative;
       background: linear-gradient(160deg, var(--primary) 0%, var(--primary-deep) 100%);
@@ -1822,7 +1830,7 @@
       display: block;
     }
 
-    /* Insurance — 3-column layout */
+    /* Insurance, 3-column layout */
     .insurance-strip {
       position: relative;
       background-image: url("_next/myra-and-doc-consult.webp");
@@ -2443,7 +2451,7 @@
         align-items: flex-start;
       }
 
-      /* —— Mobile performance + app-style footer —— */
+      /* Mobile performance + app-style footer */
       .footer-link-mobile-only {
         display: inline-block;
       }
@@ -2629,10 +2637,10 @@
       }
     }
   </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalOrganization","name":"Precision Pain & Spine Institute","url":"https://www.ppsinj.com","logo":"https://www.ppsinj.com/assets/ppsi-logo.webp","telephone":"+1-732-444-8888","address":{"@type":"PostalAddress","addressLocality":"Edison","addressRegion":"NJ"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalOrganization","name":"Precision Pain & Spine Institute","url":"https://njnopain.com","logo":"https://njnopain.com/assets/ppsi-logo.webp","telephone":"+1-732-444-8888","address":{"@type":"PostalAddress","addressLocality":"Edison","addressRegion":"NJ"}}</script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need a referral to book an appointment?","acceptedAnswer":{"@type":"Answer","text":"It depends on your insurance. Some plans require a referral from your primary care doctor; others let you schedule directly. Call (732) 444-8888 to confirm before booking."}},{"@type":"Question","name":"What should I bring to my first visit?","acceptedAnswer":{"@type":"Answer","text":"Bring your insurance card, photo ID, current medication list, and any prior X-rays, MRIs, or spine-related records. This helps avoid repeat tests and speeds your evaluation."}},{"@type":"Question","name":"When should I go to the ER instead?","acceptedAnswer":{"@type":"Answer","text":"Go to the ER or call 911 for sudden leg weakness, numbness, loss of bowel/bladder control, or severe trauma. For ongoing back or neck pain, schedule an appointment with us."}},{"@type":"Question","name":"How soon can I be seen?","acceptedAnswer":{"@type":"Answer","text":"Same-day and same-week appointments may be available depending on location and schedule. Call us to find the soonest opening near you."}},{"@type":"Question","name":"Do you accept my insurance or workers' comp?","acceptedAnswer":{"@type":"Answer","text":"Yes. We accept Horizon BCBS, Aetna, Cigna, UnitedHealthcare, and other major plans, plus workers' comp and personal injury (including car accidents). Call us to verify your coverage."}},{"@type":"Question","name":"What treatments do you offer for back and neck pain?","acceptedAnswer":{"@type":"Answer","text":"We offer physical therapy, chiropractic care, pain-relief injections (epidurals, facet blocks, nerve blocks), and spine surgery when needed. Your doctor will recommend the best option after evaluating you."}}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.ppsinj.com"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://njnopain.com"}]}</script>
 </head>
 <body>
 
@@ -2878,8 +2886,9 @@
               <a href="/practice-areas">All Services</a>
             </div>
           </div>
+        </div>
 
-                <div class="mobile-accordion">
+        <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Doctors</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -2895,7 +2904,7 @@
           </div>
         </div>
 
-                <div class="mobile-accordion">
+        <div class="mobile-accordion">
           <button class="mobile-accordion-toggle" type="button">
             <span>Locations</span>
             <svg class="nav-caret"><use href="#i-chevron"></use></svg>
@@ -3120,7 +3129,7 @@
         </div>
         <div class="grid-head-actions">
           <p class="section-sub">
-            Board-certified specialists who work together to deliver coordinated pain and spine care—from diagnosis through treatment and recovery.
+            Board-certified specialists who work together to deliver coordinated pain and spine care, from diagnosis through treatment and recovery.
           </p>
           <div style="margin-top:24px;">
             <a href="/doctors" class="btn btn-primary">Meet All Doctors</a>
@@ -3293,47 +3302,12 @@
         </div>
       </div>
 
-      <div class="card-grid three">
-        <a href="/locations" class="location-card">
-          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-          <span>
-            <span class="location-name">Passaic</span>
-            <span class="location-meta">New Jersey • Full Services</span>
-          </span>
-          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
-        </a>
-
+      <div class="card-grid three locations-on-home">
+        <!-- Same order as /locations page: predictable A→Z style reading on mobile & desktop -->
         <a href="/clifton-new-jersey" class="location-card">
           <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
           <span>
             <span class="location-name">Clifton</span>
-            <span class="location-meta">New Jersey • Full Services</span>
-          </span>
-          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
-        </a>
-
-        <a href="/jersey-city" class="location-card">
-          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-          <span>
-            <span class="location-name">Jersey City</span>
-            <span class="location-meta">New Jersey • Full Services</span>
-          </span>
-          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
-        </a>
-
-        <a href="/locations" class="location-card">
-          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-          <span>
-            <span class="location-name">Somerset</span>
-            <span class="location-meta">New Jersey • Full Services</span>
-          </span>
-          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
-        </a>
-
-        <a href="/elizabeth" class="location-card">
-          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
-          <span>
-            <span class="location-name">Elizabeth</span>
             <span class="location-meta">New Jersey • Full Services</span>
           </span>
           <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
@@ -3348,10 +3322,10 @@
           <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
         </a>
 
-        <a href="/north-brunswick" class="location-card">
+        <a href="/elizabeth" class="location-card">
           <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
           <span>
-            <span class="location-name">North Brunswick</span>
+            <span class="location-name">Elizabeth</span>
             <span class="location-meta">New Jersey • Full Services</span>
           </span>
           <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
@@ -3361,6 +3335,42 @@
           <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
           <span>
             <span class="location-name">Hamilton</span>
+            <span class="location-meta">New Jersey • Full Services</span>
+          </span>
+          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
+        </a>
+
+        <a href="/jersey-city" class="location-card">
+          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+          <span>
+            <span class="location-name">Jersey City</span>
+            <span class="location-meta">New Jersey • Full Services</span>
+          </span>
+          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
+        </a>
+
+        <a href="/north-brunswick" class="location-card">
+          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+          <span>
+            <span class="location-name">North Brunswick</span>
+            <span class="location-meta">New Jersey • Full Services</span>
+          </span>
+          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
+        </a>
+
+        <a href="/locations" class="location-card">
+          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+          <span>
+            <span class="location-name">Passaic</span>
+            <span class="location-meta">New Jersey • Full Services</span>
+          </span>
+          <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
+        </a>
+
+        <a href="/locations" class="location-card">
+          <span class="location-icon"><svg class="icon icon-sm"><use href="#i-location"></use></svg></span>
+          <span>
+            <span class="location-name">Somerset</span>
             <span class="location-meta">New Jersey • Full Services</span>
           </span>
           <span class="location-arrow"><svg class="icon icon-sm"><use href="#i-arrow-right"></use></svg></span>
@@ -3557,7 +3567,7 @@
       </div>
     </div>
     <div class="insurance-disclosure">
-      <p>Coverage varies by plan. Please verify your benefits with your carrier or our office before your visit. This list is not exhaustive—contact us to confirm your specific plan.</p>
+      <p>Coverage varies by plan. Please verify your benefits with your carrier or our office before your visit. This list is not exhaustive, contact us to confirm your specific plan.</p>
     </div>
   </section>
 
