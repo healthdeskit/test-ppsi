@@ -13,6 +13,10 @@ const admin = require('./routes/admin');
 initDb();
 
 const app = express();
+
+app.get(['/dr-ashraf-sakr-resume', '/dr-ashraf-sakr-resume.html'], (_req, res) => {
+  res.redirect(301, '/dr-ashraf-sakr');
+});
 const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, '..');
 const dataDir = path.join(ROOT, 'data');
@@ -194,7 +198,6 @@ const cleanUrlMap = {
   '/dr-wael-elkholy-resume': 'dr-wael-elkholy-resume.html',
   '/alexios-apazidis': 'alexios-apazidis.html',
   '/dr-ashraf-sakr': 'dr-ashraf-sakr.html',
-  '/dr-ashraf-sakr-resume': 'dr-ashraf-sakr-resume.html',
   '/fouad-karam': 'fouad-karam.html',
   '/edward-sofo': 'edward-sofo.html',
   '/patrick-nierva': 'patrick-nierva.html',
@@ -239,7 +242,7 @@ function serveCleanUrl(req, res, next) {
 app.get(['/', '/about-us', '/contact-us', '/locations', '/medical-appointment', '/medical-records', '/medical-record-request',
   '/pain-management', '/spine-surgery', '/chiropractic', '/orthopedics', '/podiatry', '/physical-therapy', '/practice-areas',
   '/interventional', '/auto-injury', '/doctors', '/dr-wael-elkholy-m-d', '/dr-wael-elkholy-resume', '/alexios-apazidis',
-  '/dr-ashraf-sakr', '/dr-ashraf-sakr-resume', '/fouad-karam', '/edward-sofo', '/patrick-nierva', '/north-brunswick', '/edison', '/clifton', '/clifton-new-jersey',
+  '/dr-ashraf-sakr', '/fouad-karam', '/edward-sofo', '/patrick-nierva', '/north-brunswick', '/edison', '/clifton', '/clifton-new-jersey',
   '/jersey-city', '/elizabeth', '/hamilton', '/hamilton-new-jersey', '/patient-portal', '/insurance', '/careers', '/blogs', '/covid-19',
   '/privacy-policy', '/terms-of-service'], serveCleanUrl);
 
